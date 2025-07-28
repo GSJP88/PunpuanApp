@@ -19,7 +19,7 @@ const form = useRef();
     <section className="comment" id="comment">
             <div className="comment__container  grid">
                 <div className="comment__content">
-                    <h3 className="comment__title">Comment</h3>
+                    <h2 className="comment__title title">Comment</h2>
 
                     <form ref={form} onSubmit={sendEmail} className="comment__form">
 

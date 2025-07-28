@@ -57,3 +57,9 @@
 .icon-button:hover {
   background-color: #f0f0f0;
 }
+
+@media screen and (max-width: 576px) {
+  .owner-card {
+    width: 400px;
+  }
+}

@@ -1,0 +1,95 @@
+.management-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 120px 16px;
+  position: relative;
+  min-height: 100vh;
+}
+
+.management-title {
+  margin-bottom: 24px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111;
+}
+
+.management-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+}
+
+.management-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 180px;
+  border-radius: 8px;
+  background: var(--container-color);
+  text-decoration: none;
+  color: #000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.management-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.management-icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.management-label {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.icon-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.badge {
+  /* display: none; */
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: #e53935;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 3px 6px;
+  border-radius: 50%;
+}
+
+/* Floating yellow button */
+.floating-btn {
+  position: absolute;
+  bottom: 120px;
+  right: 0;
+  border: 2px solid var(--main-color);
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  /* box-shadow: 3px 3px 6px #bec3c9,
+  -3px -3px 6px #ffffff; */
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  background-color: var(--second-color);
+  color: var(--container-color);
+}
+
+.floating-btn:hover {
+  transition: all 0.2s;
+  background: var(--container2-color); /* Yellow color */
+  color: var(--main-color);
+}

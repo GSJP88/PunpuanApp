@@ -16,9 +16,7 @@ const form = useRef();
   };
 
   return (
-    <section className="contactLandlord" id="contact">
-            <div className="contact_container contact grid">
-
+            <div className="contact_container ">
                 <div className="contact__content">
                     <h2 className="contact__title">Send email to Landlord</h2>
 
@@ -39,15 +37,13 @@ const form = useRef();
                             <textarea name="message" cols="30" rows="10" className="contact__form-input" placeholder="Message"></textarea>
                         </div>
                         
-                        <button className="button button--flex">
+                        <button className="contact-button medium-button">
                             Send to email
                         <i class="bi bi-send-fill"></i>
                         </button>
                     </form>
                 </div>
-
             </div>
-    </section>
   )
 }
 

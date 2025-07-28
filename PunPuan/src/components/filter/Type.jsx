@@ -6,7 +6,7 @@ const Type = () => {
   const types = ["Apartment", "Condominiem", "Townhouses", "House"];
 
   return (
-    <div className="property-types-container">
+    <div className="property-types-wrapper">
         <h2 className='title'>Types</h2>
       <div className="property-buttons">
         {types.map((type) => (

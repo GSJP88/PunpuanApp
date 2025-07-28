@@ -91,8 +91,10 @@ const AddProperty = () => {
       }
     }, [district, province]);
 
+    
+
   return (
-    <div className="add-property container box_container">
+    <div className="add-property box_container container">
       <form className="add-property-form" onSubmit={handleSubmit}>
         <h2>Add Property</h2>
 
@@ -200,13 +202,17 @@ const AddProperty = () => {
               <label htmlFor="profileImage" className="custom-file-label">
                 + Select profile image
               </label>
-              {profileImage && (
-                <img
-                  src={URL.createObjectURL(profileImage)}
-                  alt="profile-preview"
-                  className="preview-image profile-image"
-                />
-              )}
+              <div className="preview-thumbnails">
+                <div className="thumbnail-wrapper profile">
+                  {profileImage && (
+                    <img
+                      src={URL.createObjectURL(profileImage)}
+                      alt="profile-preview"
+                      className="preview-image profile-image"
+                    />
+                  )}
+                </div>
+              </div>
             </div>
           </div>
 
@@ -255,7 +261,10 @@ const AddProperty = () => {
           </div>
         </div>
 
-        <button type="submit" className="submit_btn medium-button">Add</button>
+        <button type="submit" className="submit_btn medium-button">
+          <i class="bi bi-plus"></i>
+          Add
+        </button>
       </form>
     </div>
   );

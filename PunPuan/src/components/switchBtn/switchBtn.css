@@ -1,0 +1,31 @@
+.switch-btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.163); /* semi-transparent white */
+  backdrop-filter: blur(3px); /* blurs the background behind */
+  -webkit-backdrop-filter: blur(4px); /* Safari support */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* optional border */
+  border-radius: 30px;
+  padding: 5px;
+}
+
+.switch-btn {
+  font-weight: 400;
+  font-size: 12px;
+  padding: .75rem 2rem;
+  border: none;
+  border-radius: 30px;
+  background-color: var(--container-color);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.switch-btn.active {
+  background-color: var(--status1-color);
+  color: var(--container-color);
+}
+
+/* .switch-btn:hover {
+  background-color: #ddd;
+} */

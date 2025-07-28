@@ -15,14 +15,14 @@ const Data = () => {
 
       <button
         className="home__button medium-button"
-        onClick={() => navigate('/register/tenant')}
+        onClick={() => navigate('/registerPage/tenant')}
       >
         Tenant <i className="bi bi-person-raised-hand"></i>
       </button>
 
       <button
         className="home__button medium-button"
-        onClick={() => navigate('/register/landlord')}
+        onClick={() => navigate('/registerPage/landlord')}
       >
         Landlord <i className="bi bi-houses-fill"></i>
       </button>

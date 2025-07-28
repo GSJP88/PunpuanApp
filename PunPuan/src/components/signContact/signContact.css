@@ -1,23 +1,18 @@
 .contract-container {
   position: relative;
   display: grid;
-  border-radius: 8px;
   grid-template-columns: repeat(2, 1fr);
   background-color: var(--container-color);
-  margin: 100px auto;
   width: fit-content;
-  height: fit-content;
-  box-shadow: 3px 3px 6px #bec3c9,
-                  -3px -3px 6px #ffffff;
+  border-radius: 8px;
 }
+
 .contract-wrapper {
-  margin: 0px;
   padding: 35px 40px;
-  border-radius: 12px;
   background: none;
 }
 
-.contract-wrapper .label {
+.label {
   margin-bottom: 8px;
   color: var(--main-color);
   font-weight: 500;
@@ -25,65 +20,79 @@
 
 .contract-left {
   position: relative;
-  z-index: var(--z-tooltip);
-}
-
-.agreement-img {
-  width: 100%;
-  filter: brightness(50%);
-  border-radius: 8px 0 0 8px;
-  height: 100%;
-  object-fit: cover;
-  background-repeat: no-repeat;
+  /* z-index: var(--z-tooltip); */
+  padding: 35px 30px 10px;
+  /* background: url(../../assets/landlord2.jpg);
   background-position: center;
   background-size: cover;
+  object-fit: cover;
+  background-repeat: no-repeat;
+  filter: brightness(90%); */
+  background-color: var(--container2-color);
+  border-radius: 8px 0 0 8px;
 }
 
-.contract-text-wrapper {
-  padding: 24px;
-  position: absolute;
-  z-index: var(--z-modal);
+/* Scrollable Conditions Box */
+.conditions-section {
+  background: rgba(255, 255, 255, 0.163);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  /* border: 1px solid rgba(255, 255, 255, 0.518); */
+  border: 2px solid #bababa;
+  border-radius: 5px;
+  padding: 20px 20px 0;
+  max-height: 400px; /* Adjust as needed */
+  overflow-y: auto;
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 10px 0 20px;
+  color: #333;
 }
 
-.contract-text-wrapper h2 {
-  color: var(--container-color);
-  font-size: 48px;
-  margin-bottom: 30px;
+.conditions-section::-webkit-scrollbar {
+  width: 4px;
 }
 
-.contract-text-wrapper p {
-  color: var(--bg-color);
-  bottom: 24px;
+.conditions-section::-webkit-scrollbar-thumb {
+  background-color: var(--text-color);
+  border-radius: 10px;
+}
+
+.conditions-section h2 {
   font-size: 14px;
-  width: 80%;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--main-color);
+}
+
+.conditions-section ol {
+  padding-left: 20px;
+  margin-bottom: 2rem;
+}
+
+.conditions-section li {
+  margin-bottom: 6px;
+  font-size: 12px;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #444;
+}
+
+.checkbox-container input[type='checkbox'] {
+  margin-right: 8px;
 }
 
 .contract-text {
   margin: 0 0 20px;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1.5;
-}
-
-.name-input {
-  width: 100%;
-  padding: 13px;
-  font-size: 16px;
-  margin-bottom: 1rem;
-  border-radius: 8px;
-  background-color: var(--container-color);
-  border: 1px solid var(--container-color);
-  box-shadow: inset 3px 3px 6px #bec3c9,
-                  inset -3px -3px 6px #ffffff;
-}
-
-.signature-canvas {
-  border: 1px solid var(--container-color);
-  width: 100%;
-  height: 180px;
-  border-radius: 8px;
-  background-color: var(--container-color);
-  box-shadow: inset 3px 3px 6px #bec3c9,
-                  inset -3px -3px 6px #ffffff;
+  color: var(--text-color);
 }
 
 .signed-preview {
@@ -101,46 +110,46 @@
 
 .button-group {
   display: flex;
-  justify-content: space-between;
-  margin-top: 1rem;
-  font-size: 16px;
 }
 
-.clear-button button{
-  margin: 10px 0 30px;
+.clear-button {
+  display: flex;
+  justify-content: flex-end;
 }
 
-.submit-button {
-  width: 100%;
-  padding: 0;
+.clear-button button {
+  margin-bottom: 20px;
+  background-color: var(--container1-color);
+  color: var(--main-color);
 }
 
 .submit-button button {
   width: 100%;
-  padding: 18px;
-  border-radius: 8px;
   background-color: var(--second-color);
-  box-shadow: 3px 3px 6px #bec3c9,
-                  -3px -3px 6px #ffffff;
 }
 
 @media screen and (max-width: 992px) {
-  .contract-container {
-    display: flex;
-    width: 90%;
-  }
   .contract-left {
     display: none;
+  }
+  .contract-container {
+    display: flex;
+    margin: 100px;
+    justify-content: center;
   }
 }
 
 @media (max-width: 768px) {
+  .contract-wrapper {
+    padding: 30px 30px;
+  }
+}
+
+@media (max-width: 576px) {
   .contract-container {
-    display: flex;
-    margin-top: 120px;
+    margin: 100px 20px;
   }
   .contract-wrapper {
     padding: 30px 20px;
   }
-
 }

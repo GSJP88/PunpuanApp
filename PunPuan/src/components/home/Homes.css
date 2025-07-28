@@ -1,0 +1,426 @@
+.home__container {
+    display: flex;
+    flex-wrap: wrap;
+    z-index: 1;
+    padding: 0;
+}
+
+.home__content {
+    width: 100%;
+    
+}
+
+.home__img {
+    display: none;
+    background: url(../../assets/ap.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;  
+    /* order: 1; */
+    justify-self: center;
+    width: 300px;
+    height: 300px;
+    animation: image 4s ease-in-out infinite 1s;
+}
+
+@keyframes image {
+    0% {
+        border-radius: 60% 40% 50% 70%/60% 50% 70% 40%;
+    }
+    50% {
+        border-radius: 30% 60% 70% 40%/50% 60% 50% 60%;
+    }
+    100% {
+        border-radius: 60% 40% 50% 70%/60% 50% 70% 40%;
+    }
+}
+
+.hero {
+  text-align: center;
+  padding: 30px 20px 30px;
+}
+
+.hero h1 {
+  font-size: 40px;
+  margin-bottom: 16px;
+}
+
+.hero-subtitle {
+  font-size: 20px;
+  color: var(--title-color);
+  margin-bottom: 24px;
+}
+
+.hero-description {
+    font-size: 16px;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.hero-buttons button {
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 500;
+    border: 2px solid var(--main-color);
+}
+
+.hero-buttons button .bi {
+    margin-left: 3px;
+}
+
+.btn-st {
+  background-color: var(--main-color);
+  color: var(--container-color);
+}
+
+.btn-st:hover {
+  transition: all .2s ease-in-out;
+  background-color: var(--container-color);
+  color: var(--main-color); 
+}
+
+.btn-nth {
+    color: var(--main-color);
+}
+
+.btn-nth:hover {
+    transition: all .2s ease-in-out;
+    background: var(--main-color);
+    color: var(--container-color);
+}
+
+.banner {
+  background: url('../../assets/condo.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9;
+  border-radius: 20px;
+  margin: 30px 40px 0px;
+  /* position: relative; */
+  z-index: 10;
+}
+
+.banner-text {
+  border-radius: 20px;
+  padding: 90px 40px;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.img-box {
+    position: absolute;
+    max-width: 400px;
+    bottom: 40px;
+    right: 40px;
+}
+
+.banner-text .event-tag {
+  background-color: #eee;
+  color: #555;
+  padding: 6px 12px;
+  font-size: 12px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+.banner-text .banner-title {
+  font-size: 28px;
+  margin-bottom: 12px;
+  font-weight: 500;
+  color: var(--container-color);
+}
+
+.banner-text .banner-subtitle {
+  font-size: 14px;
+  color: var(--container-color);
+}
+
+.banner-image {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 450px;
+}
+
+.banner-image img {
+  position: relative;
+  width: 100%;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.floating-types {
+  /* background: rgba(255, 255, 255, 0.214);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(4px);
+  border: .5px solid rgba(255, 255, 255, 0.234);  */
+  /* background-color: var(--container-color); */
+  border-radius: 8px;
+  position: absolute;
+  padding: 10px;
+  right: 5%;
+  display: grid;
+  grid-template-columns: 150px 250px;
+  gap: 5px;
+  margin-right: 2rem;
+}
+
+.banner-type {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  height: 110px;
+  padding: 1rem;
+  border: 1.5px solid var(--container2-color);
+  border-radius: 4px;
+  font-size: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.8);
+  white-space: nowrap;
+  cursor: pointer;
+  
+}
+
+.banner-type:hover {
+    transition: all .2s;
+}
+
+.banner-type-overlay {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.1);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.banner-type-overlay p {
+    text-align: center;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--container-color);
+    padding: 5px;
+    background: rgba(0, 0, 0, 0.44);
+}
+/* Item positions */
+.banner-type:nth-child(1) {
+  background: url(../../assets/condo2.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  grid-column: 1;
+  grid-row: 1;
+} /* Apartment (150px) */
+
+
+.banner-type:nth-child(1):hover {
+    transform: translateX(-5px);
+}
+
+.banner-type:nth-child(2) {
+  background: url(../../assets/town.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  grid-column: 2;
+  grid-row: 1;
+} /* Condominium (300px) */
+.banner-type:nth-child(2):hover {
+    transform: translateY(-5px);
+}
+
+.banner-type:nth-child(3) {
+  background: url(../../assets/Th2.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative; 
+  width: 250px;
+  grid-column: 1;
+  grid-row: 2;
+} /* Townhouse (300px in 1st column) */
+.banner-type:nth-child(3):hover {
+    transform: translateY(5px);
+}
+
+.banner-type:nth-child(4) {
+    background: url(../../assets/apm.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    width: 150px;
+    grid-column: 2;
+    transform: translateX(100px);
+    transform: translateY(none);
+    grid-row: 2;
+} /* House (150px in 2nd column) */
+.banner-type:nth-child(4):hover {
+    grid-column: initial;
+    translate: initial;
+    transform: translateX(105px);
+}
+
+
+
+.bgImage{
+    display: none;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    overflow: hidden;
+}
+
+.home__scroll {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background: none;    
+    z-index: 99;
+    height: 10px;
+    bottom: 50px;
+}
+
+.home__scroll-text {
+    color: var(--container-color);
+}
+
+.home__scroll-button {
+    background: rgba(255, 255, 255, 0.163); /* semi-transparent white */
+    backdrop-filter: blur(1px); /* blurs the background behind */
+    -webkit-backdrop-filter: blur(4px); /* Safari support */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* optional border */
+    border-radius: 15px;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.bi-caret-down-fill {
+    font-size: 1.2rem;
+    color: #ccc;
+    margin-left: 5px;
+    animation: down 2s ease infinite;
+}
+
+@keyframes down {
+    0% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-0.25rem);
+    }
+    50% {
+        transform: translateY(0.25rem);
+    }
+    100% {
+        transform: translateY(0rem);
+    }
+}
+
+
+@media screen and (max-width: 1080px) {
+    .hero_subtitle {
+        margin-bottom: var(--mb-1);
+    }
+
+    .hero__description {
+        max-width: initial;
+        margin-bottom: var(--mb-2-5);
+    }
+
+    .banner-title,
+    .banner-subtitle {
+        max-width: 40%;
+    }
+
+    .home__scroll {
+        display: none;
+    }
+}
+@media screen and (max-width: 992px) {
+    .floating-types {
+      grid-template-columns: 100px 150px;
+    }
+    .banner-type{
+        height: 80px;
+    }
+    .banner-type:nth-child(2), .banner-type:nth-child(3) {
+      width: 150px;
+    } /* Townhouse (300px in 1st column) */
+    
+    .banner-type:nth-child(1), .banner-type:nth-child(4) {
+        transform: translateX(0);
+        width: 100px;
+    }
+    .banner-type:nth-child(4) {
+        transform: translateX(50px);
+    }
+}
+@media screen and (max-width: 768px) {
+    .home__container {
+        width: 100%;
+        margin: 120px auto 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .home__scroll {
+        display: flex;
+        position: relative;
+    }
+
+    .home__scroll .home__scroll-button {
+        display: flex;
+        width: 100%;
+        height: 10px;
+        position: absolute;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .home__img {
+        display: flex;
+    }
+    .home__container {
+        padding: 0 40px;
+    }
+
+    
+    .hero-subtitle, 
+    .hero-description  {
+        font-size: 12px;
+        color: var(--text-color);
+    }
+    .banner {
+        display: none;
+    }
+    .home__scroll {
+        top: 40px;
+    }
+
+    .home__scroll-text, .bi-caret-down-fill {
+        color: var(--text-color);
+    }
+}

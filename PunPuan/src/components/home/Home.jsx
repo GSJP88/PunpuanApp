@@ -1,25 +1,25 @@
 import React from 'react';
-import './home.css';
+// import './home.css';
 import Social from './Social';
 import Data from './Data';
 import ScrollDown from './ScrollDown';
 import bgImage from '../../assets/citytown2.png'
 import bgImage2 from '../../assets/citytown3.png'
+import Hero from './Hero';
+import Banner from './Banner';
+import './Homes.css'
 
 const Home = () => {
   return (
     <section className="home section" id="home">
-        <div className="home__container container grid">
+        <div className="home__container">
             <div className="home__content grid">
-                
-                <Social />
-
-                <div className="home__img"></div>
-
-                <Data />
-
+              <div className="home__img"></div>
+              <Hero/>
+              <Banner/>
+                {/* <Social />
+                <Data /> */}
             </div>
-
             <ScrollDown />
         </div>
           <div className="bgImage">  

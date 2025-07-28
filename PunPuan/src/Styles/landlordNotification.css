@@ -1,0 +1,150 @@
+.notification-page {
+  padding: 2rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.notification-page h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.notification-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.notification-item {
+  padding: 16px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  background-color: #f9f9f9;
+  position: relative;
+}
+
+.notification-item.unseen {
+  border-left: 5px solid #007bff;
+  background-color: #eef5ff;
+}
+
+.notification-message {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.notification-time {
+  font-size: 12px;
+  color: #888;
+}
+
+.new-label {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background-color: #007bff;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+.notification-page {
+  padding: 2rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.notification-page h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.notification-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.notification-item {
+  padding: 16px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  background-color: #f9f9f9;
+  position: relative;
+}
+
+.notification-item.unseen {
+  border-left: 5px solid #007bff;
+  background-color: #eef5ff;
+}
+
+.notification-message {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.notification-time {
+  font-size: 12px;
+  color: #888;
+}
+
+.new-label {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background-color: #007bff;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+.notification-page {
+  padding: 2rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.notification-page h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.notification-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.notification-item {
+  padding: 16px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  background-color: #f9f9f9;
+  position: relative;
+}
+
+.notification-item.unseen {
+  border-left: 5px solid #007bff;
+  background-color: #eef5ff;
+}
+
+.notification-message {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.notification-time {
+  font-size: 12px;
+  color: #888;
+}
+
+.new-label {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background-color: #007bff;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+}

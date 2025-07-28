@@ -1,0 +1,120 @@
+.login-container {
+  display: flex;
+  overflow: hidden;
+}
+
+/* Left section */
+.login-left {
+  flex: 1;
+  background-image: url('../../assets/apm.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  border-radius: 16px;
+}
+
+.login-left .overlay {
+  border-radius: 16px;
+  background-color: rgba(0, 0, 0, 0.3);
+  height: 100%;
+  padding: 20px;
+  position: absolute;
+}
+
+.login-left h1 {
+  color: var(--container-color);
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+}
+
+.login-left p {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--container-color);
+  width: 60%;
+}
+
+/* Right section */
+.login-right {
+  padding: 120px 40px 100px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-title {
+  display: none;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.forgot-password {
+  text-align: right;
+  margin-top: 5px;
+}
+
+.forgot-password a {
+  text-align: center;
+  font-size: 12px;
+  text-decoration: none;
+  color: var(--status1-color);
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
+
+.login-form button {
+  width: 100%;
+  margin-top: 30px;
+  background-color: var(--second-color);
+}
+
+.signup-text {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 14px;
+}
+
+.signup-text a {
+  color: var(--status1-color);
+  text-decoration: none;
+}
+
+.signup-text a:hover {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 768px) {
+  .login-container {
+    margin: 100px;
+  }
+
+  .login-left {
+    display: none;
+  }
+
+  .login-title {
+    display: flex;
+    margin: 1rem 0 2rem;
+  }
+
+  .login-right {
+    padding: 1rem 40px 2rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .login-form {
+    padding: auto 20px;
+  }
+
+  .login-container {
+    margin: 100px 1.5rem;
+  }
+}

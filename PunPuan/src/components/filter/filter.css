@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 .filter-container {
-    margin-top: 20px;
+    margin-top: 0px;
 }
 
 .title {
@@ -17,9 +17,9 @@ label {
 
 .filter-wrapper {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     background-color: var(--bg-color);
-    padding: 90px 32px 40px;
+    padding: 90px 40px 90px;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -33,6 +33,7 @@ label {
 .filter {    
     border-radius: 8px;
     padding: 0;
+    /* background-color: #fff; */
 }
 
 
@@ -92,7 +93,7 @@ label {
     border-radius: 8px;
     box-shadow: inset 3px 3px 6px #bec3c9,
                   inset -3px -3px 6px #ffffff;
-    border: 1px;
+    border: 1px solid var(--containers-color);
     background-color: var(--bg-color);
     color: var(--status1-color);
     -moz-appearance: textfield;
@@ -180,9 +181,6 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .form-select {
-    appearance: none; /* remove default arrow */
-    -webkit-appearance: none;
-    -moz-appearance: none;
     width: 100%;
     padding: 13px;
     font-size: 16px;    /* Ensures no '...' is applied */
@@ -193,7 +191,7 @@ input[type="range"]::-moz-range-thumb {
     background: none;
     border: 1px;
     border-radius: 8px;
-    margin-bottom: 12px;
+    margin: 8px 0 16px;
     color: var(--main-color);
     background-color: var(--bg-color);
     box-shadow: inset 3px 3px 6px #bec3c9,
@@ -209,13 +207,14 @@ select option {
 }
 
 .custom-select::after {
-  content: '▼';  /* Unicode for down arrow */
+  content: "▼"; /* You can use an icon or SVG */
   position: absolute;
-  right: 12px;
   top: 50%;
+  right: 10px; /* Control horizontal position (padding) */
   transform: translateY(-50%);
   pointer-events: none;
-  font-size: 16px;
+  font-size: 12px;
+  color: #333;
 }
 
 select:focus {
@@ -226,7 +225,7 @@ select:focus {
 
 /* Type */
 
-.property-types-container {
+.property-types-wrapper {
   width: 390px;
   height: 300px;
   /* background-color: #2f3554; */
@@ -268,19 +267,15 @@ select:focus {
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
-    width: 180px;
-    height: 60px;
     transition: .1s;
-    position: relative;
-    z-index: 1;
     color: var(--text-color);
     box-shadow: 3px 3px 6px #bec3c9,
                   -3px -3px 6px #ffffff;
 }
 
 .property-button:hover {
-    /* transform: translateY(-5px); */
-    background-color: #e2e2e2;
+    transform: translateY(-1px);
+    background-color: var(--containers2-color);
 }
 
 
@@ -297,20 +292,47 @@ select:focus {
 }
 
 
-@media screen and (max-width: 1300px){
+@media screen and (max-width: 1080px){
     .filter-wrapper{
-        display: grid;
-        grid-template-rows: 1fr;
+        display: flex;
         width: 100%;
         padding: 64px 24px 32px;
+        margin: 0;
     }
-    .filter-wrapper .filter:first-child {
-        margin-bottom: 10px;
+    
+    .price-wrapper {
+        width: 300px;
     }
-    .filter {
-        padding: 0px 12px;
+
+    .field input {
+        font-size: 12px;
+        padding: 10px;
     }
+
+    .currency-label {
+        font-size: 12px;
+    }
+
+    .location_wrapper {
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+        /* background: #04d2c5; */
+    }
+
+    .property-types-wrapper {
+        width: 300px;        /* background-color: #2f3554; */
+        padding: 5px 0px;
+        border-radius: 10px;
+    }
+    .property-button {
+        padding: 10px 15px;
+        font-size: 12px;
+        font-weight: 400;
+    }
+    
 }
+
 
 @media screen and (max-width: 768px) {
     .filter {
@@ -334,7 +356,7 @@ select:focus {
       padding: 32px;
       gap: 24px;
       align-items: center;
-      margin-top: 25px;
+      margin-top: 64px;
       overflow: hidden;
     }
 
@@ -362,6 +384,7 @@ select:focus {
       width: 100%;
       padding: 1rem;
       display: flex;
+      justify-content: center;
     }
 
     select {
@@ -393,22 +416,24 @@ select:focus {
     .bars {
       display: flex;
       justify-content: center;
-      margin-top: 16px;
+      margin: 16px 0;
       gap: 28px;
+      max-height: 12px;
     }
 
     .bar {
       width: 100px;
       height: 8px;
       max-width: 100px;
-      border-radius: 3px;
+      border-radius: 10px;
       background: #ccc;
       cursor: pointer;
-      transition: background 0.3s;
     }
-
+    
     .bar.active {
-      background: var(--second-color);
+      transition: all 0.2s;
+      background: var(--status1-color);
+      transform: translateY(-2px);
     }
 
   

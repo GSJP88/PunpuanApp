@@ -20,8 +20,8 @@ const ViewPage = () => {
         <PropertyOwnerCard/>
         <ContactLandlord/>
       </div>
-      <div className="rent-button-wrapper container">
-        <button className='rent-btn'>
+      <div className="rent-button-wrapper">
+        <button className='rent-btn medium-button'>
             Rent Now
         </button>
       </div>

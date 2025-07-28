@@ -6,20 +6,11 @@
 }
 
 .rent-btn {
-    background-color: var(--second-color);
     width: 100%;
-    padding: 20px;
-    font-size: 16px;
     margin-bottom: 30px;
-    border-radius: 8px;
-    box-shadow: 3px 3px 6px #bec3c9,
-                -3px -3px 6px #ffffff;
     transition: .3s ease-in-out;
 }
 
-.rent-btn:hover {
-    box-shadow: rgba(50, 50, 50, 0.2) 3px 3px 6px 0px inset, rgba(72, 72, 72, 0.2) -3px -3px 6px -5px inset;
-}
 @media screen and (max-width: 992px) {
     .contact_landlord {
         display: flex;
@@ -28,14 +19,9 @@
         gap: 30px;
         margin: 0 0 30px;
     }
-    
-    .rent-btn {
-        font-size: 16px;
-        padding: 20px;
-        border-radius: 8px;
-    }
 
     .rent-button-wrapper {
         margin-top: 60px;
+        width: 100%;
     }
 }

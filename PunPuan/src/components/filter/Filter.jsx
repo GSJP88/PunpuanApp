@@ -49,9 +49,9 @@ const Filter = () => {
         className={`filter-wrapper  ${isSmallScreen ? 'scrollable' : ''} `}
         ref={scrollRef}
       >
-        <div className="filter container"><Location /></div>
-        <div className="filter container"><PriceRange /></div>
-        <div className="filter container"><Type /></div>
+        <div className="filter"><Location /></div>
+        <div className="filter"><PriceRange /></div>
+        <div className="filter"><Type /></div>
       </div>
 
       {isSmallScreen && (

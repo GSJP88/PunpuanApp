@@ -1,7 +1,7 @@
 import React from 'react';
 import './viewDetail.css';
 
-const ViewContent = () => {
+const ViewDetail = () => {
   return (
     <div className="view-detail-wrapper">
       <div className="view-detail container">
@@ -68,7 +68,7 @@ const ViewContent = () => {
   );
 };
 
-export default ViewContent;
+export default ViewDetail;
 
 
                         /// perfect version ///

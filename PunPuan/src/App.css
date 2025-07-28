@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
-
 /*====== Vaiable css ======*/
 :root {
   --header-height: 3rem;
@@ -17,8 +15,8 @@
   --icon-color: #4741a6;
   /* --main-color: #C0C9EE; */
   --main-color: #2d2d2d;
-  --second-color: #f4cc4a;
-  --status1-color: #00CAFF;
+  --second-color: #2f2f2f;
+  --status1-color: #3c95ee;
   /*====== Font and Typography ======*/
   --body-font: "Inter", sans-serif;
 
@@ -60,8 +58,9 @@
 
 /* Entire scrollbar */
 ::-webkit-scrollbar {
-  width: 10px; /* for vertical scrollbar */
-  height: 10px; /* for horizontal scrollbar */
+  width: 7px; /* for vertical scrollbar */
+  height: 7px; /* for horizontal scrollbar */
+  
 }
 
 /* Track (background) */
@@ -73,6 +72,7 @@
 /* Thumb (the part you drag) */
 ::-webkit-scrollbar-thumb {
   background-color: var(--main-color);
+  /* background: linear-gradient(145deg, #e4e4e4, #d1d9e6, #bcc5d6); */
   border-radius: 10px;
   border: 1px solid transparent; /* for padding effect */
 }
@@ -180,20 +180,28 @@
     margin-right: auto;
   }
 
+  /* .container {
+    max-width: 1440px;
+    margin-left: 40px;
+    margin-right: 40px;
+  } */
+
   .grid {
     display: grid;
     gap: 1.5rem;
   }
   /*====== Buttons ======*/
   .small-button {
-    padding: 1rem 2rem;
-    color: var(--main-color);
+    padding: .75rem 2rem;
+    color: var(--text-color);
     box-shadow: 3px 3px 6px #bec3c9,
                 -3px -3px 6px #ffffff;
     font-size: 16px;
-    font-weight: 500;
-    border-radius: 36px;
+    font-weight: 400;
+    border-radius: 8px;
     cursor: pointer;
+    /* border: 2px solid var(--main-color); */
+    /* background-color: var(--second-color); */
   }
 
   .small-button:hover {
@@ -202,17 +210,20 @@
   
   .medium-button {
     padding: 1.3rem 2rem;
-    color: var(--main-color);
-    box-shadow: 3px 3px 6px #bec3c9,
-    -3px -3px 6px #ffffff;
+    color: var(--container-color);
+    /* box-shadow: 3px 3px 6px #bec3c9,
+    -3px -3px 6px #ffffff; */
     font-size: 16px;
-    font-weight: 500;
-    border-radius: 10px;
+    font-weight: 400;
+    border-radius: 8px;
     cursor: pointer;
+    background-color: var(--second-color);
+    border: 2px solid var(--main-color);
   }
   
   .medium-button:hover {
-    box-shadow: rgba(50, 50, 50, 0.2) 3px 3px 6px 0px inset, rgba(72, 72, 72, 0.2) -3px -3px 6px -5px inset;
+    background-color: var(--container-color);
+    color: var(--main-color);
   }
 
   .button:hover {
@@ -234,8 +245,8 @@
   }
 
   .box_container {
-    margin-top: 120px;
-    margin-bottom: 30px;
+    margin-top: 100px;
+    margin-bottom: 90px;
     border-radius: 16px;
     background-color: var(--container-color);
     box-shadow: 3px 3px 6px #bec3c9,
@@ -257,13 +268,13 @@
     padding: 13px;
     margin: 5px 0 1.2rem;
     border-radius: 5px;
-    border: 2px solid var(--container-color);
-    /* border: 2px solid var(--text-color); */
+    /* border: 2px solid var(--container-color); */
+    border: 2px solid #bababa;
     background-color: var(--container2-color);
     color: var(--text-color);
     font-size: 12px;
-    box-shadow: inset 1px 1px 2px #bec3c9,
-                inset -1.5px -1.5px 3px #ffffff;
+    /* box-shadow: inset 1px 1px 2px #bec3c9,
+                inset -1.5px -1.5px 3px #ffffff; */
   }
 
   /*====== Breakpoints ======*/
@@ -285,7 +296,7 @@
   }
   @media screen and (max-width: 768px) {
     body {
-      margin: 0 0 var(--header-height)
+      margin: 0 0 var(--header-height);
     }
 
     .section {

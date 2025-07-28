@@ -13,9 +13,6 @@ const detail = () => {
                   <div><i class="bi bi-credit-card-2-front-fill"></i> ID: 001112</div>
               </div>
             </div>
-            <div className="info">
-              <i class="bi bi-tags-fill"></i> <strong>₭750,000</strong>/month
-            </div>
         </div>
     </>
   )

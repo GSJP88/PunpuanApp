@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.last {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 86px;
+    justify-content: space-between;
+}
+
+
+@media screen and (max-width: 768px) {
+  .last {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .comment__container {
+    margin-top: 4rem;
+    padding-bottom: 0rem;
+  }
+  .comment__form {
+    padding-left: 0;
+  }
+}
+@media screen and (max-width: 576px) {
+  .comment__container {
+    padding-bottom: 0rem;
+  }
+}

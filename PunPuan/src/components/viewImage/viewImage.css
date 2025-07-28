@@ -52,7 +52,7 @@
   display: flex;
   justify-content: center;
   margin-top: 10px;
-  gap: 10px;
+  gap: 5px;
   overflow-x: auto;
   padding: 10px 0;
 }
@@ -89,8 +89,7 @@
       height: 300px;
     }
     .thumbnail-row {
-      width: 80%;
-      margin: 10px 10%;
+      width: 100%;
     }
     .thumbnail {
       width: 60px;

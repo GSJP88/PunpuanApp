@@ -72,7 +72,7 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* <div className="footer-bottom">
+      <div className="footer-bottom">
         <p>
           Copyright ©2021 All rights reserved | This template is made with ❤️ by 
           <a href="https://colorlib.com" target="_blank" rel="noopener noreferrer"> Colorlib.com</a>
@@ -82,7 +82,7 @@ const Footer = () => {
           <a href="#">Privacy</a>
           <a href="#">Compliances</a>
         </div>
-      </div> */}
+      </div>
     </footer>
   );
 };
