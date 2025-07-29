@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import HouseImage from "../../assets/Th2.jpg"
 import Detail from './Detail'
-import "./card.css"
+import "../../Styles/card.css";
 
 const CardRow = ({ title, cardCount }) => {
   const cards = Array(cardCount).fill(0)
