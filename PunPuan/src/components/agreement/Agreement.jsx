@@ -1,5 +1,5 @@
 import React from 'react';
-import './agreement.css';
+import '../../Styles/agreement.css';
 
 const Agreement = () => {
   const property = {

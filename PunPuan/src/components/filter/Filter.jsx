@@ -1,6 +1,6 @@
 import PriceRange from './PriceRange'
 import Location from './Location'
-import './filter.css'
+import '../../Styles/filter.css'
 import Type from './Type'
 import React, { useRef, useState, useEffect } from 'react'
 

@@ -6,7 +6,7 @@ import ViewDetail from '../../components/viewDetail/ViewDetail';
 import LocationMap from '../../components/locationMap/LocationMap';
 import PropertyOwnerCard from '../../components/PropertyOwnerCard/PropertyOwnerCard';
 import ContactLandlord from '../../components/ContactLandlord/ContactLandlord';
-import './viewPage.css'
+import '../../Styles/viewPage.css'
 
 const ViewPage = () => {
   return (

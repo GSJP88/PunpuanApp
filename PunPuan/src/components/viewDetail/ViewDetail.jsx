@@ -1,5 +1,5 @@
 import React from 'react';
-import './viewDetail.css';
+import '../../Styles/viewDetail.css';
 
 const ViewDetail = () => {
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import './footer.css';
+import '../../Styles/footer.css';
 import { FaTwitter, FaFacebookF, FaInstagram, FaWhatsappSquare, FaCalculator, FaPhone, FaYoutube, FaPhoneAlt, FaFacebookMessenger, FaMailBulk, FaMailchimp, FaVoicemail, FaFacebook } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 

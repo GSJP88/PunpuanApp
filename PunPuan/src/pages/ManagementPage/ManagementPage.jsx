@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./managementPage.css";
+import "../../Styles/managementPage.css";
 
 const ManagementPage = () => {
   const cards = [
     { label: "Profile", to: "/profile", icon: "bi-person" },
-    { label: "Notification", to: "/notifications", icon: "bi-bell" },
+    { label: "Notification", to: "/notificationPage", icon: "bi-bell" },
     { label: "Tenants", to: "/tenants", icon: "bi-people" },
     { label: "Properties", to: "/properties", icon: "bi-house" },
   ];

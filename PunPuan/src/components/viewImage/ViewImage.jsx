@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './viewImage.css';
+import '../../Styles/viewImage.css';
 import Condo from '../../assets/condo.jpg';
 import Town from '../../assets/town.jpg';
 import Room from '../../assets/room.jpg';

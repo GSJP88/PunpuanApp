@@ -7,7 +7,7 @@ import bgImage from '../../assets/citytown2.png'
 import bgImage2 from '../../assets/citytown3.png'
 import Hero from './Hero';
 import Banner from './Banner';
-import './Homes.css'
+import '../../Styles/Homes.css'
 
 const Home = () => {
   return (

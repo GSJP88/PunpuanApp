@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import SignatureCanvas from 'react-signature-canvas';
-import './signContact.css';
+import '../../Styles/signContact.css';
 import Agreement from '../../assets/agreement.jpg';
 
 const SignContract = () => {

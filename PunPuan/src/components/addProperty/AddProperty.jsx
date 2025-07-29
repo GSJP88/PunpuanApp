@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-import './addProperty.css';
+import '../../Styles/addProperty.css';
 
 const laosData = {
   "Vientiane Prefecture": {

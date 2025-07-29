@@ -1,9 +1,7 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import './register.css';
-import landlordImage from '../../assets/landlord2.jpg';
-import tenantImage from '../../assets/tenant.jpg';
+import '../../Styles/register.css';
 import SwitchBtn from '../../components/switchBtn/SwitchBtn';
 
 const Register = () => {

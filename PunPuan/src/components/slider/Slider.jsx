@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Condo from '../../assets/condo.jpg';
 import Town from '../../assets/town.jpg';
 import Room from '../../assets/room.jpg';
-import './slider.css';
+import '../../Styles/slider.css';
 
 const slides = [
   {

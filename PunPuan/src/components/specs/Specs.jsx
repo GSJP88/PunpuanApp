@@ -1,5 +1,5 @@
 import React from 'react'
-import './specs.css'
+import '../../Styles/specs.css'
 
 const Specs = () => {
   return (

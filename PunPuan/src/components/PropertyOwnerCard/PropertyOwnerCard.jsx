@@ -1,5 +1,5 @@
 import React from "react";
-import "./PropertyOwnerCard.css";
+import "../../Styles/propertyOwnerCard.css";
 import John from "../../assets/john.jpg";
 
 const PropertyOwnerCard = ({ name = "John the farmer", role = "Property Owner", image }) => {

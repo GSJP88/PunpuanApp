@@ -96,7 +96,7 @@
 }
 
 .banner {
-  background: url('../../assets/condo.jpg');
+  background: url('../assets/condo.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -186,9 +186,8 @@
   height: 110px;
   padding: 1rem;
   border: 1.5px solid var(--container2-color);
-  border-radius: 4px;
   font-size: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.8);
+  /* box-shadow: 0 2px 8px rgba(0,0,0,0.8); */
   white-space: nowrap;
   cursor: pointer;
   
@@ -199,7 +198,6 @@
 }
 
 .banner-type-overlay {
-  border-radius: 4px;
   background-color: rgba(0, 0, 0, 0.1);
   height: 100%;
   width: 100%;
@@ -221,7 +219,7 @@
 }
 /* Item positions */
 .banner-type:nth-child(1) {
-  background: url(../../assets/condo2.jpg);
+  background: url('../assets/condo2.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -236,7 +234,7 @@
 }
 
 .banner-type:nth-child(2) {
-  background: url(../../assets/town.jpg);
+  background: url('../assets/town.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -249,7 +247,7 @@
 }
 
 .banner-type:nth-child(3) {
-  background: url(../../assets/Th2.jpg);
+  background: url('../assets/Th2.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -263,7 +261,7 @@
 }
 
 .banner-type:nth-child(4) {
-    background: url(../../assets/apm.jpg);
+    background: url('../assets/apm.jpg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;

@@ -1,7 +1,7 @@
 // src/components/switchBtn/SwitchBtn.jsx
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import './switchBtn.css';
+import '../../Styles/switchBtn.css';
 
 const SwitchBtn = () => {
   const { role } = useParams();

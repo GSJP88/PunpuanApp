@@ -1,5 +1,5 @@
 import React from 'react'
-import './sign.css'
+import '../../Styles/sign.css'
 
 const Sign = () => {
   return (
