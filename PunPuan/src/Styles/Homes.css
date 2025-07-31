@@ -170,8 +170,8 @@
   right: 5%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  margin-right: 2rem;
+  gap: 15px;
+  margin-right: 4rem;
 }
 
 .banner-type {
@@ -180,16 +180,33 @@
   background: rgba(255, 255, 255, 0.163); /* semi-transparent white */
   backdrop-filter: blur(2px); /* blurs the background behind */
   -webkit-backdrop-filter: blur(4px); /* Safari support */
-  border: 2px solid var(--container-color); 
-  padding: 5px 25px 5px 5px;
+  border: 1px solid var(--container-color); 
+  padding: 8px 24px 8px 8px;
   border-radius: 50px;
   gap: 15px;
   cursor: pointer;
 }
 
-.banner-type:nth-child(3), .banner-type:nth-child(4) {
-    transform: translateX(-30px);
+.banner-type:hover {
+    transition: all .3s ease-in-out;
 }
+
+.banner-type:nth-child(1):hover {
+    transform: translateX(-5px);
+}
+.banner-type:nth-child(2):hover {
+    transform: translateY(-5px);
+}
+.banner-type:nth-child(3):hover {
+    transform: translateY(5px);
+}
+.banner-type:nth-child(4):hover {
+    transform: translateX(5px);
+}
+
+/* .banner-type:nth-child(3), .banner-type:nth-child(4) {
+    transform: translateX(-40px);
+} */
 
 .banner-type .type-image {
     width: 60px;
