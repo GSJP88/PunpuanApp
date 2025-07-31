@@ -108,6 +108,7 @@
   margin: 30px 40px 0px;
   /* position: relative; */
   z-index: 10;
+  position: relative;
 }
 
 .banner-text {
@@ -163,11 +164,49 @@
 }
 
 .floating-types {
-  /* background: rgba(255, 255, 255, 0.214);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(4px);
-  border: .5px solid rgba(255, 255, 255, 0.234);  */
-  /* background-color: var(--container-color); */
+  border-radius: 8px;
+  position: absolute;
+  padding: 10px;
+  right: 5%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-right: 2rem;
+}
+
+.banner-type {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.163); /* semi-transparent white */
+  backdrop-filter: blur(2px); /* blurs the background behind */
+  -webkit-backdrop-filter: blur(4px); /* Safari support */
+  border: 2px solid var(--container-color); 
+  padding: 5px 25px 5px 5px;
+  border-radius: 50px;
+  gap: 15px;
+  cursor: pointer;
+}
+
+.banner-type:nth-child(3), .banner-type:nth-child(4) {
+    transform: translateX(-30px);
+}
+
+.banner-type .type-image {
+    width: 60px;
+    height: 60px;
+    background-color: #ccc;
+    border-radius: 50%;
+    border: 2px solid var(--container-color); 
+}
+
+.banner-type p {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--container-color);
+}
+
+/* .floating-types {
   border-radius: 8px;
   position: absolute;
   padding: 10px;
@@ -183,32 +222,37 @@
   justify-content: center;
   align-items: center;
   background-color: white;
-  height: 110px;
+  height: 100px;
   padding: 1rem;
   border: 1.5px solid var(--container2-color);
   font-size: 12px;
-  /* box-shadow: 0 2px 8px rgba(0,0,0,0.8); */
   white-space: nowrap;
   cursor: pointer;
-  
+  border-radius: 4px;
 }
 
 .banner-type:hover {
-    transition: all .2s;
+    transition: all .2s ease-in-out;
 }
 
 .banner-type-overlay {
-  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.3);
   height: 100%;
   width: 100%;
   position: absolute;
   display: flex;
-  /* flex-direction: column; */
   justify-content: center;
   align-items: flex-end;
 }
 
+.banner-type-overlay:hover {
+  transition: all .3s ease-in-out;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
 .banner-type-overlay p {
+    border-radius: 0 0 4px 4px;
     text-align: center;
     width: 100%;
     font-size: 14px;
@@ -217,16 +261,16 @@
     padding: 5px;
     background: rgba(0, 0, 0, 0.44);
 }
-/* Item positions */
+
 .banner-type:nth-child(1) {
-  background: url('../assets/condo2.jpg');
+  background: url('../assets/smallCondo.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
   grid-column: 1;
   grid-row: 1;
-} /* Apartment (150px) */
+}
 
 
 .banner-type:nth-child(1):hover {
@@ -241,7 +285,7 @@
   position: relative;
   grid-column: 2;
   grid-row: 1;
-} /* Condominium (300px) */
+}
 .banner-type:nth-child(2):hover {
     transform: translateY(-5px);
 }
@@ -255,7 +299,7 @@
   width: 250px;
   grid-column: 1;
   grid-row: 2;
-} /* Townhouse (300px in 1st column) */
+}
 .banner-type:nth-child(3):hover {
     transform: translateY(5px);
 }
@@ -271,12 +315,12 @@
     transform: translateX(100px);
     transform: translateY(none);
     grid-row: 2;
-} /* House (150px in 2nd column) */
+}
 .banner-type:nth-child(4):hover {
     grid-column: initial;
     translate: initial;
     transform: translateX(105px);
-}
+} */
 
 
 

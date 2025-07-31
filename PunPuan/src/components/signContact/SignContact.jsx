@@ -175,7 +175,7 @@ const SignContract = () => {
           </p>
         </div>
 
-        <p className='label'>Sign below</p>
+        <p className='label'>Signature</p>
         <SignatureCanvas
           penColor="black"
           canvasProps={{ className: 'signature-canvas input_app' }}

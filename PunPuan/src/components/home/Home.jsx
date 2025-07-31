@@ -1,8 +1,5 @@
 import React from 'react';
 // import './home.css';
-import Social from './Social';
-import Data from './Data';
-import ScrollDown from './ScrollDown';
 import bgImage from '../../assets/citytown2.png'
 import bgImage2 from '../../assets/citytown3.png'
 import Hero from './Hero';
@@ -20,7 +17,6 @@ const Home = () => {
                 {/* <Social />
                 <Data /> */}
             </div>
-            <ScrollDown />
         </div>
           <div className="bgImage">  
             <img className="" src={bgImage} alt="" />          

@@ -1,5 +1,11 @@
 import React from 'react';
 import Image from '../../assets/condo.jpg'; // Replace with actual image
+import ScrollDown from "./ScrollDown";
+
+import apartmentImg from '../../assets/smallCondo.jpg';
+import condoImg from '../../assets/condo.jpg';
+import townhousesImg from '../../assets/townhouses.jpg';
+import houseImg from '../../assets/threeD.jpg';
 
 const Banner = () => {
   return (
@@ -13,6 +19,42 @@ const Banner = () => {
         {/* <img src={Image} alt="Professional Woman" /> */}
         <div className="floating-types">
           <div className="banner-type">
+            <div className="type-image"
+                  style={{
+                  backgroundImage: `url(${apartmentImg})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}/>
+              <p>Apartment</p>
+          </div>
+          <div className="banner-type">
+            <div className="type-image"
+                  style={{
+                  backgroundImage: `url(${condoImg})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+            }}/>
+              <p>Condominium</p>
+          </div>
+          <div className="banner-type">
+            <div className="type-image"
+                  style={{
+                  backgroundImage: `url(${townhousesImg})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}/>
+              <p>Townhouses</p>
+          </div>
+          <div className="banner-type">
+                <div className="type-image"
+                  style={{
+                  backgroundImage: `url(${houseImg})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}/>
+              <p>house</p>
+          </div>
+          {/* <div className="banner-type">
             <div className="banner-type-overlay">
               <p>Apartment</p>
             </div>
@@ -31,10 +73,11 @@ const Banner = () => {
             <div className="banner-type-overlay">
               <p>house</p>
             </div>
-          </div>
+          </div> */}
           {/* Add others here */}
         </div>
       </div>
+      <ScrollDown />
     </section>
   );
 };
