@@ -6,13 +6,13 @@ const ManagementPage = () => {
   const cards = [
     { label: "Profile", to: "/profile", icon: "bi-person" },
     { label: "Notification", to: "/notificationPage", icon: "bi-bell" },
-    { label: "Tenants", to: "/tenants", icon: "bi-people" },
+    { label: "Tenants", to: "/tenant-list", icon: "bi-people" },
     { label: "Properties", to: "/propertiesPage", icon: "bi-house" },
   ];
 
   return (
     <div className="management-page">
-        <div className="management-wrapper container">
+        <div className="management-wrapper">
           <h1 className="management-title">Management</h1>
 
         <div className="management-grid">

@@ -182,7 +182,7 @@
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(4px);
   border: 1px solid var(--container-color); 
-  padding: 5px 48px 5px 5px;
+  padding: 5px 40px 5px 5px;
   border-radius: 50px;
   gap: 20px;
   cursor: pointer;

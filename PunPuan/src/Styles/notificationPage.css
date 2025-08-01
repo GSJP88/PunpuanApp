@@ -1,0 +1,203 @@
+.notification_page {
+  padding: 40px;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.notification-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.notification-nav {
+  background-color: var(--container-color);
+  box-shadow: inset 3px 3px 6px #bec3c9,
+                inset -3px -3px 6px #ffffff;
+  padding: 10px;
+  border-radius: 30px;
+}
+
+.notification-nav button {
+  padding: 8px 24px;
+  border: none;
+  background: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.notification-nav button.active {
+  transition: background 0.2s;
+  background-color: var(--status1-color);
+  width: fit-content;
+  color: white;
+  border-radius: 30px;
+}
+
+.notification-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+
+.notification-card.unread {
+  background-color: var(--container-color);
+  font-weight: 500;
+  box-shadow: 3px 3px 6px #bec3c9,
+                -3px -3px 6px #ffffff;
+}
+
+.notification-card.read {
+  color: #555;
+}
+
+.unread-dot {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  width: 10px;
+  height: 10px;
+  background-color: #007bff;
+  border-radius: 50%;
+}
+
+.card-content .sender {
+  font-size: 16px;
+  color: #333;
+}
+
+.card-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.sender_message {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-content .message {
+  font-size: 14px;
+  margin: 6px 0 12px;
+  color: #555;
+}
+
+.card-content .time {
+  position: absolute;
+  right: -5px;
+  bottom: -5px;
+  font-size: 12px;
+  color: #999;
+  text-align: right;
+}
+
+.no-notification {
+  text-align: center;
+  color: gray;
+  margin-top: 40px;
+  font-size: 16px;
+}
+
+.message-detail-container {
+  padding: 40px;
+  background: var(--container-color);
+  border-radius: 12px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.message-detail-container h2 {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.tenant-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.tenant-info p {
+  margin: 16px 0;
+}
+
+.tenant-info p strong {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.id-card-img {
+  margin-top: 10px;
+  border-radius: 8px;
+  padding: 5px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.info_img {
+  width: 300px;
+  display: flex;
+  justify-content: center;
+}
+
+.button-group {
+  margin-top: 80px;
+  display: flex;
+  gap: 20px;
+  justify-content: flex-end;
+}
+
+.confirm-button {
+  background: var(--main-color);
+  border: 2px solid var(--main-color);
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.refuse-button {
+  border: 2px solid var(--main-color);
+  background: var(--container-color);
+  color: var(--main-color);
+  padding: 1rem 2.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.notification-card_profile {
+  left: 12px;
+  font-size: 20px;
+  width: 64px;
+  height: 64px;
+  color: #007bff;
+  background-color: #e8e8e8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.notification-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  align-items: center;
+  padding: 16px 20px 16px 20px; /* space for profile icon */
+  border-radius: 10px;
+  background-color: var(--container-color);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+}
+
+.notification-card:hover {
+  background-color: #f1faff;
+}
