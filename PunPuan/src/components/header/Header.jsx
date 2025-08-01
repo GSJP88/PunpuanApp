@@ -14,7 +14,7 @@ const Header = () => {
 
         <div className={toggle ? "nav__menu show-menu" : "nav__menu"}>
           <div className="nav__close">
-            <i className="bi bi-x-circle" onClick={() => setToggle(!toggle)}></i>
+            <i className="bi bi-x-circle-fill" onClick={() => setToggle(!toggle)}></i>
           </div>
 
           <ul className="nav__list">

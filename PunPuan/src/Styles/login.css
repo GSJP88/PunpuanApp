@@ -6,7 +6,7 @@
 /* Left section */
 .login-left {
   flex: 1;
-  background-image: url('../../assets/apm.jpg');
+  background-image: url('../assets/threeD.jpg');
   background-size: cover;
   background-position: center;
   position: relative;
@@ -17,7 +17,7 @@
   border-radius: 16px;
   background-color: rgba(0, 0, 0, 0.3);
   height: 100%;
-  padding: 20px;
+  padding: 40px 20px;
   position: absolute;
 }
 
@@ -31,7 +31,7 @@
   font-size: 12px;
   font-weight: 400;
   color: var(--container-color);
-  width: 60%;
+  width: 80%;
 }
 
 /* Right section */

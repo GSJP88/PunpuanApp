@@ -1,0 +1,61 @@
+/* Page Container */
+.properties-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 120px 16px;
+  position: relative;
+  min-height: 100vh;
+  box-shadow: none;
+}
+
+/* Title */
+.page-title {
+  margin-bottom: 24px;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--main-color);
+}
+
+/* Centered Message */
+.empty-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #444;
+  font-size: 14px;
+}
+
+/* Floating Add Button */
+.add-button {
+  position: absolute;
+  bottom: 40px;
+  right: 0px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2px solid var(--main-color);
+  background-color: var(--main-color);
+  color: var(--container-color);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-button i {
+  font-size: 48px;
+}
+
+.add-button:hover {
+  background-color: var(--container-color);
+  color: var(--main-color);
+}
+
+@media screen and (max-width: 576px) {
+  .page-title {
+    margin-left: 20px;
+  }
+
+  .add-button {
+    right: 20px;
+  }
+}

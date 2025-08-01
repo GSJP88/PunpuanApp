@@ -18,6 +18,7 @@ import LandlordDashboard from './pages/landlordDashboard/LandlordDashboard';
 import { AuthProvider } from './context/AuthContext';
 import AddPropertyPage from './pages/AddPropertyPage/AddPropertyPage';
 import LandlordNotification from './pages/LandlordNotification/LandlordNotification';
+import PropertiesPage from './pages/propertiesPage/PropertiesPage';
 
 const App = () => {
   return (
@@ -34,8 +35,9 @@ const App = () => {
           <Route path="/notificationPage" element={<NotificationPage />} />
           <Route path="/tenantDashboard" element={<TenantDashboard />} />
           <Route path="/landlordDashboard" element={<LandlordDashboard />} />
-          <Route path="/addPropertyPage" element={<AddPropertyPage/>}/>
           <Route path="/landlordNotification" element={<LandlordNotification/>}/>
+          <Route path="/propertiesPage" element={<PropertiesPage/>}/>
+          <Route path="/addPropertyPage" element={<AddPropertyPage/>}/>
         </Routes>
         <Footer />
       </Router>

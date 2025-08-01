@@ -2,18 +2,18 @@ import React from 'react';
 import Image from '../../assets/condo.jpg'; // Replace with actual image
 import ScrollDown from "./ScrollDown";
 
-import apartmentImg from '../../assets/smallCondo.jpg';
-import condoImg from '../../assets/condo.jpg';
+import apartmentImg from '../../assets/apm2.jpg';
+import condoImg from '../../assets/cd.jpg';
 import townhousesImg from '../../assets/townhouses.jpg';
-import houseImg from '../../assets/threeD.jpg';
+import houseImg from '../../assets/house.jpg';
 
 const Banner = () => {
   return (
     <section className="banner">
       <div className="banner-text">
-        <p className="event-tag">EVENT • Building career</p>
-        <h2 className='banner-title'>Efficiently transform your candidate experience.</h2>
-        <p className="banner-subtitle">Modern UI apps to automate your hiring experience...</p>
+        <p className="event-tag">• Rental Assistant</p>
+        <h2 className='banner-title'>More than just a place to stay, it's your space to live.</h2>
+        <p className="banner-subtitle">Search. Compare. Move in. All in one place.</p>
       </div>
       <div className="banner-image">
         {/* <img src={Image} alt="Professional Woman" /> */}
@@ -52,7 +52,7 @@ const Banner = () => {
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                 }}/>
-              <p>house</p>
+              <p>House</p>
           </div>
           {/* <div className="banner-type">
             <div className="banner-type-overlay">

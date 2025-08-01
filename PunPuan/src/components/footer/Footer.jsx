@@ -74,8 +74,8 @@ const Footer = () => {
 
       <div className="footer-bottom">
         <p>
-          Copyright ©2021 All rights reserved | This template is made with ❤️ by 
-          <a href="https://colorlib.com" target="_blank" rel="noopener noreferrer"> Colorlib.com</a>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, eum quas. Obcaecati repellat voluptate repellendus.
+          <a href="https://colorlib.com" target="_blank" rel="noopener noreferrer"> PunPuan.com</a>
         </p>
         <div className="footer-bottom-links">
           <a href="#">Terms</a>

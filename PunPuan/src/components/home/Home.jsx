@@ -22,6 +22,12 @@ const Home = () => {
             <img className="" src={bgImage} alt="" />          
             <img className="" src={bgImage2} alt="" />          
           </div>
+        <div className="mini__scroll">
+          <a href="#filter" className="mini__scroll-button button--flex">
+              <span className="mini__scroll-text">See More</span>
+              <i class="bi bi-caret-down-fill "></i>
+          </a>
+        </div>
     </section>
   );
 }
