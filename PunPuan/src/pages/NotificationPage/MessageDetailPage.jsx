@@ -32,9 +32,10 @@ const MessageDetailPage = () => {
 
   return (
     <div className="message-detail-container box_container container">
-        <h2>Tenant Request Details</h2>
+        {/* <h2>Request</h2> */}
       <div className="tenant-info">
         <div className="info_text">
+          <label>Tenant Info:</label>
             <p><strong>Full Name:</strong> {tenant.fullName}</p>
             <p><strong>Email:</strong> {tenant.email}</p>
             <p><strong>Phone:</strong> {tenant.phone}</p>
@@ -42,7 +43,7 @@ const MessageDetailPage = () => {
             <p><strong>Income per month:</strong> {tenant.income}</p>
         </div>
         <div className='info_img'>
-          {/* <strong>ID Card Image:</strong> */}
+          <label>ID Card Image:</label>
           <img src={tenant.idCardImg} alt="ID Card" className="id-card-img" />
         </div>
       </div>
