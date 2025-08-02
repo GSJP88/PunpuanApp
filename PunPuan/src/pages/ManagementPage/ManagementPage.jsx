@@ -6,7 +6,7 @@ const ManagementPage = () => {
   const cards = [
     { label: "Profile", to: "/profile", icon: "bi-person" },
     { label: "Notification", to: "/notificationPage", icon: "bi-bell" },
-    { label: "Tenants", to: "/tenant-list", icon: "bi-people" },
+    { label: "Tenants", to: "/tenantListPage", icon: "bi-people" },
     { label: "Properties", to: "/propertiesPage", icon: "bi-house" },
   ];
 

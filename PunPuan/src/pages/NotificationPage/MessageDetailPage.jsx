@@ -48,7 +48,7 @@ const MessageDetailPage = () => {
         </div>
       </div>
 
-      <div className="button-group">
+      <div className="message-button-group">
         <button className="refuse-button" onClick={() => navigate('/notificationPage')}>Refuse</button>
         <button className="confirm-button" onClick={() => navigate(`/signContractPage/${id}`)}>Confirm</button>
       </div>

@@ -1,0 +1,247 @@
+.tenant-list-wrapper {
+  margin: 90px 0 60px;
+  padding: 40px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tenant-list-title {
+  margin-bottom: 24px;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--main-color);
+}
+
+.tenant-filters {
+  display: grid;
+  grid-template-columns: 250px 250px;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 30px;
+  gap: 10px;
+}
+
+.tenant-btn-wrapper {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--container2-color);
+  padding: 5px;
+  gap: 5px;
+  border: none;
+  border-radius: 30px;
+  box-shadow: inset 2px 2px 4px #bec3c9,
+            inset -2px -2px 4px #ffffff;
+}
+
+.tenant-btn-wrapper button {
+  width: 80px;
+  font-size: 12px;
+  padding: 8px;
+  background: none;
+}
+
+.tenant-btn-wrapper button.active {
+  transition: background 0.2s;
+  background-color: var(--status1-color);
+  color: white;
+  border-radius: 30px;
+  /* box-shadow: 1.5px 1.5px 3px #bec3c9,
+                -1.5px -1.5px 3px #ffffff; */
+}
+
+.search-box-wrapper {
+  margin: 0;
+  border: none;
+  position: relative;
+  display: flex;
+  padding: 0;
+  box-shadow: inset 2px 2px 4px #bec3c9,
+              inset -2px -2px 4px #ffffff;
+              border-radius: 30px;
+}
+
+.search-icon {
+  right: 13px;
+  font-size: 16px;
+  top: 10px;
+  position: absolute;
+}
+
+.search-box {
+  padding: 13px;
+  width: 100%;
+  border: none;
+  background: none;
+  color: var(--text-color);
+  font-size: 12px;
+}
+
+/* .filter-dropdown {
+  margin: 0;
+  border: none;
+  box-shadow: inset 2px 2px 4px #bec3c9,
+              inset -2px -2px 4px #ffffff;
+  padding: 13px;
+  font-size: 12px;
+  color: var(--text-color);
+} */
+
+.table-container {
+  overflow-x: auto;
+  background: var(--container-color);
+  border: none;
+  border-radius: 8px;
+  box-shadow: 3px 3px 6px #bec3c9,
+              -3px -3px 6px #ffffff;
+}
+
+.tenant-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px; /* table scrolls on small screen */
+}
+
+.tenant-table th,
+.tenant-table td {
+  /* width: 220px; */
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid #bababa;
+  font-size: 14px;
+}
+
+.tenant-table th {
+  background-color: var(--container-color);
+  color: var(--main-color);
+  font-weight: 500;
+  box-shadow: 3px 3px 6px #bec3c9,
+              -3px -3px 6px #ffffff;
+}
+
+.user-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tenant-icon-wrapper {
+  height: 45px;
+  width: 45px;
+  background-color: var(--container-color);
+  border: 2px solid var(--status1-color);
+  border-radius: 50%;
+  font-size: 36px;
+  color: var(--status1-color);
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tenant-icon-wrapper i {
+  font-size: 24px;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-info .user-name {
+  font-weight: 500;
+  color: var(--main-color);
+}
+
+
+@media (max-width: 992px) {
+  .tenant-filters {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* For screens ≤ 768px */
+@media (max-width: 768px) {
+  
+}
+
+/* For screens ≤ 576px */
+@media (max-width: 576px) {
+  .tenant-filters {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .search-box,
+  .filter-dropdown {
+    font-size: 11px;
+    padding: 10px;
+  }
+
+  .table-container {
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+
+  .tenant-table th {
+    text-align: center;
+    width: 150px;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 12px;
+  }
+  .tenant-table td {
+    width: 150px;
+    font-size: 12px;
+    padding: 10px;
+  }
+
+  .user-info .user-name {
+    font-size: 12px;
+  }
+
+  .tenant-icon-wrapper {
+    height: 32px;
+    width: 32px;
+  }
+
+  .tenant-icon-wrapper i {
+    font-size: 16px;
+  }
+
+  .user-info .name {
+    font-size: 14px;
+  }
+
+  .user-info .organization {
+    font-size: 12px;
+  }
+}
+
+/* For screens ≤ 350px */
+@media (max-width: 350px) {
+  .tenant-list-title {
+    font-size: 20px;
+  }
+
+  .search-box,
+  .filter-dropdown {
+    font-size: 10px;
+    padding: 8px;
+  }
+
+  .tenant-table th,
+  .tenant-table td {
+    font-size: 12px;
+    padding: 10px;
+  }
+
+  .tenant-icon-wrapper {
+    height: 36px;
+    width: 36px;
+  }
+
+  .tenant-icon-wrapper i {
+    font-size: 18px;
+  }
+}

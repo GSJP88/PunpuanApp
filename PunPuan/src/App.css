@@ -9,6 +9,7 @@
   --title-color-dark: hsl(var(--hue), var(--sat), 0%);
   --text-color: hsl(var(--hue), var(--sat), 46%);
   --body-color:  hsl(var(--hue), var(--sat), 95%);
+  --body2-color:  hsl(var(--hue), var(--sat), 97%);
   --container-color: #f2f2f2;
   --container2-color: #f0f0f0;
   --bg-color: #e9e9e9;
@@ -71,16 +72,15 @@
 
 /* Thumb (the part you drag) */
 ::-webkit-scrollbar-thumb {
-  background-color: var(--main-color);
-  /* background: linear-gradient(145deg, #e4e4e4, #d1d9e6, #bcc5d6); */
+  background: linear-gradient(145deg, #e4e4e4, #d1d9e6, #bcc5d6);
   border-radius: 10px;
   border: 1px solid transparent; /* for padding effect */
 }
 
 /* On hover */
-/* ::-webkit-scrollbar-thumb:hover {
-  background-color: var(--text-color);
-} */
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--status1-color);
+}
 
   /* Responsive typography */
 @media screen and (max-width: 992px) {

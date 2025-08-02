@@ -13,14 +13,13 @@ import RegisterPage from './pages/RegisterPage/RegisterPage';
 import ContactPage from './pages/contactPage/ContactPage';
 import NotificationPage from './pages/NotificationPage/NotificationPage';
 import Login from './components/login/Login';
-import TenantDashboard from './pages/tenantPage/TenantPage';
 import LandlordDashboard from './pages/landlordDashboard/LandlordDashboard';
 import { AuthProvider } from './context/AuthContext';
 import AddPropertyPage from './pages/AddPropertyPage/AddPropertyPage';
 import PropertiesPage from './pages/propertiesPage/PropertiesPage';
 import MessageDetailPage from './pages/NotificationPage/MessageDetailPage';
 import SignContractPage from './pages/signContractPage/SignContractPage';
-import TenantPage from './pages/tenantPage/TenantPage';
+import TenantListPage from './pages/tenantListPage/TenantListPage';
 
 const App = () => {
   return (
@@ -35,13 +34,12 @@ const App = () => {
           <Route path="/loginPage" element={<Login />} />
           <Route path="/contactPage" element={<ContactPage />} />
           <Route path="/notificationPage" element={<NotificationPage />} />
-          <Route path="/tenantDashboard" element={<TenantDashboard />} />
           <Route path="/landlordDashboard" element={<LandlordDashboard />} />
           <Route path="/propertiesPage" element={<PropertiesPage/>}/>
           <Route path="/addPropertyPage" element={<AddPropertyPage/>}/>
           <Route path="/message/:id" element={<MessageDetailPage />} />
           <Route path="/signContractPage/:id" element={<SignContractPage />} />
-          <Route path="/tenant-list" element={<TenantPage />} />
+          <Route path="/tenantListPage" element={<TenantListPage />} />
         </Routes>
         <Footer />
       </Router>
