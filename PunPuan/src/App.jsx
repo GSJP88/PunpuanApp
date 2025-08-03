@@ -20,6 +20,7 @@ import PropertiesPage from './pages/propertiesPage/PropertiesPage';
 import MessageDetailPage from './pages/NotificationPage/MessageDetailPage';
 import SignContractPage from './pages/signContractPage/SignContractPage';
 import TenantListPage from './pages/tenantListPage/TenantListPage';
+import PropertyListPage from './pages/propertyListPage/PropertyListPage';
 
 const App = () => {
   return (
@@ -40,6 +41,7 @@ const App = () => {
           <Route path="/message/:id" element={<MessageDetailPage />} />
           <Route path="/signContractPage/:id" element={<SignContractPage />} />
           <Route path="/tenantListPage" element={<TenantListPage />} />
+          <Route path="/propertyListPage" element={<PropertyListPage/>}/> 
         </Routes>
         <Footer />
       </Router>

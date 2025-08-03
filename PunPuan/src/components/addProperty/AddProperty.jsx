@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 import '../../Styles/addProperty.css';
 
 const laosData = {
@@ -19,21 +19,50 @@ const laosData = {
     "Mueang Champasak": ["Ban Wat Luang", "Ban Nong Sa"]
   }
 };
+
 const AddProperty = () => {
+  const navigate = useNavigate();
+
   const [propertyImages, setPropertyImages] = useState([]);
   const [profileImage, setProfileImage] = useState(null);
 
   const imageInputRef = useRef(null);
   const profileInputRef = useRef(null);
 
+  const [province, setProvince] = useState('');
+  const [district, setDistrict] = useState('');
+  const [village, setVillage] = useState('');
+  const [districts, setDistricts] = useState([]);
+  const [villages, setVillages] = useState([]);
+
+  useEffect(() => {
+    if (province) {
+      setDistricts(Object.keys(laosData[province]));
+      setDistrict('');
+      setVillages([]);
+      setVillage('');
+    } else {
+      setDistricts([]);
+      setDistrict('');
+      setVillages([]);
+      setVillage('');
+    }
+  }, [province]);
+
+  useEffect(() => {
+    if (province && district) {
+      setVillages(laosData[province][district]);
+      setVillage('');
+    } else {
+      setVillages([]);
+      setVillage('');
+    }
+  }, [district, province]);
+
   const handleMultipleImages = (e) => {
     const files = Array.from(e.target.files);
     setPropertyImages((prev) => [...prev, ...files]);
-
-    // Reset input value to allow same file re-upload
-    if (imageInputRef.current) {
-      imageInputRef.current.value = '';
-    }
+    if (imageInputRef.current) imageInputRef.current.value = '';
   };
 
   const handleProfileImage = (e) => {
@@ -43,61 +72,44 @@ const AddProperty = () => {
 
   const handleClearImages = () => {
     setPropertyImages([]);
-    if (imageInputRef.current) {
-      imageInputRef.current.value = '';
-    }
+    if (imageInputRef.current) imageInputRef.current.value = '';
   };
 
   const handleRemoveImage = (indexToRemove) => {
     const updated = propertyImages.filter((_, i) => i !== indexToRemove);
     setPropertyImages(updated);
-    // We no longer reset the input — keep it reusable for re-adding files
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted');
+
+    const formData = {
+      province,
+      district,
+      village,
+      locationLink: document.querySelector('input[placeholder="Location Link"]').value,
+      propertyName: document.getElementById('propertyName').value,
+      price: document.getElementById('price').value,
+      roomType: document.getElementById('roomType').value,
+      description: document.getElementById('description').value,
+      roomAmount: document.getElementById('rooms').value,
+      available: document.querySelector('.room-amount input:nth-child(2)').value,
+      bedRooms: document.querySelector('.room-specs input:nth-child(1)').value,
+      bathRooms: document.querySelector('.room-specs input:nth-child(2)').value,
+      parking: document.querySelector('.room-specs input:nth-child(3)').value,
+      profileImage,
+      propertyImages,
+    };
+
+    navigate('/propertyListPage', { state: formData });
   };
-
-  // select-location
-    const [province, setProvince] = useState('');
-    const [district, setDistrict] = useState('');
-    const [village, setVillage] = useState('');
-  
-    const [districts, setDistricts] = useState([]);
-    const [villages, setVillages] = useState([]);
-  
-    useEffect(() => {
-      if (province) {
-        setDistricts(Object.keys(laosData[province]));
-        setDistrict('');
-        setVillages([]);
-        setVillage('');
-      } else {
-        setDistricts([]);
-        setDistrict('');
-        setVillages([]);
-        setVillage('');
-      }
-    }, [province]);
-  
-    useEffect(() => {
-      if (province && district) {
-        setVillages(laosData[province][district]);
-        setVillage('');
-      } else {
-        setVillages([]);
-        setVillage('');
-      }
-    }, [district, province]);
-
-    
 
   return (
     <div className="add-property box_container container">
       <form className="add-property-form" onSubmit={handleSubmit}>
         <h2>Add Property</h2>
 
+        {/* Room Info */}
         <div className="row">
           <div className="form-group">
             <label htmlFor="rooms">Number of rooms</label>
@@ -117,46 +129,31 @@ const AddProperty = () => {
           </div>
         </div>
 
+        {/* Location & Description */}
         <div className="row">
           <div className="form-group">
             <label>Location</label>
-              <select
-                id="province"
-                className="select-location"
-                value={province}
-                onChange={(e) => setProvince(e.target.value)}
-              >
-                <option value="">Select Province</option>
-                {Object.keys(laosData).map((prov) => (
-                  <option key={prov} value={prov}>{prov}</option>
-                ))}
-              </select>
-              
-              <select
-                id="district"
-                className="select-location"
-                value={district}
-                onChange={(e) => setDistrict(e.target.value)}
-                disabled={!districts.length}
-              >
-                <option value="">Select District</option>
-                {districts.map((dist) => (
-                  <option key={dist} value={dist}>{dist}</option>
-                ))}
-              </select>
-              
-              <select
-                id="village"
-                className="select-location"
-                value={village}
-                onChange={(e) => setVillage(e.target.value)}
-                disabled={!villages.length}
-              >
-                <option value="">Select Village</option>
-                {villages.map((vill) => (
-                  <option key={vill} value={vill}>{vill}</option>
-                ))}
-              </select>
+            <select className="select-location" value={province} onChange={(e) => setProvince(e.target.value)}>
+              <option value="">Select Province</option>
+              {Object.keys(laosData).map((prov) => (
+                <option key={prov} value={prov}>{prov}</option>
+              ))}
+            </select>
+
+            <select className="select-location" value={district} onChange={(e) => setDistrict(e.target.value)} disabled={!districts.length}>
+              <option value="">Select District</option>
+              {districts.map((dist) => (
+                <option key={dist} value={dist}>{dist}</option>
+              ))}
+            </select>
+
+            <select className="select-location" value={village} onChange={(e) => setVillage(e.target.value)} disabled={!villages.length}>
+              <option value="">Select Village</option>
+              {villages.map((vill) => (
+                <option key={vill} value={vill}>{vill}</option>
+              ))}
+            </select>
+
             <input type="text" placeholder="Location Link" />
           </div>
 
@@ -174,6 +171,7 @@ const AddProperty = () => {
           </div>
         </div>
 
+        {/* Name & Price */}
         <div className="row">
           <div className="form-group">
             <label htmlFor="propertyName">Property name</label>
@@ -186,6 +184,7 @@ const AddProperty = () => {
           </div>
         </div>
 
+        {/* Images Upload */}
         <div className="row image-upload-section">
           {/* Profile Image */}
           <div className="form-group">
@@ -199,17 +198,11 @@ const AddProperty = () => {
                 onChange={handleProfileImage}
                 style={{ display: 'none' }}
               />
-              <label htmlFor="profileImage" className="custom-file-label">
-                + Select profile image
-              </label>
+              <label htmlFor="profileImage" className="custom-file-label">+ Select profile image</label>
               <div className="preview-thumbnails">
                 <div className="thumbnail-wrapper profile">
                   {profileImage && (
-                    <img
-                      src={URL.createObjectURL(profileImage)}
-                      alt="profile-preview"
-                      className="preview-image profile-image"
-                    />
+                    <img src={URL.createObjectURL(profileImage)} alt="profile-preview" className="preview-image profile-image" />
                   )}
                 </div>
               </div>
@@ -236,17 +229,9 @@ const AddProperty = () => {
               <div className="preview-thumbnails">
                 {propertyImages.map((img, index) => (
                   <div key={index} className="thumbnail-wrapper">
-                    <img
-                      src={URL.createObjectURL(img)}
-                      alt={`preview-${index}`}
-                      className="preview-image"
-                    />
-                    <button
-                      type="button"
-                      className="remove-button"
-                      onClick={() => handleRemoveImage(index)}
-                    >
-                      <i class="bi bi-x"></i>
+                    <img src={URL.createObjectURL(img)} alt={`preview-${index}`} className="preview-image" />
+                    <button type="button" className="remove-button" onClick={() => handleRemoveImage(index)}>
+                      <i className="bi bi-x"></i>
                     </button>
                   </div>
                 ))}
@@ -261,8 +246,9 @@ const AddProperty = () => {
           </div>
         </div>
 
+        {/* Submit Button */}
         <button type="submit" className="submit_btn medium-button">
-          <i class="bi bi-plus"></i>
+          <i className="bi bi-plus"></i>
           Add
         </button>
       </form>

@@ -35,7 +35,7 @@
               
 .management-card:hover {
   transition: all .2s ease-in-out;
-  color: var(--main-color);
+  color: var(--status1-color);
   box-shadow: inset 3px 3px 6px #bec3c9,
                 inset -3px -3px 6px #ffffff;
 }
