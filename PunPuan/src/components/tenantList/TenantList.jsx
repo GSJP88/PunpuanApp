@@ -14,7 +14,7 @@ const tenants = [
     id: 2,
     name: 'Barbra Nolan',
     email: 'barbra.nolan@example.org',
-    property: 'Townhouse 3B, Luang Prabang',
+    property: 'Condo A12, Vientiane',
     startDate: '2025-06-20',
     hasPaid: false,
   },
@@ -22,7 +22,7 @@ const tenants = [
     id: 3,
     name: 'Wilmer Fadel',
     email: 'wilmer.fadel@example.net',
-    property: 'Room 202, Pakse',
+    property: 'Townhouse 3B, Luang Prabang',
     startDate: '2025-08-01',
     hasPaid: true,
   },
@@ -30,7 +30,7 @@ const tenants = [
     id: 4,
     name: 'Naoma Wyman',
     email: 'wyman.naoma@example.com',
-    property: 'Apartment B8, Vientiane',
+    property: 'Room 202, Pakse',
     startDate: '2025-09-05',
     hasPaid: false,
   },
@@ -47,6 +47,22 @@ const tenants = [
     name: 'Aiy Khn Lr',
     email: 'AiyKhnLr@example.com',
     property: 'Apartment B8, Vientiane',
+    startDate: '2025-07-15',
+    hasPaid: false,
+  },
+  {
+    id: 7,
+    name: 'Bounmy',
+    email: 'Bounmy@example.com',
+    property: 'Apartment B8, Vientiane',
+    startDate: '2025-08-19',
+    hasPaid: false,
+  },
+  {
+    id: 8,
+    name: 'Aiy Khn Lr luang',
+    email: 'AiyKhnLrLuang@example.com',
+    property: 'Apartment B9, Vientiane',
     startDate: '2025-07-15',
     hasPaid: false,
   },
@@ -68,37 +84,29 @@ const TenantList = () => {
   });
 
   return (
-    <div className="tenant-list-wrapper">
+    <div className="tenant-list-wrapper box_container">
+      <div className="tenant-list-headline">
       <h2 className="tenant-list-title">Tenant List</h2>
-      <div className="tenant-filters">
-        <div className="tenant-btn-wrapper" 
-            value={filterStatus}
-            onClick={(e) => setFilterStatus(e.target.value)}>
-            <button className={filterStatus === 'all' ? 'active' : ''} value="all">All</button>
-            <button className={filterStatus === 'paid' ? 'active' : ''} value="paid">Paid</button>
-            <button className={filterStatus === 'unpaid' ? 'active' : ''} value="unpaid">Unpaid</button>
+        <div className="tenant-filters">
+          <div className="tenant-btn-wrapper" 
+              value={filterStatus}
+              onClick={(e) => setFilterStatus(e.target.value)}>
+              <button className={filterStatus === 'all' ? 'active' : ''} value="all">All</button>
+              <button className={filterStatus === 'paid' ? 'active' : ''} value="paid">Paid</button>
+              <button className={filterStatus === 'unpaid' ? 'active' : ''} value="unpaid">Unpaid</button>
+          </div>
+          <div className="search-box-wrapper input_app">
+            <i className="bi bi-search search-icon"></i>
+            <input
+              type="text"
+              placeholder="Search by name..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="search-box"
+            />
+          </div>
         </div>
-        <div className="search-box-wrapper input_app">
-          <i className="bi bi-search search-icon"></i>
-          <input
-            type="text"
-            placeholder="Search by name..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="search-box"
-          />
-        </div>
-        {/* <select
-          value={filterStatus}
-          onChange={(e) => setFilterStatus(e.target.value)}
-          className="filter-dropdown input_app"
-        >
-          <option value="all">All Tenants</option>
-          <option value="paid">Paid This Month</option>
-          <option value="unpaid">Unpaid This Month</option>
-        </select> */}
       </div>
-
       <div className="table-container">
         <table className="tenant-table">
           <thead>

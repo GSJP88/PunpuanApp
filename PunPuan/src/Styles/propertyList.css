@@ -1,9 +1,95 @@
 .property-list-wrapper {
+  margin: 90px 0 60px;
   padding: 40px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
+.property-list-headline {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 45px;
+}
+
+.property-controls {
+  display: grid;
+  grid-template-columns: 280px 250px;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.filter-buttons {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--container2-color);
+  padding: 5px;
+  gap: 5px;
+  border: none;
+  border-radius: 30px;
+  box-shadow: inset 2px 2px 4px #bec3c9,
+            inset -2px -2px 4px #ffffff;
+}
+
+.filter-buttons button {
+  width: 95px;
+  font-size: 12px;
+  padding: 8px;
+  background: none;
+}
+
+.filter-buttons button.active {
+  transition: background 0.2s;
+  background-color: var(--status1-color);
+  color: white;
+  border-radius: 30px;
+  /* box-shadow: 1.5px 1.5px 3px #bec3c9,
+                -1.5px -1.5px 3px #ffffff; */
+}
+
+.search-input-wrapper {
+  margin: 0;
+  border: none;
+  position: relative;
+  display: flex;
+  padding: 0;
+  box-shadow: inset 2px 2px 4px #bec3c9,
+              inset -2px -2px 4px #ffffff;
+              border-radius: 30px;
+}
+
+.search-input-icon {
+  right: 13px;
+  font-size: 16px;
+  top: 10px;
+  position: absolute;
+}
+
+.search-input {
+  padding: 13px;
+  width: 100%;
+  border: none;
+  background: none;
+  color: var(--text-color);
+  font-size: 12px;
+}
+
+.search-input:focus {
+  outline: none;
+  border: none;
+  box-shadow: none
+}
+
+.no-results {
+  font-size: 16px;
+  color: #777;
+  margin-top: 20px;
+}
+
+
 .property-list-title {
-  margin-bottom: 24px;
   font-size: 24px;
   font-weight: 700;
   color: var(--main-color);
@@ -34,15 +120,25 @@
   object-fit: cover;
 }
 
-.balance {
+.property-status {
   position: absolute;
   top: 16px;
   left: 16px;
-  background: #003459;
-  color: #fff;
-  font-size: 13px;
-  padding: 4px 8px;
-  border-radius: 6px;
+  padding: 6px 16px;
+  background-color: var(--container-color);
+  border-radius: 16px;
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  color: var(--status1-color);
+}
+
+.property-status .bi {
+  font-size: 8px;
 }
 
 .property-info {

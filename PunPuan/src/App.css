@@ -245,8 +245,8 @@
   }
 
   .box_container {
-    margin-top: 100px;
-    margin-bottom: 90px;
+    margin-top: 120px;
+    margin-bottom: 100px;
     border-radius: 16px;
     background-color: var(--container-color);
     box-shadow: 3px 3px 6px #bec3c9,
