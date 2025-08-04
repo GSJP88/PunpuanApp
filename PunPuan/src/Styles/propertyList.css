@@ -6,11 +6,28 @@
   margin-right: auto;
 }
 
+.add-btn-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.add-property {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 20px;
+  margin-top: 30px;
+}
+
+.add-property i {
+  font-size: 32px;
+}
+
 .property-list-headline {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 45px;
+  margin-bottom: 25px;
 }
 
 .property-controls {
@@ -102,7 +119,7 @@
 }
 
 .property-card {
-  background: #fff;
+  background: var(--container-color);
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   overflow: hidden;

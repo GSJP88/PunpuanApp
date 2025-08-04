@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import PropertyCard from './PropertyCard';
 import '../../Styles/propertyList.css';
 import img1 from '../../assets/condo.jpg';
@@ -67,6 +68,11 @@ const PropertyList = () => {
     return matchesSearch && matchesFilter;
   });
 
+  const navigate = useNavigate();
+  const handleAddClick = () => {
+    navigate('/addPropertyPage'); // adjust route if needed
+  };
+
   return (
     <div className="property-list-wrapper box_container">
       <div className="property-list-headline">
@@ -98,6 +104,9 @@ const PropertyList = () => {
         ) : (
           <p className="no-results">No properties found.</p>
         )}
+      </div>
+      <div className="add-btn-wrapper">
+        <button className="add-property small-button" onClick={handleAddClick}><i class="bi bi-plus"></i> Add Property</button>
       </div>
     </div>
   );

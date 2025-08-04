@@ -7,7 +7,7 @@ const ManagementPage = () => {
     { label: "Profile", to: "/profile", icon: "bi-person" },
     { label: "Notification", to: "/notificationPage", icon: "bi-bell" },
     { label: "Tenants", to: "/tenantListPage", icon: "bi-people" },
-    { label: "Properties", to: "/propertiesPage", icon: "bi-house" },
+    { label: "Properties", to: "/propertyListPage", icon: "bi-house" },
   ];
 
   return (
