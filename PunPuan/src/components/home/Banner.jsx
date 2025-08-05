@@ -54,27 +54,6 @@ const Banner = () => {
                 }}/>
               <p>House</p>
           </div>
-          {/* <div className="banner-type">
-            <div className="banner-type-overlay">
-              <p>Apartment</p>
-            </div>
-          </div>
-          <div className="banner-type">
-            <div className="banner-type-overlay">
-              <p>Condominium</p>
-            </div>
-          </div>
-          <div className="banner-type">
-            <div className="banner-type-overlay">
-              <p>Townhouses</p>
-            </div>
-          </div>
-          <div className="banner-type">
-            <div className="banner-type-overlay">
-              <p>house</p>
-            </div>
-          </div> */}
-          {/* Add others here */}
         </div>
       </div>
       <ScrollDown />

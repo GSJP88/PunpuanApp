@@ -179,7 +179,7 @@
   align-items: center;
   background-color: var(--container-color);
   background: rgba(255, 255, 255, 0.163);
-  backdrop-filter: blur(3px);
+  backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(4px);
   border: 1px solid var(--container-color); 
   padding: 5px 40px 5px 5px;
@@ -252,7 +252,7 @@
 
 .home__scroll-button {
     background: rgba(255, 255, 255, 0.163); /* semi-transparent white */
-    backdrop-filter: blur(1px); /* blurs the background behind */
+    backdrop-filter: blur(5px); /* blurs the background behind */
     -webkit-backdrop-filter: blur(4px); /* Safari support */
     border: 1px solid rgba(255, 255, 255, 0.3); /* optional border */
     border-radius: 15px;

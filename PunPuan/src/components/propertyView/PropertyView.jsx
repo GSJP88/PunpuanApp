@@ -15,6 +15,7 @@ const PropertyView = () => {
     setCurrentIndex(prev => (prev === 0 ? property.images.length - 1 : prev - 1));
   };
 
+
   const goToNext = () => {
     setCurrentIndex(prev => (prev === property.images.length - 1 ? 0 : prev + 1));
   };
