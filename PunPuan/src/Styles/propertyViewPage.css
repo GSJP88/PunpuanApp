@@ -1,0 +1,7 @@
+.property-view-page {
+    margin-top: 90px;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

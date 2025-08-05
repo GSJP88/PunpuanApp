@@ -55,12 +55,12 @@ const Chat = () => {
         <div className="chat-header">
           <div className="avatar">
             <i className="bi bi-headset"></i>
-            <div className="status">
-              <i className="bi bi-circle-fill"></i>
+            <div className="chat-status">
+              <i className="bi bi-circle-fill status-icon"></i>
             </div>
           </div>
           <div>
-            <div className="name">Jane Rowlis</div>
+            <div className="chat-name">Jane Rowlis</div>
           </div>
         </div>
 
@@ -68,7 +68,7 @@ const Chat = () => {
           {messages.map(msg => (
             <div key={msg.id} className={`message-row ${msg.sender === 'admin' ? 'admin' : 'user'}`}>
               {msg.type === 'text' && (
-                <div className="message">{msg.text}</div>
+                <div className="chat-message">{msg.text}</div>
               )}
               {msg.type === 'image' && (
                 <img

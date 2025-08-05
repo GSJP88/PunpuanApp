@@ -34,19 +34,20 @@
   position: relative;
 }
 
-.name {
+.chat-name {
   font-weight: bold;
 }
 
-.status {
+.chat-status {
   background: none;
   position: absolute;
-  bottom: -16px;
-  right: -24px;
+  bottom: -5px;
+  right: -5px;
 }
 
-.status .bi {
+.chat-status .bi {
     font-size: 14px;
+    color: var(--status1-color);
 }
 
 .chat-box {
@@ -74,7 +75,7 @@
   text-align: right;
 }
 
-.message {
+.chat-message {
   display: inline-block;
   text-align: start;
   padding: 1rem 1.5rem;
@@ -82,13 +83,13 @@
   max-width: 40%;
 }
 
-.message-row.admin .message {
+.message-row.admin .chat-message {
   background-color: var(--container-color);
   color: var(--main-color);
   /* border: 1px solid var(--main-color); */
 }
 
-.message-row.user .message {
+.message-row.user .chat-message {
   background-color: var(--main-color);
   color: white;
 }
@@ -208,7 +209,7 @@
     height: 810px;
   }
 
-  .message {
+  .chat-message {
     padding: 8px 10px;
     border-radius: 16px;
     max-width: 50%;
