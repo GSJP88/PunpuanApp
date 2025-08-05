@@ -1,5 +1,8 @@
 .notification_page {
   padding: 40px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .page-title {
@@ -32,6 +35,11 @@
   cursor: pointer;
 }
 
+.notification-nav button:hover {
+  transition: .2s;
+  color: var(--status1-color);
+}
+
 .notification-nav button.active {
   transition: background 0.2s;
   background-color: var(--status1-color);
@@ -54,9 +62,6 @@
                 -3px -3px 6px #ffffff;
 }
 
-.notification-card.read {
-  color: #555;
-}
 
 .unread-dot {
   position: absolute;
@@ -107,16 +112,8 @@
 }
 
 .message-detail-container {
-
   max-width: 750px;
   padding: 60px 60px 40px;
-}
-
-.message-detail-container h2 {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin-bottom: 2rem;
 }
 
 .tenant-info {
@@ -175,8 +172,8 @@
   background: var(--main-color);
   border: 2px solid var(--main-color);
   color: white;
-  padding: 1rem 2.5rem;
-  border-radius: 6px;
+  padding: 1rem 3rem;
+  border-radius: 8px;
   cursor: pointer;
 }
 
@@ -184,8 +181,8 @@
   border: 2px solid var(--main-color);
   background: var(--container-color);
   color: var(--main-color);
-  padding: 1rem 2.5rem;
-  border-radius: 6px;
+  padding: 1rem 3rem;
+  border-radius: 8px;
   cursor: pointer;
 }
 
@@ -217,4 +214,73 @@
 
 .notification-card:hover {
   background-color: #f1faff;
+}
+
+@media (max-width: 576px) {
+  .notification_page {
+    margin-top: 70px;
+    padding: 20px;
+  }
+
+  .notification-header {
+    gap: 10px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+  }
+
+  .notification-nav {
+    padding: 4px;
+  }
+  .notification-nav button {
+    padding: 8px 16px;
+    font-size: 12px;
+    font-weight: 400;
+    cursor: pointer;
+  }
+
+  .mark-read-btn {
+    font-size: 12px;
+    padding: 12px 16px;
+    border-radius: 30px;
+  }
+
+  .notification-card {
+    grid-template-columns: 64px 1fr;
+  }
+
+  .notification-card_profile {
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+  }
+
+  .card-content .sender {
+    font-size: 14px;
+  }
+
+  .card-content .message {
+    font-size: 12px;
+  }
+
+  .card-content .time {
+    font-size: 10px;
+    right: -5px;
+    top: -5px;
+  }
+
+  .message-detail-container {
+    padding: 60px 40px 30px;
+  }
+
+  .tenant-info {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .message-button-group {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
 }

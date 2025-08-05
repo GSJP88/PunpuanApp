@@ -36,7 +36,7 @@ const LocationMap = ({ mapsUrl = "https://www.google.com/maps/place/17.950350, 1
   }, [mapsUrl]);
 
   return (
-    <div className="map-wrapper  container">
+    <div className="map-wrapper">
       <h2>Location</h2>
       <MapContainer
         center={position}

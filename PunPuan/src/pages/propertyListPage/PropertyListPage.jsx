@@ -5,7 +5,7 @@ import PropertyList from '../../components/propertyList/PropertyList';
 
 const PropertyListPage = () => {
   return (
-    <div className="tenant-list-page container">
+    <div className="property-list-page container">
       <PropertyList/>
     </div>
   );

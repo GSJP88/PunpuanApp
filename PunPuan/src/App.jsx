@@ -10,17 +10,20 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import HomePage from './pages/homePage/HomePage';
 import AboutPage from './pages/aboutPage/AboutPage';
 import ViewPage from './pages/viewPage/ViewPage';
-import RegisterPage from './pages/RegisterPage/RegisterPage';
+import RegisterPage from './pages/registerPage/RegisterPage';
 import ContactPage from './pages/contactPage/ContactPage';
-import NotificationPage from './pages/NotificationPage/NotificationPage';
-import LoginPage from './pages/LoginPage/LoginPage';
+import NotificationPage from './pages/notificationPage/NotificationPage';
+import LoginPage from './pages/loginPage/LoginPage';
 import LandlordDashboard from './pages/landlordDashboard/LandlordDashboard';
 import { AuthProvider } from './context/AuthContext';
 import AddPropertyPage from './pages/AddPropertyPage/AddPropertyPage';
-import MessageDetailPage from './pages/NotificationPage/MessageDetailPage';
+import MessageDetailPage from './pages/notificationPage/MessageDetailPage';
 import SignContractPage from './pages/signContractPage/SignContractPage';
 import TenantListPage from './pages/tenantListPage/TenantListPage';
 import PropertyListPage from './pages/propertyListPage/PropertyListPage';
+import PropertyViewPage from './pages/propertyViewPage/PropertyViewPage';
+import ProfilePage from './pages/profilePage/ProfilePage';
+import ChatPage from './pages/chatPage/ChatPage';
 
 const App = () => {
   return (
@@ -42,6 +45,9 @@ const App = () => {
           <Route path="/signContractPage/:id" element={<SignContractPage />} />
           <Route path="/tenantListPage" element={<TenantListPage />} />
           <Route path="/propertyListPage" element={<PropertyListPage/>}/> 
+          <Route path="/propertyViewPage/:id" element={<PropertyViewPage/>}/>
+          <Route path="/profilePage" element={<ProfilePage/>} />
+          <Route path="/chatPage" element={<ChatPage/>} />
         </Routes>
         <Footer />
       </Router>

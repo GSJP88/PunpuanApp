@@ -1,69 +1,22 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropertyCard from './PropertyCard';
-import '../../Styles/propertyList.css';
-import img1 from '../../assets/condo.jpg';
-import img2 from '../../assets/apm.jpg';
-import img3 from '../../assets/cd.jpg';
-import img4 from '../../assets/town.jpg';
+import allProperties from '../../data/properties'
 
-
-
-const allProperties = [
-  {
-    id: 1,
-    image: img1,
-    type: 'Single family',
-    name: 'Apartment B8, Vientiane',
-    address: '123 River Ridge Dr, Boardman, OR, 97818, US',
-    occupancy: 5,
-    totalProperty: 15,
-    balance: 0,
-  },
-  {
-    id: 2,
-    image: img2,
-    type: '2 Units',
-    name: 'Townhouse 3B, Luang Prabang',
-    address: '1231 116th Ave NE, Bellevue, WA, 98004, US',
-    occupancy: 3,
-    totalProperty: 5,
-    balance: 0,
-  },
-  {
-    id: 3,
-    image: img3,
-    type: 'Single family',
-    name: 'Condo A12, Vientiane',
-    address: '34287 Diagonal Blvd, Hermiston, OR, 97838, US',
-    occupancy: 2,
-    totalProperty: 20,
-    balance: 27615.7,
-  },
-  {
-    id: 4,
-    image: img4,
-    type: 'Single family',
-    name: 'Room 202, Pakse',
-    address: 'Utah Ave, Pasco, WA 99301, USA',
-    occupancy: 1,
-    totalProperty: 15,
-    balance: 3725,
-  }
-];
 
 const PropertyList = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filter, setFilter] = useState('all'); // all | available | unavailable
-
+  
   const filteredProperties = allProperties.filter(property => {
     const matchesSearch = property.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                          property.id.toString().includes(searchTerm);
-
+    property.id.toString().includes(searchTerm);
+    
+    const percent = Math.floor((property.occupancy * 100) / property.totalProperty);
     const matchesFilter =
-      filter === 'all' ||
-      (filter === 'available' && property.occupancy < 100) ||
-      (filter === 'unavailable' && property.occupancy === 100);
+    filter === 'all' ||
+      (filter === 'available' && percent < 100) ||
+      (filter === 'unavailable' && percent === 100);
 
     return matchesSearch && matchesFilter;
   });
@@ -100,6 +53,7 @@ const PropertyList = () => {
         {filteredProperties.length > 0 ? (
           filteredProperties.map(property => (
             <PropertyCard key={property.id} data={property} />
+            // <PropertyCard key={property.id} data={{ ...property, image: imageMap[property.image] }} />
           ))
         ) : (
           <p className="no-results">No properties found.</p>

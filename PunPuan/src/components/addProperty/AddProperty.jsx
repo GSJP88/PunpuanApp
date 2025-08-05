@@ -105,8 +105,8 @@ const AddProperty = () => {
   };
 
   return (
-    <div className="add-property box_container container">
-      <form className="add-property-form" onSubmit={handleSubmit}>
+    <div className="add_property box_container container">
+      <form className="add_property-form" onSubmit={handleSubmit}>
         <h2>Add Property</h2>
 
         {/* Room Info */}

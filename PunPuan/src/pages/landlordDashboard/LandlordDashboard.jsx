@@ -1,5 +1,5 @@
 import React from 'react';
-import ManagementPage from '../ManagementPage/ManagementPage';
+import ManagementPage from '../../components/management/Management';
 
 const LandlordDashboard = () => {
   return (

@@ -92,7 +92,7 @@
 
 @media screen and (max-width: 768px) {
   .login-container {
-    margin: 100px;
+    margin: 160px;
   }
 
   .login-left {
@@ -115,6 +115,6 @@
   }
 
   .login-container {
-    margin: 100px 1.5rem;
+    margin: 90px 1.5rem;
   }
 }

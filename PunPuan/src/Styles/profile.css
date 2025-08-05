@@ -1,0 +1,52 @@
+.profile_container {
+  margin: 90px 0 60px;
+  padding: 40px;
+  max-width: 550px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.profile-headline {
+   display: flex;
+   justify-content: space-between;
+   align-items: flex-start;
+   margin-bottom: 30px;
+}
+
+.edit-btn {
+  padding: 1rem 2.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.profile-container h2 {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.profile-submit_button {
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+@media (max-width: 576px) {
+    .profile_container {
+        margin: 90px 0px 60px;
+        padding: 20px;
+    }
+    .edit-btn {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+}

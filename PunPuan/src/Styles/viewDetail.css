@@ -1,10 +1,5 @@
 .view-detail-wrapper {
-  max-width: 1000px;
   margin: 0 auto 60px;
-  padding: 0;
-}
-
-.view-detail.container {
   padding: 2rem;
   background-color: var(--container2-color);
   box-shadow: inset 3px 3px 6px #bec3c9,
@@ -83,5 +78,44 @@
 
   .view-info {
     padding: 0.5rem;
+  }
+
+  .amount {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  .total_room {
+      font-weight: bold;
+      font-size: 1rem;
+      color: var(--text-color);
+  }
+  
+  .text {
+    color: var(--text-color);
+    font-size: 10px;
+  }
+  
+  .address-info li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: .5rem;
+  }
+  
+  .address-info label {
+    font-weight: 500;
+    font-size: 12px;
+    color: var(--main-color);
+  }
+  
+  .address-info p {
+    font-weight: 400;
+    font-size: 12px;
+  }
+  
+  .description p {
+    font-size: 12px;
+    line-height: 1.4;
   }
 }

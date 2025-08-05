@@ -8,9 +8,9 @@ const Header = () => {
   return (
     <header className="header">
       <nav className="nav">
-        <a href="index.html" className="nav__logo">
+        <Link to="/" className="nav__logo">
           PunPuan
-        </a>
+        </Link>
 
         <div className={toggle ? "nav__menu show-menu" : "nav__menu"}>
           <div className="nav__close">

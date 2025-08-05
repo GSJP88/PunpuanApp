@@ -1,7 +1,6 @@
-.management-page {
+.management-container {
   max-width: 1000px;
-  margin: 0 auto;
-  padding: 120px 16px;
+  margin-top: 70px;
   position: relative;
   min-height: 100vh;
 }
@@ -10,10 +9,9 @@
   margin-bottom: 24px;
   font-size: 24px;
   font-weight: 700;
-  color: var(--main-color);
 }
 
-.management-grid {
+.management_grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 24px;
@@ -73,7 +71,7 @@
 /* Floating yellow button */
 .floating-btn {
   position: absolute;
-  bottom: 40px;
+  bottom: 160px;
   right: 0;
   border: 2px solid var(--main-color);
   width: 64px;
@@ -106,7 +104,7 @@
     margin-bottom: 2.5rem;
   }
 
-  .management-grid {
+  .management_grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -118,6 +116,7 @@
   }
 
   .floating-btn {
-    right: 20px;
+    right: 0px;
+    bottom: 150px;
   }
 }

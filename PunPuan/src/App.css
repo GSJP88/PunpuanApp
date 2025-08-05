@@ -18,6 +18,7 @@
   --main-color: #2d2d2d;
   --second-color: #2f2f2f;
   --status1-color: #3c95ee;
+  --status2-color: #ee513c;
   /*====== Font and Typography ======*/
   --body-font: "Inter", sans-serif;
 
@@ -205,6 +206,8 @@
   }
 
   .small-button:hover {
+    transition: .2s;
+    color: var(--status1-color);
     box-shadow: rgba(50, 50, 50, 0.2) 3px 3px 6px 0px inset, rgba(72, 72, 72, 0.2) -3px -3px 6px -5px inset;
   }
   

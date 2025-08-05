@@ -1,5 +1,6 @@
 // src/components/TenantList.jsx
 import React, { useState } from 'react';
+import tenantsInfo from "../../data/tenants"
 
 const tenants = [
   {

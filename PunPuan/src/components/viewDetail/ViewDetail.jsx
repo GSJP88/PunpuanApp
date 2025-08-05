@@ -3,8 +3,7 @@ import '../../Styles/viewDetail.css';
 
 const ViewDetail = () => {
   return (
-    <div className="view-detail-wrapper">
-      <div className="view-detail container">
+    <div className="view-detail-wrapper container">
         {/* Status Section */}
         <div className="view-info">
           <div className="view-title">
@@ -63,7 +62,6 @@ const ViewDetail = () => {
             </p>
           </div>
         </div>
-      </div>
     </div>
   );
 };

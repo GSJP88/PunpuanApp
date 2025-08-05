@@ -16,7 +16,7 @@ const ViewPage = () => {
       <Specs />
       <ViewDetail/>
       <LocationMap/>
-      <div className="contact_landlord">
+      <div className="contact_landlord box_container container">
         <PropertyOwnerCard/>
         <ContactLandlord/>
       </div>

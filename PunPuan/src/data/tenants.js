@@ -1,0 +1,68 @@
+const tenantData = [
+    {
+    id: 1,
+    name: 'Scot Carroll',
+    email: 'carroll_scot@example.net',
+    property: 'Condo A12, Vientiane',
+    startDate: '2025-07-01',
+    hasPaid: true,
+  },
+  {
+    id: 2,
+    name: 'Barbra Nolan',
+    email: 'barbra.nolan@example.org',
+    property: 'Condo A12, Vientiane',
+    startDate: '2025-06-20',
+    hasPaid: false,
+  },
+  {
+    id: 3,
+    name: 'Wilmer Fadel',
+    email: 'wilmer.fadel@example.net',
+    property: 'Townhouse 3B, Luang Prabang',
+    startDate: '2025-08-01',
+    hasPaid: true,
+  },
+  {
+    id: 4,
+    name: 'Naoma Wyman',
+    email: 'wyman.naoma@example.com',
+    property: 'Room 202, Pakse',
+    startDate: '2025-09-05',
+    hasPaid: false,
+  },
+  {
+    id: 5,
+    name: 'Bao Max',
+    email: 'MaxNoName@example.com',
+    property: 'Apartment B8, Vientiane',
+    startDate: '2025-07-12',
+    hasPaid: false,
+  },
+  {
+    id: 6,
+    name: 'Aiy Khn Lr',
+    email: 'AiyKhnLr@example.com',
+    property: 'Apartment B8, Vientiane',
+    startDate: '2025-07-15',
+    hasPaid: false,
+  },
+  {
+    id: 7,
+    name: 'Bounmy',
+    email: 'Bounmy@example.com',
+    property: 'Apartment B8, Vientiane',
+    startDate: '2025-08-19',
+    hasPaid: false,
+  },
+  {
+    id: 8,
+    name: 'Aiy Khn Lr luang',
+    email: 'AiyKhnLrLuang@example.com',
+    property: 'Apartment B9, Vientiane',
+    startDate: '2025-07-15',
+    hasPaid: false,
+  },
+];
+
+export default tenantData;

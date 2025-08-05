@@ -1,13 +1,20 @@
+.viewPage {
+    margin: 50px 0 60px;
+    padding: 40px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
 .contact_landlord {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    margin-bottom: 60px;
+    padding: 40px;
 }
 
 .rent-btn {
     width: 100%;
-    margin-bottom: 30px;
+    margin-top: 0px;
     transition: .3s ease-in-out;
 }
 
@@ -16,12 +23,22 @@
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
-        gap: 30px;
-        margin: 0 0 30px;
+        gap: 40px;
+        margin: 40px 0 30px;
     }
 
     .rent-button-wrapper {
         margin-top: 60px;
         width: 100%;
     }
+}
+
+@media (max-width: 576px) {
+    .contact_landlord {
+        padding: 20px;
+    }
+  .viewPage {
+    margin: 0px 0 60px;
+    padding: 20px;
+  }
 }
