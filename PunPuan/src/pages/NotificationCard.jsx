@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import '../../Styles/notificationPage.css';;
+import '../Styles/notificationPage.css';;
 
 const NotificationCard = ({ data, markAsRead }) => {
   const navigate = useNavigate();

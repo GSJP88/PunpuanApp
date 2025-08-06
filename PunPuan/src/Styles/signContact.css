@@ -37,11 +37,10 @@
   background: rgba(255, 255, 255, 0.163);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  /* border: 1px solid rgba(255, 255, 255, 0.518); */
   border: 2px solid #bababa;
   border-radius: 5px;
   padding: 20px 20px 0;
-  max-height: 400px; /* Adjust as needed */
+  max-height: 350px; /* Adjust as needed */
   overflow-y: auto;
   font-size: 13px;
   line-height: 1.5;
@@ -129,11 +128,9 @@
 }
 
 @media screen and (max-width: 992px) {
-  .contract-left {
-    display: none;
-  }
   .contract-container {
     display: flex;
+    flex-direction: column;
     margin: 100px;
     justify-content: center;
   }

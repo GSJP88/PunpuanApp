@@ -7,23 +7,26 @@ import './App.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-import HomePage from './pages/homePage/HomePage';
-import AboutPage from './pages/aboutPage/AboutPage';
-import ViewPage from './pages/viewPage/ViewPage';
-import RegisterPage from './pages/registerPage/RegisterPage';
-import ContactPage from './pages/contactPage/ContactPage';
-import NotificationPage from './pages/notificationPage/NotificationPage';
-import LoginPage from './pages/loginPage/LoginPage';
-import LandlordDashboard from './pages/landlordDashboard/LandlordDashboard';
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import ViewPage from './pages/ViewPage';
+import RegisterPage from './pages/RegisterPage';
+import ContactPage from './pages/ContactPage';
+import NotificationPage from './pages/NotificationPage';
+import LoginPage from './pages/LoginPage';
+import LandlordDashboard from './pages/LandlordDashboard';
+import TenantDashboard from './pages/TenantDashboard';
 import { AuthProvider } from './context/AuthContext';
-import AddPropertyPage from './pages/AddPropertyPage/AddPropertyPage';
-import MessageDetailPage from './pages/notificationPage/MessageDetailPage';
-import SignContractPage from './pages/signContractPage/SignContractPage';
-import TenantListPage from './pages/tenantListPage/TenantListPage';
-import PropertyListPage from './pages/propertyListPage/PropertyListPage';
-import PropertyViewPage from './pages/propertyViewPage/PropertyViewPage';
-import ProfilePage from './pages/profilePage/ProfilePage';
-import ChatPage from './pages/chatPage/ChatPage';
+import AddPropertyPage from './pages/AddPropertyPage'
+import MessageDetailPage from './pages/MessageDetailPage';
+import SignContractPage from './pages/SignContractPage';
+import TenantListPage from './pages/TenantListPage';
+import PropertyListPage from './pages/PropertyListPage';
+import PropertyViewPage from './pages/PropertyViewPage';
+import ProfilePage from './pages/ProfilePage';
+import ChatPage from './pages/ChatPage';
+import ViewPageBefore from './pages/ViewPageBefore';
+import TenantHomePage from './pages/TenantHomePage';
 
 const App = () => {
   return (
@@ -35,11 +38,14 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/aboutPage" element={<AboutPage />} />
           <Route path="/viewPage" element={<ViewPage />} />
+          <Route path="/viewPageBefore" element={<ViewPageBefore/>} />
           <Route path="/registerPage/:role" element={<RegisterPage />} />
           <Route path="/loginPage" element={<LoginPage />} />
           <Route path="/contactPage" element={<ContactPage />} />
           <Route path="/notificationPage" element={<NotificationPage />} />
+          <Route path="/tenantHomePage" element={<TenantHomePage/>} />
           <Route path="/landlordDashboard" element={<LandlordDashboard />} />
+          <Route path="/tenantDashboard" element={<TenantDashboard />} />
           <Route path="/addPropertyPage" element={<AddPropertyPage/>}/>
           <Route path="/message/:id" element={<MessageDetailPage />} />
           <Route path="/signContractPage/:id" element={<SignContractPage />} />

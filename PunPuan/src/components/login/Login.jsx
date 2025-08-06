@@ -1,8 +1,13 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import "../../Styles/login.css";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const handleLogin = () => {
+    navigate('/tenantHomePage'); // adjust route if needed
+  };
   return (
     <div className="login-container box_container container">
       {/* Left side */}
@@ -33,7 +38,7 @@ const Login = () => {
             <a href="#">Forget Password</a>
           </div>
 
-          <button type="submit" className="medium-button">Sign in</button>
+          <button type="submit" className="medium-button" onClick={handleLogin}>Sign in</button>
 
           <p className="signup-text">
             Don’t have an account yet? <Link to="/registerPage/landlord">Sign up</Link>

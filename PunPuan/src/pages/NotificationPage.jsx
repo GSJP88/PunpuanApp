@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import '../../Styles/notificationPage.css';
+import '../Styles/notificationPage.css';
 import NotificationCard from './NotificationCard';
 
 const dummyNotifications = [
   {
     id: 1,
-    sender: 'Tenant John',
-    message: 'Requested to rent your property.',
+    sender: 'Tenant Khn Lr',
+    message: 'Kin beer.',
     isRead: false,
     time: '5 minutes ago',
     role: 'tenant'
@@ -14,15 +14,15 @@ const dummyNotifications = [
   {
     id: 2,
     sender: 'System',
-    message: 'Your listing has been approved.',
+    message: 'Jaiy khar app nae! Kharng 2 deuan leo',
     isRead: false,
     time: '1 day ago',
     role: 'admin'
   },
   {
     id: 3,
-    sender: 'Tenant Lisa',
-    message: 'Cancelled her booking.',
+    sender: 'Tenant Ton',
+    message: 'Tom2 Trng2',
     isRead: false,
     time: '2 hours ago',
     role: 'tenant'

@@ -1,11 +1,11 @@
 import React from 'react';
-import Filter from '../../components/filter/Filter';
-import Card from '../../components/card/Card';
-import Home from '../../components/home/Home';
-import Slider from '../../components/slider/Slider';
-import FAQ from '../../components/faq/FAQ';
-import Comment from '../../components/comment/Comment';
-import '../../Styles/homePage.css';
+import Filter from '../components/filter/Filter';
+import Card from '../components/card/Card';
+import Home from '../components/home/Home';
+import Slider from '../components/slider/Slider';
+import FAQ from '../components/faq/FAQ';
+import Comment from '../components/comment/Comment';
+import '../Styles/homePage.css';
 // import Styles from '../../Styles/homePage.module.css'
 
 const HomePage = () => {

@@ -1,0 +1,314 @@
+/* Wizard Container */
+.wizard-container {
+  padding: 40px;
+  margin-top: 90px;
+}
+
+.wizard-step h2 {
+  font-size: 24px;
+  color: var(--main-color);
+  margin-bottom: 30px;
+  justify-content: center;
+  display: none;
+}
+.wizard-step p {
+  color: var(--text-color);
+  justify-content: center;
+  display: flex;
+}
+
+.first-step-text {
+    margin: 160px 0;
+}
+
+.upload-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.upload-box {
+  position: relative;
+  border: 2px dashed #ccc;
+  padding: 20px;
+  text-align: center;
+  margin-top: 10px;
+  height: fit-content;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+}
+
+.payment-step {
+    padding: 10px;
+}
+
+.payment-step p {
+    text-align: center;
+}
+
+.qr-box {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.qr-box img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+}
+
+/* Buttons */
+
+.next-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+.next-button {
+  width: 100%;
+}
+
+.success-popup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  background-color: #d4edda;
+  padding: 24px;
+  border: 1px solid #28a745;
+  color: #155724;
+  font-weight: 500;
+  text-align: center;
+}
+
+
+.start-btn {
+  margin-top: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Step Indicator Styles */
+.step-indicator {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.step-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex: 1;
+  text-align: center;
+}
+
+.step-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #ccc;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.step-title {
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--text-color);
+  white-space: nowrap;
+}
+
+.step-line {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  right: -50%;
+  height: 3px;
+  background-color: #ccc;
+  z-index: 0;
+}
+
+/* Step State Styling */
+.step-item.active .step-circle {
+  background-color: var(--status1-5-color);
+  transition: all .2s ease-in-out;
+}
+
+.step-item.active .step-title {
+  /* font-weight: bold; */
+  color: var(--text-color);
+}
+
+.step-item.completed .step-circle {
+  background-color: var(--status1-color);
+}
+
+.step-item.completed .step-title {
+    color: var(--status1-color);
+}
+
+/* sign contract */
+
+.sign-contract-container {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  background-color: var(--container-color);
+  width: fit-content;
+  border-radius: 8px;
+}
+
+.sign-contract-wrapper {
+  padding: 10px 0px;
+  background: none;
+}
+
+.sign-label {
+  color: var(--main-color);
+  font-weight: 500;
+}
+
+.sign-contract-left {
+  position: relative;
+  padding: 10px 30px 10px 0;
+  background-color: var(--container2-color);
+  border-radius: 8px 0 0 8px;
+}
+
+/* Scrollable Conditions Box */
+.sign-conditions-section {
+  background: rgba(255, 255, 255, 0.163);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  /* border: 1px solid rgba(255, 255, 255, 0.518); */
+  border: 2px solid #bababa;
+  border-radius: 5px;
+  padding: 20px 20px 0;
+  max-height: 322px; /* Adjust as needed */
+  overflow-y: auto;
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 5px 0 20px;
+  color: #333;
+}
+
+.sign-conditions-section::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sign-conditions-section::-webkit-scrollbar-thumb {
+  background-color: var(--text-color);
+  border-radius: 10px;
+}
+
+.sign-conditions-section h2 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--main-color);
+}
+
+.sign-conditions-section ol {
+  padding-left: 20px;
+  margin-bottom: 2rem;
+}
+
+.sign-conditions-section li {
+  margin-bottom: 6px;
+  font-size: 12px;
+}
+
+.sign-checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-top: 3px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #444;
+}
+
+.sign-checkbox-container input[type='checkbox'] {
+  margin-right: 8px;
+}
+
+.sign-contract-text {
+  margin: 0 0 20px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-color);
+}
+
+.sign-preview {
+  margin-top: 2rem;
+  border-top: 1px solid #ddd;
+  padding-top: 1rem;
+}
+
+.sign-preview img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
+  margin-top: 0.5rem;
+}
+
+.sign-clear-button {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.sign-submit-button button {
+    margin-top: 20px;
+    width: 100%;
+    color: var(--container-color);
+    background-color: var(--main-color);
+}
+
+@media screen and (max-width: 992px) {
+  .sign-contract-container {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .sign-contract-wrapper {
+    padding: 35px 40px;
+  }
+}
+
+@media (max-width: 576px) {
+  .wizard-container {
+    padding: 20px;
+    margin-top: 100px;
+  }
+  .sign-contract-container {
+    margin: 10px 0;
+  }
+  .sign-contract-wrapper {
+    padding: 30px 20px;
+  }
+  .sign-contract-wrapper {
+    padding: 35px 0px;
+    background: none;
+  }
+  
+  .sign-label {
+    color: var(--main-color);
+    font-weight: 500;
+  }
+  
+  .sign-contract-left {
+    position: relative;
+    padding: 35px 0 0;
+    background-color: var(--container2-color);
+    border-radius: 8px 0 0 8px;
+  }
+}

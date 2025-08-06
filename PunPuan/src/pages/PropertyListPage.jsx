@@ -1,7 +1,7 @@
 // src/pages/TenantListPage.jsx
 import React from 'react';
-import '../../Styles/propertyList.css';
-import PropertyList from '../../components/propertyList/PropertyList';
+import '../Styles/propertyList.css';
+import PropertyList from '../components/propertyList/PropertyList';
 
 const PropertyListPage = () => {
   return (

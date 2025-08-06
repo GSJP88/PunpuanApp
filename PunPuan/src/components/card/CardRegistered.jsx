@@ -12,7 +12,7 @@ const CardRow = ({ title, cardCount }) => {
       <h2 className="row-title">{title}</h2>
       <div className="card-wrapper">
         {cards.map((_, index) => (
-        <Link to="/viewPageBefore">
+        <Link to="/viewPage">
           <div className="card" key={index}>
             <div className="card-image-wrapper">
               <img src={HouseImage} alt="house" className="card-image" />
@@ -50,13 +50,6 @@ const CardRow = ({ title, cardCount }) => {
                     </li>
                 </ul>
             </div>
-
-            {/* <div className="btn-wrapper">
-                  <button className="btn">
-                    More Detail
-                    <i class="bi bi-info-circle"></i>
-                  </button>
-                  </div> */}
           </div>
         </Link>
         ))}
@@ -65,7 +58,7 @@ const CardRow = ({ title, cardCount }) => {
   )
 }
 
-const Card = () => {
+const CardRegistered = () => {
   return (
     <div className="card-section">
       <CardRow title="In downtown" cardCount={15} />
@@ -75,4 +68,4 @@ const Card = () => {
   )
 }
 
-export default Card
+export default CardRegistered

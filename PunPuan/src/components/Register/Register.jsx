@@ -19,7 +19,7 @@ const Register = () => {
 
   const handleSubmit = () => {
     if (isTenant) {
-      navigate('/tenantDashboard');
+      navigate('/tenantHomePage');
     } else {
       navigate('/landlordDashboard');
     }

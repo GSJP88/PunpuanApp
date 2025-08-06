@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
-import '../../Styles/notificationPage.css';
-import idCard from "../../assets/id_card.jpg"
+import '../Styles/notificationPage.css';
+import idCard from "../assets/id_card.jpg"
 
 // Dummy tenant data (can replace with backend call)
 const tenantData = {

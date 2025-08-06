@@ -1,5 +1,5 @@
 import React from 'react';
-import SignContract from '../../components/signContract/SignContract';
+import SignContract from '../components/signContract/SignContract';
 
 const SignContractPage = () => {
   return (

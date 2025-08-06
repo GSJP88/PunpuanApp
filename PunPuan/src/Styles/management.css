@@ -1,6 +1,6 @@
 .management-container {
   max-width: 1000px;
-  margin-top: 70px;
+  margin-top: 90px;
   position: relative;
   min-height: 100vh;
 }
@@ -13,7 +13,8 @@
 
 .management_grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
   gap: 24px;
 }
 
