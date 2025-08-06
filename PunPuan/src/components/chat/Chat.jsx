@@ -3,11 +3,11 @@ import '../../Styles/chat.css';
 import chatBg from '../../assets/smallcondo.jpg';
 
 const initialMessages = [
-  { id: 1, sender: 'admin', type: 'text', text: "How can we help? We're here for you!", time: '3:09 pm' },
-  { id: 2, sender: 'user', type: 'text', text: 'Hey John, I am looking for the best admin template.', time: '3:09 pm' },
-  { id: 3, sender: 'user', type: 'text', text: 'It should be Bootstrap 4 compatible', time: '3:09 pm' },
-  { id: 4, sender: 'admin', type: 'text', text: 'Absolutely!', time: '3:09 pm' },
-  { id: 5, sender: 'admin', type: 'text', text: 'Modern admin is the responsive bootstrap 4 admin template!', time: '3:09 pm' },
+  { id: 1, sender: 'admin', type: 'text', text: "Sbaiy D. How can we help?", time: '3:09 pm' },
+  { id: 2, sender: 'user', type: 'text', text: 'Suay khoy h bot nae', time: '3:09 pm' },
+  { id: 3, sender: 'user', type: 'text', text: 'Suay brk v t h project hai ork ma d jg br trng kup pai kae khuen laiy theua', time: '3:09 pm' },
+  { id: 4, sender: 'admin', type: 'text', text: 'Sure!', time: '3:09 pm' },
+  { id: 5, sender: 'admin', type: 'text', text: 'If i was ChatGPT', time: '3:09 pm' },
 ];
 
 const Chat = () => {
@@ -60,7 +60,7 @@ const Chat = () => {
             </div>
           </div>
           <div>
-            <div className="chat-name">Jane Rowlis</div>
+            <div className="chat-name">Gang Call Center</div>
           </div>
         </div>
 
