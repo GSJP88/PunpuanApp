@@ -13,7 +13,7 @@ const Footer = () => {
         <div className="footer-section">
           <h2 className="footer-title">PUNPUAN</h2>
           <p className="footer-text">
-            A small river named Duden flows by their place and supplies it with the necessary regelialia.
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias modi maiores unde.
           </p>
           <a href="#" className="footer-read-more">read more →</a>
         </div>
