@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
-import "../../Styles/contactLandlord.css"
+import "../../Styles/contact.css"
 
-const contactLandlord = () => {
+const contact = () => {
 const form = useRef();
 
   const sendEmail = (e) => {
@@ -47,4 +47,4 @@ const form = useRef();
   )
 }
 
-export default contactLandlord;
+export default contact;

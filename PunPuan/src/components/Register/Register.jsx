@@ -24,7 +24,7 @@ const Register = () => {
     const userRole = isTenant ? "tenant" : "landlord";
     login(userRole); // ✅ FIXED
 
-    navigate(isTenant ? "/tenantDashboard" : "/landlordDashboard");
+    navigate(isTenant ? "/tenantHomePage" : "/landlordDashboard");
   };
 
   return (

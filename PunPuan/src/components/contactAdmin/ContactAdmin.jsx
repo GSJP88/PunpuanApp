@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
-import "../../Styles/comment.css"
+import "../../Styles/contactAdmin.css"
 
 const Contact = () => {
 const form = useRef();
@@ -16,10 +16,10 @@ const form = useRef();
   };
 
   return (
-    <section className="comment" id="comment">
+    <section className="comment">
             <div className="comment__container  grid">
-                <div className="comment__content">
-                    <h2 className="comment__title title">Comment</h2>
+                <div className="comment__content" id="comment">
+                    <h2 className="comment__title title">Contact Admin</h2>
 
                     <form ref={form} onSubmit={sendEmail} className="comment__form">
 

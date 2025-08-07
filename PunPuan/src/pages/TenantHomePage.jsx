@@ -2,7 +2,7 @@ import React from 'react';
 import Filter from '../components/filter/Filter';
 import Slider from '../components/slider/Slider';
 import FAQ from '../components/faq/FAQ';
-import Comment from '../components/comment/Comment';
+import Comment from '../components/contactAdmin/ContactAdmin';
 import CardRegistered from '../components/card/CardRegistered';
 
 const TenantHomePage = () => {

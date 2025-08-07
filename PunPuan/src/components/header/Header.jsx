@@ -44,12 +44,12 @@ const Header = () => {
                 About us
               </Link>
             </li>
-            <li className="nav__item">
+            {/* <li className="nav__item">
               <Link to="/landlordNotification" className="nav__link active-link">
                 <i className="bi bi-search nav__icon"></i>
                 Explore
               </Link>
-            </li>
+            </li> */}
             <li className="nav__item">
               <Link to="/contactPage" className="nav__link active-link">
                 <i className="bi bi-envelope nav__icon"></i>

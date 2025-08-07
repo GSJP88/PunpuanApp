@@ -1,0 +1,44 @@
+.contact-page-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    overflow: hidden;
+}
+
+.contact-left {
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    background: #f8f8f8;
+}
+
+.contact-left h2 {
+    font-size: 30px;
+    text-align: center;
+    color: var(--main-color);
+}
+
+.contact-left p {
+    text-align: center;
+    font-size: 14px;
+}
+
+.contact-social-media {
+    display: flex;
+    gap: 2rem;
+}
+
+.contact-social-media i {
+    font-size: 36px;
+}
+
+.contact-social-media i:hover {
+    transition: all .2s ease-in-out;
+    transform: scale(1.05);
+}
+
+.contact-send {
+   padding: 30px 60px 0;
+}
