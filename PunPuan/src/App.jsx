@@ -1,8 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import ScrollToTop from './components/scrollToTop/ScrollToTop';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
+
 import './App.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -10,14 +12,15 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ViewPage from './pages/ViewPage';
+import ViewPageBefore from './pages/ViewPageBefore';
 import RegisterPage from './pages/RegisterPage';
+import LoginPage from './pages/LoginPage';
 import ContactPage from './pages/ContactPage';
 import NotificationPage from './pages/NotificationPage';
-import LoginPage from './pages/LoginPage';
 import LandlordDashboard from './pages/LandlordDashboard';
 import TenantDashboard from './pages/TenantDashboard';
-import { AuthProvider } from './context/AuthContext';
-import AddPropertyPage from './pages/AddPropertyPage'
+import TenantHomePage from './pages/TenantHomePage';
+import AddPropertyPage from './pages/AddPropertyPage';
 import MessageDetailPage from './pages/MessageDetailPage';
 import SignContractPage from './pages/SignContractPage';
 import TenantListPage from './pages/TenantListPage';
@@ -25,35 +28,35 @@ import PropertyListPage from './pages/PropertyListPage';
 import PropertyViewPage from './pages/PropertyViewPage';
 import ProfilePage from './pages/ProfilePage';
 import ChatPage from './pages/ChatPage';
-import ViewPageBefore from './pages/ViewPageBefore';
-import TenantHomePage from './pages/TenantHomePage';
+
+import { AuthProvider } from './context/AuthContext';
 
 const App = () => {
   return (
     <AuthProvider>
       <Router>
-        <ScrollToTop/>
+        <ScrollToTop />
         <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/aboutPage" element={<AboutPage />} />
           <Route path="/viewPage" element={<ViewPage />} />
-          <Route path="/viewPageBefore" element={<ViewPageBefore/>} />
+          <Route path="/viewPageBefore" element={<ViewPageBefore />} />
           <Route path="/registerPage/:role" element={<RegisterPage />} />
           <Route path="/loginPage" element={<LoginPage />} />
           <Route path="/contactPage" element={<ContactPage />} />
           <Route path="/notificationPage" element={<NotificationPage />} />
-          <Route path="/tenantHomePage" element={<TenantHomePage/>} />
+          <Route path="/tenantHomePage" element={<TenantHomePage />} />
           <Route path="/landlordDashboard" element={<LandlordDashboard />} />
           <Route path="/tenantDashboard" element={<TenantDashboard />} />
-          <Route path="/addPropertyPage" element={<AddPropertyPage/>}/>
+          <Route path="/addPropertyPage" element={<AddPropertyPage />} />
           <Route path="/message/:id" element={<MessageDetailPage />} />
           <Route path="/signContractPage/:id" element={<SignContractPage />} />
           <Route path="/tenantListPage" element={<TenantListPage />} />
-          <Route path="/propertyListPage" element={<PropertyListPage/>}/> 
-          <Route path="/propertyViewPage/:id" element={<PropertyViewPage/>}/>
-          <Route path="/profilePage" element={<ProfilePage/>} />
-          <Route path="/chatPage" element={<ChatPage/>} />
+          <Route path="/propertyListPage" element={<PropertyListPage />} />
+          <Route path="/propertyViewPage/:id" element={<PropertyViewPage />} />
+          <Route path="/profilePage" element={<ProfilePage />} />
+          <Route path="/chatPage" element={<ChatPage />} />
         </Routes>
         <Footer />
       </Router>
@@ -62,48 +65,3 @@ const App = () => {
 };
 
 export default App;
-
-// import React from 'react';
-// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
-// import Header from './components/header/Header';
-
-// import './App.css';
-// import 'bootstrap-icons/font/bootstrap-icons.css';
-// import '@fortawesome/fontawesome-free/css/all.min.css';
-// import HomePage from './pages/homePage/HomePage';
-// import AboutPage from './pages/aboutPage/AboutPage';
-// // import TenantRegister from './pages/tenant/TenantRegister';
-// // import LandlordRegister from './pages/landlord/LandlordRegister';
-// import Footer from './components/footer/Footer';
-// import ViewPage from './pages/viewPage/ViewPage'
-// import ScrollToTop from './components/scrollToTop/ScrollToTop';
-// import RegisterPage from './pages/RegisterPage/RegisterPage';
-// import ContactPage from './pages/contactPage/ContactPage';
-// import NotificationPage from './pages/NotificationPage/NotificationPage';
-// import Login from './components/login/Login';
-
-// const App = () => {
-//   return (
-//     <Router>
-//       <Header />
-//       <ScrollToTop />
-//       <Routes>
-//         <Route path="/" element={<HomePage />} />
-//         <Route path="/aboutPage" element={<AboutPage />} />
-//         <Route path="/viewPage" element={<ViewPage />} />
-//         {/* Add more routes here */}
-//         {/* <Route path="/register/tenant" element={<TenantRegister />} /> */}
-//         {/* <Route path="/register/landlord" element={<LandlordRegister />} /> */}
-
-//         <Route path="/registerPage/:role" element={<RegisterPage />} />
-//         <Route path="/loginPage" element={<Login />} />
-//         <Route path="/contactPage" element={<ContactPage />} />
-//         <Route path="/notificationPage" element={<NotificationPage />} />
-//       </Routes>
-//       <Footer/>
-//     </Router>
-//   );
-// };
-
-// export default App;

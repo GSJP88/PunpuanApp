@@ -1,13 +1,24 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from "../../context/AuthContext";
 import "../../Styles/login.css";
 
 const Login = () => {
+  const { login } = useAuth(); // ✅ use login, not setAuth
   const navigate = useNavigate();
-  const handleLogin = () => {
-    navigate('/tenantHomePage'); // adjust route if needed
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    // Example: Assume user is tenant (you can update based on real inputs)
+    const role = "tenant"; // or "landlord"
+
+    login(role); // ✅ call login(role) from context
+
+    navigate(role === "tenant" ? "/tenantDashboard" : "/landlordDashboard");
   };
+
   return (
     <div className="login-container box_container container">
       {/* Left side */}
@@ -17,7 +28,6 @@ const Login = () => {
           <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's
-
           </p>
         </div>
       </div>
