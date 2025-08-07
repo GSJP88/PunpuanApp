@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import '../../Styles/chat.css';
 import chatBg from '../../assets/smallcondo.jpg';
 
@@ -14,7 +14,15 @@ const Chat = () => {
   const [messages, setMessages] = useState(initialMessages);
   const [newMessage, setNewMessage] = useState('');
   const [selectedFile, setSelectedFile] = useState(null);
-  const [modalImage, setModalImage] = useState(null); // ← For modal preview
+  const [modalImage, setModalImage] = useState(null);
+
+  const chatBoxRef = useRef(null); // Ref for chat box
+
+  useEffect(() => {
+    if (chatBoxRef.current) {
+      chatBoxRef.current.scrollTop = chatBoxRef.current.scrollHeight;
+    }
+  }, [messages]); // Scrolls down when messages update
 
   const handleSend = () => {
     if (newMessage.trim() !== '') {
@@ -64,7 +72,7 @@ const Chat = () => {
           </div>
         </div>
 
-        <div className="chat-box">
+        <div className="chat-box" ref={chatBoxRef}>
           {messages.map(msg => (
             <div key={msg.id} className={`message-row ${msg.sender === 'admin' ? 'admin' : 'user'}`}>
               {msg.type === 'text' && (

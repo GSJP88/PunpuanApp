@@ -65,8 +65,8 @@
     font-size: 12px;
     border: 2px solid var(--main-color);
     background-color: var(--main-color);
-    padding: 12px 24px;
-    border-radius: 24px;
+    padding: 8px 24px;
+    border-radius: 30px;
     color: var(--container-color);
     cursor: pointer;
 }
@@ -93,8 +93,8 @@
 
 /* Active Link */
 .active-link:hover {
-    color: var(--title-color);
-    transform: scale(1..5);
+    color: var(--text-color);
+    transform: scale(1.05);
 }
 /* .active-link, 
 .nav__link:hover {
@@ -110,12 +110,15 @@
 
 .profile-dropdown {
   position: relative;
-  padding: 8px 24px;
-  border: 2px solid var(--text-color);
-  border-radius: 30px;
 }
 
 .profile-toggle {
+  border: 2px solid var(--text-color);
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  width: 100px;
+  height: 36px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -260,6 +263,10 @@
     .nav__close, 
     .nav__toggle {
         display: block;
+    }
+
+    .profile-toggle {
+        border: none;
     }
 }
 
