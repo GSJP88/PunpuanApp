@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// เรียกไฟล์ route ทีละไฟล์แบบนี้
+// Route
 require('./routes/userRoutes')(app);
 require('./routes/tenantRoutes')(app);
 require('./routes/landlordRoutes')(app);
@@ -24,5 +24,5 @@ require('./routes/serviceFeePaymentRoutes')(app);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server running on: http://localhost:${PORT}`);
 });

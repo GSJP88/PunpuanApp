@@ -6,4 +6,5 @@ module.exports = (app) => {
   app.post('/api/users', userController.createUser);
   app.put('/api/users/:id', userController.updateUser);
   app.delete('/api/users/:id', userController.deleteUser);
+  app.post('/api/register', userController.registerUser);
 };
