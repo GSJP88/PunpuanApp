@@ -24,7 +24,10 @@ const Header = () => {
   return (
     <header className="header">
       <nav className="nav">
-        <Link to="/" className="nav__logo">PunPuan</Link>
+        <Link to="/" className="nav__logo" style={{ display: "flex", alignItems: "center" }}>
+          <img src="/logo.png" alt="logo" width={30} height={30} />
+          <span style={{ marginLeft: "8px" }}>PunPuan</span>
+        </Link>
 
         <div className={toggle ? "nav__menu show-menu" : "nav__menu"}>
           <div className="nav__close">
