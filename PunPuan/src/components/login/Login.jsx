@@ -66,6 +66,7 @@ import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from "../../context/AuthContext";
+import { loginUser } from "../../api/apiService";
 import "../../Styles/login.css";
 import axios from "axios";
 
@@ -79,28 +80,17 @@ const Login = () => {
   const [error, setError] = useState(null);
 
   const handleLogin = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    try {
-      // เรียก API backend
-      const response = await axios.post("http://localhost:5000/api/login", {
-        email,
-        password,
-      });
-
-      // สมมติ backend ส่งกลับ { role: 'tenant' } หรือ { role: 'landlord' }
-      const { role } = response.data;
-
-      // login จาก context
-      login(role);
-
-      // navigate ไปหน้า dashboard ตาม role
-      navigate(role === "tenant" ? "/tenantDashboard" : "/landlordDashboard");
-    } catch (err) {
-      // แสดง error ถ้าเชื่อมต่อ backend ไม่ได้ หรือ login ผิด
-      setError("Login failed: " + (err.response?.data?.message || err.message));
-    }
-  };
+  try {
+    const data = await loginUser({ email, password });
+    const role = data.user.Role;
+    login(role);
+    navigate(role === "tenant" ? "/tenantDashboard" : "/landlordDashboard");
+  } catch (err) {
+    setError(err.response?.data?.error || 'Login failed');
+  }
+};
 
   return (
     <div className="login-container box_container container">

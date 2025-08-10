@@ -241,3 +241,8 @@ export const deleteServiceFeePayment = (id) =>
 export const registerUser = (userData) => {
   return axios.post(`${API_BASE}/register`, userData).then(res => res.data);
 };
+
+// ฟังก์ชันเข้าสู่ระบบ
+export const loginUser = (credentials) => {
+  return axios.post(`${API_BASE}/login`, credentials).then(res => res.data);
+};
