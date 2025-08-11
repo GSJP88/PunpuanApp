@@ -1,3 +1,19 @@
-  html {
-    scroll-behavior: smooth;
-  }
+/* Global font family */
+html,
+body,
+button,
+input,
+textarea,
+select {
+  font-family: 'Noto Sans', sans-serif !important;
+  margin: 0;
+  padding: 0;
+}
+
+/* SweetAlert2 override */
+.swal2-popup,
+.swal2-title,
+.swal2-content,
+.swal2-actions button {
+  font-family: 'Noto Sans', sans-serif !important;
+}

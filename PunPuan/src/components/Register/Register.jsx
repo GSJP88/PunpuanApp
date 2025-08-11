@@ -37,8 +37,8 @@ const Register = () => {
 
     try {
       Swal.fire({
-        title: "Register!",
-        text: "You clicked the button!",
+        title: "ລົງທະບຽນສຳເລັດ",
+        text: "ຕົກລົງ",
         icon: "success"
       });
 

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import "../../Styles/header.css";
+import { showSuccess } from "../../Service/swal";
 
 const Header = () => {
   const [toggle, setToggle] = useState(false);
@@ -18,6 +19,7 @@ const Header = () => {
   const handleLogout = () => {
     logout();
     setDropdownOpen(false);
+    showSuccess("ອອກລະບົບສຳເລັດ");
     navigate("/");
   };
 

@@ -69,6 +69,8 @@ import { useAuth } from "../../context/AuthContext";
 import { loginUser } from "../../api/apiService";
 import "../../Styles/login.css";
 import axios from "axios";
+import Swal from "sweetalert2";
+import { showSuccess, showError } from "../../Service/swal";
 
 const Login = () => {
   const { login } = useAuth();
@@ -86,9 +88,11 @@ const Login = () => {
     const data = await loginUser({ email, password });
     const role = data.user.Role;
     login(role);
+    showSuccess("ເຂົ້າລະບົບສຳເລັດ", `ບັນຊີ: ${role}`);
     navigate(role === "tenant" ? "/tenantDashboard" : "/landlordDashboard");
   } catch (err) {
-    setError(err.response?.data?.error || 'Login failed');
+    showError("Login failed", err.response?.data?.error || "Login failed");
+    setError(err.response?.data?.error || "Login failed");
   }
 };
 
