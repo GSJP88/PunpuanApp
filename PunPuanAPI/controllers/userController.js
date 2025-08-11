@@ -118,8 +118,8 @@ exports.registerUser = (req, res) => {
     // ขั้นตอน 2: Insert ลง tenant หรือ landlord
     if (Role.toLowerCase() === 'tenant') {
       const insertTenantSQL = `
-        INSERT INTO tenant (First_Name, Last_Name, Occupation, Monthly_Income)
-        VALUES (?, ?, ?, ?)
+        INSERT INTO tenant (First_Name, Last_Name, Occupation, Monthly_Income, User_ID)
+        VALUES (?, ?, ?, ?, ?)
       `;
       db.query(insertTenantSQL, [First_Name, Last_Name, Occupation || null, Income || null], (errTenant, resultTenant) => {
         if (errTenant) {

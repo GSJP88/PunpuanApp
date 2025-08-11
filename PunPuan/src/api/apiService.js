@@ -93,8 +93,8 @@ export const getRooms = () =>
 export const getRoomById = (id) =>
   axios.get(`${API_BASE}/rooms/${id}`).then(res => res.data);
 
-export const createRoom = (roomData) =>
-  axios.post(`${API_BASE}/rooms`, roomData).then(res => res.data);
+// export const createRoom = (roomData) =>
+//   axios.post(`${API_BASE}/rooms`, roomData).then(res => res.data);
 
 export const updateRoom = (id, roomData) =>
   axios.put(`${API_BASE}/rooms/${id}`, roomData).then(res => res.data);
@@ -246,3 +246,8 @@ export const registerUser = (userData) => {
 export const loginUser = (credentials) => {
   return axios.post(`${API_BASE}/login`, credentials).then(res => res.data);
 };
+
+export const createRoom = (formData) =>
+  axios.post(`${API_BASE}/rooms`, formData, {
+    headers: { 'Content-Type': 'multipart/form-data' },
+  }).then(res => res.data);

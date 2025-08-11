@@ -6,15 +6,24 @@ const db = require('./config/db');
 dotenv.config();
 
 const app = express();
-app.use(cors());
-app.use(express.json());
 
-// Routes
+app.use(cors());
+
+// อย่าลืมเพิ่มการใช้ express.urlencoded สำหรับรับ form-data ที่ไม่ใช่ json
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Static โฟลเดอร์รูปภาพ
+app.use('/uploads', express.static('uploads'));
+
+// Routes (แก้ให้ถูกต้องทีละไฟล์)
 require('./routes/userRoutes')(app);
 require('./routes/tenantRoutes')(app);
 require('./routes/landlordRoutes')(app);
 require('./routes/typeRoutes')(app);
-require('./routes/roomRoutes')(app);
+const roomRoutes = require('./routes/room.routes');
+app.use(roomRoutes);
+
 require('./routes/serviceFeeRoutes')(app);
 require('./routes/rentRoutes')(app);
 require('./routes/rentalAgreementRoutes')(app);
@@ -38,6 +47,6 @@ const PORT = process.env.PORT || 5000;
     });
   } catch (err) {
     console.error('❌ Database connection failed:', err.message);
-    process.exit(1); // ปิด process ถ้าเชื่อมต่อ DB ไม่ได้
+    process.exit(1);
   }
 })();
