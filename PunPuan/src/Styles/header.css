@@ -62,7 +62,7 @@
 
 
 .nav__item.sign_in .nav__link {
-    font-size: 12px;
+    font-size: 14px;
     border: 2px solid var(--main-color);
     background-color: var(--main-color);
     padding: 8px 24px;
