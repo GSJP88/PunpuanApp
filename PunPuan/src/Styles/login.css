@@ -1,6 +1,8 @@
 .login-container {
   display: flex;
   overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
 
 /* Left section */
@@ -92,6 +94,7 @@
 
 @media screen and (max-width: 768px) {
   .login-container {
+    display: flex;
     margin: 160px;
   }
 
