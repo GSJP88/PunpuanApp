@@ -19,39 +19,43 @@ const Banner = () => {
         {/* <img src={Image} alt="Professional Woman" /> */}
         <div className="floating-types">
           <div className="banner-type">
-            <div className="type-image"
+            {/* <div className="type-image"
                   style={{
                   backgroundImage: `url(${apartmentImg})`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
-                }}/>
+                }}/> */}
+              <i class="bi bi-building-fill"></i>
               <p>Apartment</p>
           </div>
           <div className="banner-type">
-            <div className="type-image"
+            {/* <div className="type-image"
                   style={{
                   backgroundImage: `url(${condoImg})`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
-            }}/>
+            }}/> */}
+              <i class="bi bi-buildings-fill"></i>
               <p>Condominium</p>
           </div>
           <div className="banner-type">
-            <div className="type-image"
+            {/* <div className="type-image"
                   style={{
                   backgroundImage: `url(${townhousesImg})`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
-                }}/>
+                }}/> */}
+              <i class="bi bi-houses-fill"></i>
               <p>Townhouses</p>
           </div>
           <div className="banner-type">
-                <div className="type-image"
+                {/* <div className="type-image"
                   style={{
                   backgroundImage: `url(${houseImg})`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
-                }}/>
+                }}/> */}
+              <i class="bi bi-house-fill"></i>
               <p>House</p>
           </div>
         </div>
