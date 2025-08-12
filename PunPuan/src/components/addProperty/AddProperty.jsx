@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../../Styles/addProperty.css';
+import { showSuccess, showError } from "../../Service/swal";
 
 const laosData = {
   "Vientiane Prefecture": {
@@ -39,6 +40,7 @@ const AddProperty = () => {
   const [description, setDescription] = useState('');
   const [roomAmount, setRoomAmount] = useState('');
   const [available, setAvailable] = useState('');
+  const [maxOccupancy, setMaxOccupancy] = useState('');
   const [bedRooms, setBedRooms] = useState('');
   const [bathRooms, setBathRooms] = useState('');
   const [parking, setParking] = useState('');
@@ -127,7 +129,7 @@ const AddProperty = () => {
     formData.append('roomType', roomType);
     formData.append('description', description);
     formData.append('roomAmount', roomAmount);
-    formData.append('available', available);
+    formData.append('maxOccupancy', maxOccupancy);
     formData.append('bedRooms', bedRooms);
     formData.append('bathRooms', bathRooms);
     formData.append('parking', parking);
@@ -145,8 +147,8 @@ const AddProperty = () => {
         'Content-Type': 'multipart/form-data',
       },
     });
-
-    alert('Property added successfully!');
+    showSuccess("ເພີ່ມຫ້ອງສຳເລັດ", ` `);
+    // alert('Property added successfully!');
     navigate('/propertyListPage');
   } catch (error) {
     console.error('Error adding property:', error);
@@ -174,8 +176,8 @@ const AddProperty = () => {
               <input
                 type="text"
                 placeholder="Available"
-                value={available}
-                onChange={(e) => setAvailable(e.target.value)}
+                value={maxOccupancy}
+                onChange={(e) => setMaxOccupancy(e.target.value)}
               />
             </div>
           </div>

@@ -44,6 +44,7 @@ const propertyData = [
     bathRoom: 1,
     Parking: 1,
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta, praesentium minima aperiam eum et excepturi corrupti unde ex beatae fugiat."
+  
   },
   {
     id: 2,

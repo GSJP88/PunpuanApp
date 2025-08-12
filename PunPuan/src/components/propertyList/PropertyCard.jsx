@@ -3,9 +3,13 @@ import '../../Styles/propertyList.css';
 import { useNavigate } from 'react-router-dom';
 
 const PropertyCard = ({ data }) => {
-  const percent = Math.floor((data.occupancy * 100) / data.totalProperty);
-  const statusText = percent === 100 ? 'Unavailable' : 'Available';
-  const isUnavailable = percent === 100;
+  // คำนวณ percent ให้ป้องกัน division by zero
+  const total_room = ((data.Room_Amount) - (data.Max_Occupancy));
+  const percent = Math.floor((total_room * 100) / (data.Room_Amount));
+  // const maxOccupancy = data.Max_Occupancy > 0 ? data.Max_Occupancy : 1;
+  // const percent = Math.floor((data.Room_Amount * 100) / maxOccupancy);
+  const statusText = percent >= 100 ? 'Unavailable' : 'Available';
+  const isUnavailable = percent >= 100;
 
   const navigate = useNavigate();
   const handleClick = () => {

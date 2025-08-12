@@ -6,14 +6,12 @@ exports.addRoom = async (req, res) => {
   console.log(req.body);
   console.log("userID = ", req.body.userId);
   try {
-    // ดึง User_ID จาก req.body
     const userId = req.body.userId;
     if (!userId) {
       return res.status(401).json({ error: 'Unauthorized: userId missing' });
     }
     console.log('userId:', userId);
 
-    // ดึง Landlord_ID จาก User_ID
     const [landlordRows] = await connection.query(
       'SELECT Landlord_ID FROM Landlord WHERE User_ID = ? LIMIT 1',
       [userId]
@@ -26,7 +24,6 @@ exports.addRoom = async (req, res) => {
     const landlord_id = landlordRows[0].Landlord_ID;
     console.log('landlord_id:', landlord_id);
 
-    // ดึงข้อมูลอื่น ๆ จาก req.body
     const {
       province,
       district,
@@ -37,7 +34,7 @@ exports.addRoom = async (req, res) => {
       roomType,
       description,
       roomAmount,
-      available,
+      maxOccupancy,
       bedRooms,
       bathRooms,
       parking
@@ -45,23 +42,24 @@ exports.addRoom = async (req, res) => {
 
     const address = `${village || ''}, ${district || ''}, ${province || ''}`;
     const monthly_rent = price || null;
-    const availability_status = available === '1' ? 'Available' : 'Unavailable';
-    const max_occupancy = bedRooms || null;
+    const availability_status = maxOccupancy === '1' ? 'Available' : 'Unavailable';
+
+    const bed_rooms = bedRooms || 0;        // สำหรับ Bed_Rooms
+    const bath_rooms = bathRooms || 0;      // สำหรับ Bath_Rooms
+    const parkingValue = parking || 0;      // สำหรับ Parking
+    const max_occupancy = maxOccupancy || 0;    // สำหรับ Max_Occupancy (เพิ่มตรงนี้)
+    
     const property_name = propertyName || null;
     const room_type = roomType || null;
     const room_amount = roomAmount || null;
-    const bath_rooms = bathRooms || null;
     const location_link = locationLink || null;
-    const parkingValue = parking || null;
 
-    // ถ้าใช้ multipart/form-data ต้องจัดการไฟล์จาก req.files
     const profileImage = req.files?.profileImage?.[0]?.filename || null;
     const propertyImagesFiles = req.files?.propertyImages || [];
     const propertyImages = propertyImagesFiles.map(file => file.filename).join(',');
 
     await connection.beginTransaction();
 
-    // หา Type_ID จากชื่อ roomType
     let [typeRows] = await connection.query(
       'SELECT Type_ID FROM type WHERE Type_Name = ? LIMIT 1',
       [room_type]
@@ -71,7 +69,6 @@ exports.addRoom = async (req, res) => {
     if (typeRows.length > 0) {
       type_id = typeRows[0].Type_ID;
     } else {
-      // ถ้าไม่มีประเภทนี้ ให้เพิ่มใหม่
       let [typeInsert] = await connection.query(
         'INSERT INTO type (Type_Name, Description) VALUES (?, ?)',
         [room_type, `${room_type} property`]
@@ -80,11 +77,10 @@ exports.addRoom = async (req, res) => {
       console.log(`✅ Inserted new type: ${room_type} with ID ${type_id}`);
     }
 
-    // เพิ่มข้อมูล room
     const [roomResult] = await connection.query(
       `INSERT INTO room 
-        (Landlord_ID, Type_ID, Address, Description, Monthly_Rent, Availability_Status, Max_Occupancy, Property_Name, Room_Type, Room_Amount, Bath_Rooms, Parking, Location_Link, Profile_Image, Property_Images)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        (Landlord_ID, Type_ID, Address, Description, Monthly_Rent, Availability_Status, Bed_Rooms, Bath_Rooms, Parking, Max_Occupancy, Property_Name, Room_Type, Room_Amount, Location_Link, Profile_Image, Property_Images)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         landlord_id,
         type_id,
@@ -92,12 +88,13 @@ exports.addRoom = async (req, res) => {
         description || null,
         monthly_rent,
         availability_status,
-        max_occupancy,
+        bed_rooms,
+        bath_rooms,
+        parkingValue,
+        max_occupancy,      // <-- เพิ่มค่า Max_Occupancy ตรงนี้
         property_name,
         room_type,
         room_amount,
-        bath_rooms,
-        parkingValue,
         location_link,
         profileImage,
         propertyImages
@@ -118,5 +115,71 @@ exports.addRoom = async (req, res) => {
     res.status(500).json({ error: 'Failed to add room' });
   } finally {
     connection.release();
+  }
+};
+
+exports.getRooms = async (req, res) => {
+  try {
+    if (!req.session?.user?.id) {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
+
+    // ดึง Landlord_ID จากตาราง landlord โดยอ้างอิงจาก User_ID ใน session
+    const [landlordRows] = await db.query(
+      'SELECT Landlord_ID FROM landlord WHERE User_ID = ?',
+      [req.session.user.id]
+    );
+
+    if (landlordRows.length === 0) {
+      return res.json([]); // ไม่มีห้องเพราะยังไม่ได้เป็น landlord
+    }
+
+    const landlordId = landlordRows[0].Landlord_ID;
+
+    // ดึงห้องเฉพาะ landlord นี้
+    const [rooms] = await db.query(
+      'SELECT * FROM room WHERE Landlord_ID = ?',
+      [landlordId]
+    );
+
+    res.json(rooms);
+  } catch (err) {
+    console.error('❌ Error fetching rooms:', err);
+    res.status(500).json({ error: 'Server error' });
+  }
+};
+
+exports.getRoomById = async (req, res) => {
+  try {
+    if (!req.session?.user?.id) {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
+
+    const roomId = req.params.id;
+
+    // ดึง landlordId จาก userId ใน session
+    const [landlordRows] = await db.query(
+      'SELECT Landlord_ID FROM landlord WHERE User_ID = ?',
+      [req.session.user.id]
+    );
+    if (landlordRows.length === 0) {
+      return res.status(400).json({ error: 'Landlord not found' });
+    }
+    const landlordId = landlordRows[0].Landlord_ID;
+
+    // ดึงห้องที่ตรงกับ landlord และ roomId
+    const [rooms] = await db.query(
+      'SELECT * FROM room WHERE Room_ID = ? AND Landlord_ID = ?',
+      [roomId, landlordId]
+    );
+
+    if (rooms.length === 0) {
+      return res.status(404).json({ error: 'Room not found' });
+    }
+
+    res.json(rooms[0]);
+  } catch (err) {
+    console.error('❌ Error fetching room by id:', err);
+    res.status(500).json({ error: 'Server error' });
   }
 };

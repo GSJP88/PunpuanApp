@@ -1,40 +1,77 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropertyCard from './PropertyCard';
-import allProperties from '../../data/properties'
-
+import axios from 'axios';
 
 const PropertyList = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filter, setFilter] = useState('all'); // all | available | unavailable
-  
+  const [allProperties, setAllProperties] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchRooms = async () => {
+      try {
+        setLoading(true);
+        const res = await axios.get('http://localhost:5000/api/rooms', {
+          withCredentials: true // สำคัญ!
+        });
+        setAllProperties(res.data);
+        setLoading(false);
+      } catch (err) {
+        setError('Failed to load properties');
+        setLoading(false);
+      }
+    };
+
+    fetchRooms();
+  }, []);
+
+  // filter และ search logic
   const filteredProperties = allProperties.filter(property => {
-    const matchesSearch = property.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    property.id.toString().includes(searchTerm);
-    
-    const percent = Math.floor((property.occupancy * 100) / property.totalProperty);
+    const name = property.Property_Name || '';
+    const availability = property.Availability_Status || '';
+
+    const matchesSearch =
+      name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      property.Room_ID?.toString().includes(searchTerm);
+
     const matchesFilter =
-    filter === 'all' ||
-      (filter === 'available' && percent < 100) ||
-      (filter === 'unavailable' && percent === 100);
+      filter === 'all' ||
+      (filter === 'available' && availability.toLowerCase() === 'available') ||
+      (filter === 'unavailable' && availability.toLowerCase() !== 'available');
 
     return matchesSearch && matchesFilter;
   });
 
-  const navigate = useNavigate();
   const handleAddClick = () => {
-    navigate('/addPropertyPage'); // adjust route if needed
+    navigate('/addPropertyPage'); // ปรับเส้นทางถ้าจำเป็น
   };
 
   return (
     <div className="property-list-wrapper box_container">
       <div className="property-list-headline">
-      <h2 className="property-list-title">Property List</h2>
+        <h2 className="property-list-title">Property List</h2>
         <div className="property-controls">
           <div className="filter-buttons">
-            <button onClick={() => setFilter('all')} className={filter === 'all' ? 'active' : ''}>All</button>
-            <button onClick={() => setFilter('available')} className={filter === 'available' ? 'active' : ''}>Available</button>
-            <button onClick={() => setFilter('unavailable')} className={filter === 'unavailable' ? 'active' : ''}>Unavailable</button>
+            <button onClick={() => setFilter('all')} className={filter === 'all' ? 'active' : ''}>
+              All
+            </button>
+            <button
+              onClick={() => setFilter('available')}
+              className={filter === 'available' ? 'active' : ''}
+            >
+              Available
+            </button>
+            <button
+              onClick={() => setFilter('unavailable')}
+              className={filter === 'unavailable' ? 'active' : ''}
+            >
+              Unavailable
+            </button>
           </div>
           <div className="search-input-wrapper input_app">
             <i className="bi bi-search search-input-icon"></i>
@@ -50,17 +87,34 @@ const PropertyList = () => {
       </div>
 
       <div className="property-list">
-        {filteredProperties.length > 0 ? (
-          filteredProperties.map(property => (
-            <PropertyCard key={property.id} data={property} />
-            // <PropertyCard key={property.id} data={{ ...property, image: imageMap[property.image] }} />
-          ))
+        {loading ? (
+          <p>Loading properties...</p>
+        ) : error ? (
+          <p>{error}</p>
+        ) : filteredProperties.length > 0 ? (
+          filteredProperties.map((property) => {
+            const mappedData = {
+              id: property.Room_ID,
+              name: property.Property_Name,
+              address: property.Address,
+              image: property.Profile_Image
+                ? `http://localhost:5000/uploads/${property.Profile_Image}`
+                : '/default-image.jpg',
+              type: property.Room_Type,
+              Room_Amount: property.Room_Amount || 0,
+              Max_Occupancy: property.Max_Occupancy || 1,
+            };
+            return <PropertyCard key={property.Room_ID} data={mappedData} />;
+          })
         ) : (
           <p className="no-results">No properties found.</p>
         )}
       </div>
+
       <div className="add-btn-wrapper">
-        <button className="add-property small-button" onClick={handleAddClick}><i class="bi bi-plus"></i> Add Property</button>
+        <button className="add-property small-button" onClick={handleAddClick}>
+          <i className="bi bi-plus"></i> Add Property
+        </button>
       </div>
     </div>
   );

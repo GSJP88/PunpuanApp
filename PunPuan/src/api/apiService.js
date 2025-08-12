@@ -249,6 +249,5 @@ export const loginUser = (credentials) => {
   }).then(res => res.data);
 };
 
-const createRoom = (roomData, userId) => {
-  return axios.post(`${API_BASE}/rooms`, {...roomData, userId});
-};
+export const createRoom = (roomData, userId) =>
+  axios.post(`${API_BASE}/rooms`, { ...roomData, userId }).then(res => res.data);

@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup, ZoomControl } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import "../../Styles/locationMap.css";
-import propertyData from "../../data/properties";
 
 // Custom marker icon
 const customIcon = new L.Icon({
@@ -13,18 +11,34 @@ const customIcon = new L.Icon({
   iconAnchor: [16, 32],
 });
 
-const PropertyLocation = () => {
-  const { id } = useParams(); // Get ID from URL
-  const property = propertyData.find((p) => p.id === parseInt(id));
+const PropertyLocation = ({ property }) => {
   const defaultPosition = [17.950350, 102.621348];
 
+  // location จาก backend อาจมาเป็น string หรือ array
   const [position, setPosition] = useState(defaultPosition);
   const [locationName, setLocationName] = useState("");
 
   useEffect(() => {
-    if (property && Array.isArray(property.location)) {
-      setPosition(property.location);
-      setLocationName(property.name || `Lat: ${property.location[0]}, Lon: ${property.location[1]}`);
+    if (!property) return;
+    let loc = null;
+
+    // location อาจมาเป็น string: "17.95,102.62" หรือ array: [17.95,102.62]
+    if (property.Location_Link) {
+      // พยายามแปลงจาก Location_Link เป็น lat,lng
+      const locStr = property.Location_Link;
+      // ถ้าเป็น URL ของ google maps แบบ https://maps.app.goo.gl/xxxx เราไม่สามารถแปลงเป็นพิกัดง่ายๆ
+      // แต่ถ้าเป็น "lat,lng" เช่น "17.95,102.62" ให้แปลงได้
+      const match = locStr.match(/(\d+\.\d+),\s*(\d+\.\d+)/);
+      if (match) {
+        loc = [parseFloat(match[1]), parseFloat(match[2])];
+      }
+    } else if (property.location && Array.isArray(property.location)) {
+      loc = property.location;
+    }
+
+    if (loc) {
+      setPosition(loc);
+      setLocationName(property.Property_Name || "Property Location");
     } else {
       setLocationName("Location not available");
     }

@@ -4,10 +4,10 @@ const multer = require('multer');
 const path = require('path');
 const roomController = require('../controllers/room.controller');
 
-// ตั้งค่า multer เก็บไฟล์ในโฟลเดอร์ uploads/
+// ตั้งค่า multer
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'uploads/'); // โฟลเดอร์เก็บไฟล์ ต้องมีในโปรเจค
+    cb(null, 'uploads/');
   },
   filename: (req, file, cb) => {
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-// ใช้ multer middleware ร่วมกับ controller
+// POST เพิ่มห้อง
 router.post(
   '/api/rooms',
   upload.fields([
@@ -26,5 +26,9 @@ router.post(
   ]),
   roomController.addRoom
 );
+
+// 🆕 GET ดึงข้อมูลห้องทั้งหมด
+router.get('/api/rooms', roomController.getRooms);
+router.get('/api/rooms/:id', roomController.getRoomById);
 
 module.exports = router;
