@@ -2,25 +2,51 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const db = require('./config/db');
+const session = require('express-session');
+const path = require('path');
 
 dotenv.config();
 
 const app = express();
 
-app.use(cors());
+// ตั้งค่า CORS ให้รองรับ frontend URL และส่ง cookie ได้
+app.use(cors({
+  origin: 'http://localhost:5173',  // เปลี่ยนเป็น URL frontend ของคุณ
+  credentials: true,                 // ต้องเปิด เพื่อส่ง cookie
+}));
 
-// อย่าลืมเพิ่มการใช้ express.urlencoded สำหรับรับ form-data ที่ไม่ใช่ json
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Static โฟลเดอร์รูปภาพ
-app.use('/uploads', express.static('uploads'));
+// ตั้งค่า session middleware
+app.use(session({
+  secret: process.env.SESSION_SECRET,       // เปลี่ยนเป็น secret ของคุณ
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: false,                  // ถ้าใช้ HTTPS ให้ true
+    httpOnly: true,
+    sameSite: 'lax',                // หรือ 'none' ถ้า HTTPS และ cross-site
+    maxAge: 24 * 60 * 60 * 1000,   // 1 วัน
+  },
+  // แนะนำใส่ store จริงถ้าใช้งานจริง production (เช่น connect-mongo, redis)
+}));
 
-// Routes (แก้ให้ถูกต้องทีละไฟล์)
+// Middleware log user id ใน session ทุก request
+app.use((req, res, next) => {
+  console.log('User ID in session:', req.session?.user?.id);
+  next();
+});
+
+// Static โฟลเดอร์รูปภาพ
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+// โหลด routes ต่าง ๆ
 require('./routes/userRoutes')(app);
 require('./routes/tenantRoutes')(app);
 require('./routes/landlordRoutes')(app);
 require('./routes/typeRoutes')(app);
+
 const roomRoutes = require('./routes/room.routes');
 app.use(roomRoutes);
 
@@ -35,7 +61,6 @@ require('./routes/authRoutes')(app);
 
 const PORT = process.env.PORT || 5000;
 
-// Checking connect DB
 (async () => {
   try {
     console.log('🔍 Checking database connection...');

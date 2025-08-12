@@ -244,10 +244,11 @@ export const registerUser = (userData) => {
 
 // ฟังก์ชันเข้าสู่ระบบ
 export const loginUser = (credentials) => {
-  return axios.post(`${API_BASE}/login`, credentials).then(res => res.data);
+  return axios.post(`${API_BASE}/login`, credentials, {
+    withCredentials: true,  // เพิ่มตรงนี้ให้ส่ง cookie ด้วย
+  }).then(res => res.data);
 };
 
-export const createRoom = (formData) =>
-  axios.post(`${API_BASE}/rooms`, formData, {
-    headers: { 'Content-Type': 'multipart/form-data' },
-  }).then(res => res.data);
+const createRoom = (roomData, userId) => {
+  return axios.post(`${API_BASE}/rooms`, {...roomData, userId});
+};

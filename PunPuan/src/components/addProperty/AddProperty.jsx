@@ -101,51 +101,58 @@ const AddProperty = () => {
 
   // Submit form with images and data
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    try {
-      const formData = new FormData();
+  try {
+    const formData = new FormData();
 
-      // Append text data
-      formData.append('province', province);
-      formData.append('district', district);
-      formData.append('village', village);
-      formData.append('locationLink', locationLink);
-      formData.append('propertyName', propertyName);
-      formData.append('price', price);
-      formData.append('roomType', roomType);
-      formData.append('description', description);
-      formData.append('roomAmount', roomAmount);
-      formData.append('available', available);
-      formData.append('bedRooms', bedRooms);
-      formData.append('bathRooms', bathRooms);
-      formData.append('parking', parking);
+    // แก้ไขตรงนี้: ดึง user object ที่เก็บทั้ง object ไว้ใน localStorage ชื่อ 'user'
+    const user = JSON.parse(localStorage.getItem('user'));
+    const userId = user?.id || user?.User_ID; // กรณีเก็บในฟิลด์ id หรือ User_ID
 
-      // Append profile image file
-      if (profileImage) {
-        formData.append('profileImage', profileImage);
-      }
-
-      // Append multiple property images files
-      propertyImages.forEach((file, index) => {
-        formData.append('propertyImages', file);
-      });
-
-      // ส่งข้อมูลไป backend (แก้ URL ตาม backend จริงของคุณ)
-      const response = await axios.post('http://localhost:5000/api/rooms', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-
-      alert('Property added successfully!');
-      navigate('/propertyListPage'); // เปลี่ยนเส้นทางไปหน้า list หลังเพิ่มเสร็จ
-
-    } catch (error) {
-      console.error('Error adding property:', error);
-      alert('Failed to add property. Please try again.');
+    if (!userId) {
+      alert('User ID not found. Please login again.');
+      return;
     }
-  };
+
+    formData.append('userId', userId);
+
+    // ข้อมูลอื่น ๆ ตามเดิม
+    formData.append('province', province);
+    formData.append('district', district);
+    formData.append('village', village);
+    formData.append('locationLink', locationLink);
+    formData.append('propertyName', propertyName);
+    formData.append('price', price);
+    formData.append('roomType', roomType);
+    formData.append('description', description);
+    formData.append('roomAmount', roomAmount);
+    formData.append('available', available);
+    formData.append('bedRooms', bedRooms);
+    formData.append('bathRooms', bathRooms);
+    formData.append('parking', parking);
+
+    if (profileImage) {
+      formData.append('profileImage', profileImage);
+    }
+
+    propertyImages.forEach((file) => {
+      formData.append('propertyImages', file);
+    });
+
+    const response = await axios.post('http://localhost:5000/api/rooms', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+
+    alert('Property added successfully!');
+    navigate('/propertyListPage');
+  } catch (error) {
+    console.error('Error adding property:', error);
+    alert('Failed to add property. Please try again.');
+  }
+};
 
   return (
     <div className="add_property box_container container">
