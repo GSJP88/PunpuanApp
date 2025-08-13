@@ -2,9 +2,11 @@ import React from 'react'
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 
+const userId = localStorage.getItem('userId') || '1'; // ถ้ายังไม่มี default = '1'
+
 const TenantDashboard = () => {
   const cards = [
-    { label: "Profile", to: "/profilePage", icon: "bi-person" },
+    { label: "Profile", to: `/profilePage?userId=${userId}`, icon: "bi-person" },
     { label: "Notification", to: "/notificationPage", icon: "bi-bell" },
   ];
 

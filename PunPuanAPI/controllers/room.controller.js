@@ -124,22 +124,9 @@ exports.getRooms = async (req, res) => {
       return res.status(401).json({ error: 'Unauthorized' });
     }
 
-    // ดึง Landlord_ID จากตาราง landlord โดยอ้างอิงจาก User_ID ใน session
-    const [landlordRows] = await db.query(
-      'SELECT Landlord_ID FROM landlord WHERE User_ID = ?',
-      [req.session.user.id]
-    );
-
-    if (landlordRows.length === 0) {
-      return res.json([]); // ไม่มีห้องเพราะยังไม่ได้เป็น landlord
-    }
-
-    const landlordId = landlordRows[0].Landlord_ID;
-
-    // ดึงห้องเฉพาะ landlord นี้
+    // ดึงข้อมูลห้องทั้งหมด ไม่จำกัด landlord
     const [rooms] = await db.query(
-      'SELECT * FROM room WHERE Landlord_ID = ?',
-      [landlordId]
+      'SELECT * FROM room'
     );
 
     res.json(rooms);
@@ -148,6 +135,7 @@ exports.getRooms = async (req, res) => {
     res.status(500).json({ error: 'Server error' });
   }
 };
+
 
 exports.getRoomById = async (req, res) => {
   try {

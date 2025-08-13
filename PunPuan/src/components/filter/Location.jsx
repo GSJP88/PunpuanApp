@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const laosData = {
   "Attapeu": {
@@ -93,12 +93,7 @@ const laosData = {
   }
 };
 
-
-const Location = () => {
-  const [province, setProvince] = useState('');
-  const [district, setDistrict] = useState('');
-  const [village, setVillage] = useState('');
-
+const Location = ({ province, setProvince, district, setDistrict, village, setVillage }) => {
   const [districts, setDistricts] = useState([]);
   const [villages, setVillages] = useState([]);
 
@@ -114,7 +109,7 @@ const Location = () => {
       setVillages([]);
       setVillage('');
     }
-  }, [province]);
+  }, [province, setDistrict, setVillage]);
 
   useEffect(() => {
     if (province && district) {
@@ -124,19 +119,17 @@ const Location = () => {
       setVillages([]);
       setVillage('');
     }
-  }, [district, province]);
+  }, [district, province, setVillage]);
 
   return (
     <div className="location_wrapper mt-4">
       <h2 className='title'>Location</h2>
-
       <div className="location_option">
-        <label htmlFor="province">Province:</label>
+        <label>Province:</label>
         <select
-          id="province"
-          className="province form-select mb-3"
           value={province}
           onChange={(e) => setProvince(e.target.value)}
+          className="form-select mb-3"
         >
           <option value="">Select Province</option>
           {Object.keys(laosData).map((prov) => (
@@ -144,12 +137,11 @@ const Location = () => {
           ))}
         </select>
 
-        <label htmlFor="district">District / City:</label>
+        <label>District / City:</label>
         <select
-          id="district"
-          className="district form-select mb-3"
           value={district}
           onChange={(e) => setDistrict(e.target.value)}
+          className="form-select mb-3"
           disabled={!districts.length}
         >
           <option value="">Select District</option>
@@ -158,12 +150,11 @@ const Location = () => {
           ))}
         </select>
 
-        <label htmlFor="village">Village:</label>
+        <label>Village:</label>
         <select
-          id="village"
-          className="village form-select mb-3"
           value={village}
           onChange={(e) => setVillage(e.target.value)}
+          className="form-select mb-3"
           disabled={!villages.length}
         >
           <option value="">Select Village</option>
@@ -176,4 +167,4 @@ const Location = () => {
   );
 };
 
-export default Location;
+export default Location;

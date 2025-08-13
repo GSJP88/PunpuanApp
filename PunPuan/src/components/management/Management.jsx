@@ -4,8 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import "../../Styles/management.css";
 
 const Management = () => {
+  // สมมุติ userId เก็บไว้ที่นี่ (จริงๆ อาจดึงจาก localStorage หรือ context)
+  const userId = localStorage.getItem('userId') || '1'; // ถ้ายังไม่มี default = '1'
+
   const cards = [
-    { label: "Profile", to: "/profilePage", icon: "bi-person" },
+    // ส่ง userId ไปในลิงก์ profilePage ผ่าน query string
+    { label: "Profile", to: `/profilePage?userId=${userId}`, icon: "bi-person" },
     { label: "Notification", to: "/notificationPage", icon: "bi-bell" },
     { label: "Tenants", to: "/tenantListPage", icon: "bi-people" },
     { label: "Properties", to: "/propertyListPage", icon: "bi-house" },
@@ -15,7 +19,6 @@ const Management = () => {
   const handleClick = () => {
     navigate(`/chatPage`);
   };
-  
 
   return (
     <div className="management-container container">
@@ -38,7 +41,6 @@ const Management = () => {
           </button>
       </div>
     </div>
-
   );
 };
 

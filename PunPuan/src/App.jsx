@@ -42,7 +42,7 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/aboutPage" element={<AboutPage />} />
           <Route path="/contactPage" element={<ContactPage />} />
-          <Route path="/viewPage" element={<ViewPage />} />
+          <Route path="/viewPage/:id" element={<ViewPage />} />
           <Route path="/viewPageBefore" element={<ViewPageBefore />} />
           <Route path="/registerPage/:role" element={<RegisterPage />} />
           <Route path="/loginPage" element={<LoginPage />} />

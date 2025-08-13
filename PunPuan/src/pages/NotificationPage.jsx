@@ -22,7 +22,7 @@ const dummyNotifications = [
   {
     id: 3,
     sender: 'Tenant Ton',
-    message: 'Tom2 Trng2',
+    message: 'ເຊົ່າ',
     isRead: false,
     time: '2 hours ago',
     role: 'tenant'

@@ -18,6 +18,8 @@ const ViewPage = () => {
   const handleConfirm = () => {
     setShowConfirm(false);
     setStartWizard(true);
+
+    
   };
 
   if (startWizard) return <StepWizard />;
@@ -58,4 +60,4 @@ const ViewPage = () => {
   );
 };
 
-export default ViewPage;
+export default ViewPage;

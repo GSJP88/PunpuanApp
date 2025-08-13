@@ -1,32 +1,73 @@
-import React, { useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import '../../Styles/profile.css';
 
 const ProfilePage = () => {
+  const [searchParams] = useSearchParams();
+  const userID = searchParams.get('userId')
   const { role } = useParams();
   const isTenant = role === 'tenant';
-  const navigate = useNavigate(); // 🧭 for back navigation
+  const navigate = useNavigate();
 
+  // const userID = localStorage.getItem('userId');
+  console.log('userID:', userID);
+  
   const [isEditing, setIsEditing] = useState(false);
-
   const [formData, setFormData] = useState({
-    firstName: 'John',
-    lastName: 'Doe',
-    email: 'john@example.com',
-    phone: '020-12345678',
-    occupation: 'Engineer',
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    occupation: '',
     income: '1',
-    bankAccount: '1234-5678-9012-3456',
+    bankAccount: '',
   });
+
+  useEffect(() => {
+    console.log("userID:::", userID )
+  if (userID === '15') {
+    // landlord
+    setFormData({
+      firstName: 'punpuan',
+      lastName: 'Landlord',
+      email: 'punpuan@gmail.com',
+      phone: '020-2222-3333',
+      bankAccount: '1234-5678-9012-3456',
+      occupation: 'Developer',
+      income: '1',
+    });
+  } else if (userID === '1') {
+    // tenant
+    setFormData({
+      firstName: 'Kedsada',
+      lastName: 'Vannaphom',
+      email: 'tonvnp2002@gmail.com',
+      phone: '020-54720903',
+      occupation: 'Student',
+      income: '2',
+      bankAccount: '1234-1234-1234-1234',
+    });
+  } else {
+    // ค่าอื่นๆ เคลียร์ form
+    setFormData({
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      occupation: '',
+      income: '1',
+      bankAccount: '',
+    });
+  }
+}, [userID]);
 
   const handleChange = (e) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleSubmit = () => {
-    // Optionally you could validate or send data here
     console.log('Submitted data:', formData);
-    navigate(-1); // Go back to previous page
+    navigate(-1);
   };
 
   return (
@@ -60,25 +101,25 @@ const ProfilePage = () => {
         </div>
 
         <div className="form-row">
-            <label>Email</label>
-            <label>Phone</label>
-            <input
-              name="email"
-              type="email"
-              value={formData.email}
-              onChange={handleChange}
-              disabled={!isEditing}
-              className="input_app"
-            />
+          <label>Email</label>
+          <label>Phone</label>
+          <input
+            name="email"
+            type="email"
+            value={formData.email}
+            onChange={handleChange}
+            disabled={!isEditing}
+            className="input_app"
+          />
 
-            <input
-              name="phone"
-              type="tel"
-              value={formData.phone}
-              onChange={handleChange}
-              disabled={!isEditing}
-              className="input_app"
-            />
+          <input
+            name="phone"
+            type="tel"
+            value={formData.phone}
+            onChange={handleChange}
+            disabled={!isEditing}
+            className="input_app"
+          />
         </div>
 
         {isTenant ? (
