@@ -1,11 +1,11 @@
 import React from 'react';
 
 const Type = ({ activeType, setActiveType }) => {
-  const types = ["Apartment", "Condominiem", "Townhouses", "House"];
+  const types = ["ອາພາດເມັ້ນ", "ຄອນໂດ", "ຫ້ອງແຖວ", "ບ້ານພັກ"];
 
   return (
     <div className="property-types-wrapper">
-      <h2 className='title'>Types</h2>
+      <h2 className='title'>ປະເພດຫ້ອງ</h2>
       <div className="property-buttons">
         {types.map((type) => (
           <button

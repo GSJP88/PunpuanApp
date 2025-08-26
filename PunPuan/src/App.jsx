@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './Styles/swal.css';
+import './App.css';
 
 import ScrollToTop from './components/scrollToTop/ScrollToTop';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 
-import './App.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 

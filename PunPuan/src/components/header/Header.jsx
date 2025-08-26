@@ -40,13 +40,13 @@ const Header = () => {
             <li className="nav__item">
               <Link to="/" className="nav__link active-link">
                 <i className="bi bi-house-door nav__icon"></i>
-                Home
+                ໜ້າຫຼັກ
               </Link>
             </li>
             <li className="nav__item">
               <Link to="/aboutPage" className="nav__link active-link">
                 <i className="bi bi-info-circle nav__icon"></i>
-                About us
+                ກ່ຽວກັບ
               </Link>
             </li>
             {/* <li className="nav__item">
@@ -58,22 +58,22 @@ const Header = () => {
             <li className="nav__item">
               <Link to="/contactPage" className="nav__link active-link">
                 <i className="bi bi-envelope nav__icon"></i>
-                Contact
+                ຕິດຕໍ່
               </Link>
             </li>
 
             {userRole ? (
               <li className="nav__item profile-dropdown">
                 <div className="nav__link profile-toggle" onClick={() => setDropdownOpen(!dropdownOpen)}>
-                  <i className="bi bi-person-circle"></i> Profile
+                  <i className="bi bi-person-circle"></i> ໂປຣຟາຍ
                 </div>
                 {dropdownOpen && (
                   <div className="dropdown-menu">
                     <Link to={getDashboardLink()} className="dropdown-item" onClick={() => setDropdownOpen(false)}>
-                      <i class="bi bi-kanban"></i> Management
+                      <i class="bi bi-kanban"></i> ເມນູການຈັດການ
                     </Link>
                     <button className="dropdown-item logout-btn" onClick={handleLogout}>
-                      <i className="bi bi-box-arrow-right"></i> Logout
+                      <i className="bi bi-box-arrow-right"></i> ອອກລະບົບ
                     </button>
                   </div>
                 )}
@@ -81,7 +81,7 @@ const Header = () => {
             ) : (
               <li className="nav__item sign_in">
                 <Link to="/loginPage" className="nav__link active-link">
-                  <i className="bi bi-people"></i> Sign In
+                  <i className="bi bi-people"></i> ເຂົ້າສູ່ລະບົບ
                 </Link>
               </li>
             )}

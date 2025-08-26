@@ -4,6 +4,7 @@
   max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
+  
 }
 
 .property-list-title {
@@ -186,6 +187,7 @@
   font-weight: 600;
   margin: 4px 0;
   color: #333;
+  font-family: 'Noto Sans', sans-serif;
 }
 
 .property-address {

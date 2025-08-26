@@ -6,7 +6,7 @@ const PropertySign = ({ property }) => {
       <div className="sign-wrapper">
         <ul className="sign_list">
           <li className="sign_item name">{property.Property_Name}</li>
-          <li className="sign_item type">{property.Room_Type}</li>
+          <li className="sign_item type">{property.Room_Type === "Room" ? "ຫ້ອງແຖວ" : property.Room_Type}</li>
           <li className="sign_item id">ID: {property.Room_ID}</li>
         </ul>
       </div>

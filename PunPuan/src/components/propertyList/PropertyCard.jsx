@@ -8,7 +8,7 @@ const PropertyCard = ({ data }) => {
   const percent = Math.floor((total_room * 100) / (data.Room_Amount));
   // const maxOccupancy = data.Max_Occupancy > 0 ? data.Max_Occupancy : 1;
   // const percent = Math.floor((data.Room_Amount * 100) / maxOccupancy);
-  const statusText = percent >= 100 ? 'Unavailable' : 'Available';
+  const statusText = percent >= 100 ? 'ຫ້ອງເຕັມ' : 'ມີຫ້ອງວ່າງ';
   const isUnavailable = percent >= 100;
 
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ const PropertyCard = ({ data }) => {
     <div className="property-card" onClick={handleClick}>
       <img src={data.image} alt={data.name} className="property-image" />
 
-      <div className={`property-status ${isUnavailable ? 'unavailable' : ''}`}>
+      <div className={`property-status ${isUnavailable ? 'ວ່າງ' : 'ເຕັມ'}`}>
         <i className="bi bi-circle-fill"></i>
         {statusText}
       </div>
@@ -28,13 +28,13 @@ const PropertyCard = ({ data }) => {
       <div className="property-info">
         <div className="top-row">
           <span className="type">{data.type}</span>
-          <span className="occupancy">Occupancy: {percent}%</span>
+          <span className="occupancy">ມີຫ້ອງຍັງວ່າງ: {percent}%</span>
         </div>
         <h3 className="property-name">{data.name}</h3>
         <p className="property-address">{data.address}</p>
         <div className="property-actions">
-          <button className="action-btn small-button">Tenants</button>
-          <button className="action-btn small-button">Edit</button>
+          <button className="action-btn small-button">ຂໍ້ມູນຫ້ອງ</button>
+          <button className="action-btn small-button">ແກ້ໄຂ</button>
         </div>
       </div>
     </div>

@@ -19,7 +19,7 @@ label {
     display: flex;
     justify-content: space-around;
     background-color: var(--bg-color);
-    padding: 90px 40px 90px;
+    padding: 50px 40px 60px;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -81,6 +81,30 @@ label {
     transform: translateY(-50%);
     color: var(--text-color);
     pointer-events: none;
+}
+
+.filter-search-btn {
+    display: flex;
+    justify-content: center; /* ເຮັດໃຫ້ button ຢູ່ກາງ */
+    margin-top: 2px; /* ເພີ່ມຊ່ອງຫຼິ້ນເລື່ອງດ້ານເທິງ */
+}
+
+.small-button {
+    padding: 12px 24px;
+    border-radius: 8px;
+    color: #4b4b4b;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 3px 3px 6px #bec3c9,
+                -3px -3px 6px #ffffff;
+    transition: 0.2s;
+}
+
+.small-button:hover {
+    transform: translateY(-2px);
+    color: #000000;
+    background-color: #d0d0d0;
 }
 
 .field input {
@@ -243,6 +267,12 @@ select:focus {
   width: 20px;
   height: 20px;
   margin-right: 10px;
+}
+
+.small-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .property-types-header h2 {

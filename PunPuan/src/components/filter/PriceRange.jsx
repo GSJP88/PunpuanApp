@@ -34,10 +34,10 @@ const PriceRange = ({ minPrice, setMinPrice, maxPrice, setMaxPrice }) => {
 
   return (
     <div className="price-wrapper mt-4">
-      <h2 className='title'>Price Range</h2>
+      <h2 className='title'>ລາຄາທີ່ຕ້ອງການ</h2>
       <div className="price-input">
         <div className="field">
-          <span>Min</span>
+          <span>ຕ່ຳສຸດ</span>
           <span className="currency-label">LAK</span>
           <input
             type="text"
@@ -45,9 +45,9 @@ const PriceRange = ({ minPrice, setMinPrice, maxPrice, setMaxPrice }) => {
             onChange={handleMinInputChange}
           />
         </div>
-        <div className="separator">-</div>
+        <div className="separator">ຫາ</div>
         <div className="field">
-          <span>Max</span>
+          <span>ສູງສຸດ</span>
           <span className="currency-label">LAK</span>
           <input
             type="text"

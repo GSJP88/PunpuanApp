@@ -123,41 +123,41 @@ const Location = ({ province, setProvince, district, setDistrict, village, setVi
 
   return (
     <div className="location_wrapper mt-4">
-      <h2 className='title'>Location</h2>
+      <h2 className='title'>ທີ່ຢູ່</h2>
       <div className="location_option">
-        <label>Province:</label>
+        <label>ແຂວງ:</label>
         <select
           value={province}
           onChange={(e) => setProvince(e.target.value)}
           className="form-select mb-3"
         >
-          <option value="">Select Province</option>
+          <option value="">ເລືອກແຂວງທີ່ຢູ່</option>
           {Object.keys(laosData).map((prov) => (
             <option key={prov} value={prov}>{prov}</option>
           ))}
         </select>
 
-        <label>District / City:</label>
+        <label>ເມືອງ:</label>
         <select
           value={district}
           onChange={(e) => setDistrict(e.target.value)}
           className="form-select mb-3"
           disabled={!districts.length}
         >
-          <option value="">Select District</option>
+          <option value="">ເລືອກເມືອງທີ່ຢູ່</option>
           {districts.map((dist) => (
             <option key={dist} value={dist}>{dist}</option>
           ))}
         </select>
 
-        <label>Village:</label>
+        <label>ບ້ານ:</label>
         <select
           value={village}
           onChange={(e) => setVillage(e.target.value)}
           className="form-select mb-3"
           disabled={!villages.length}
         >
-          <option value="">Select Village</option>
+          <option value="">ເລືອກບ້ານທີ່ຢູ່</option>
           {villages.map((vill) => (
             <option key={vill} value={vill}>{vill}</option>
           ))}

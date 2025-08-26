@@ -113,7 +113,7 @@ const Filter = () => {
           </div>
         )}
         <div className="filter-search-btn">
-          <button className="small-button" onClick={handleFilterSearch}>Filter Search</button>
+          <button className="small-button" onClick={handleFilterSearch}>ຄົ້ນຫາ</button>
         </div>
       </div>
 

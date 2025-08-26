@@ -53,31 +53,32 @@ const PropertyList = () => {
 
   return (
     <div className="property-list-wrapper box_container">
-      <div className="property-list-headline">
-        <h2 className="property-list-title">Property List</h2>
+      <div className="property-list-headline"> 
+        {/* -------------------------------------------------------------------Lan */}
+        <h2 className="property-list-title">ລາຍການຫ້ອງ</h2> 
         <div className="property-controls">
           <div className="filter-buttons">
             <button onClick={() => setFilter('all')} className={filter === 'all' ? 'active' : ''}>
-              All
+              ທັງໝົດ
             </button>
             <button
               onClick={() => setFilter('available')}
               className={filter === 'available' ? 'active' : ''}
             >
-              Available
+              ຫ້ອງເຕັມ
             </button>
             <button
               onClick={() => setFilter('unavailable')}
               className={filter === 'unavailable' ? 'active' : ''}
             >
-              Unavailable
+              ຍັງວ່າງ
             </button>
           </div>
           <div className="search-input-wrapper input_app">
             <i className="bi bi-search search-input-icon"></i>
             <input
               type="text"
-              placeholder="Search by name or ID..."
+              placeholder="ປ້ອນຊື່ ຫຼື ໄອດີ"
               className="search-input"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
@@ -88,7 +89,7 @@ const PropertyList = () => {
 
       <div className="property-list">
         {loading ? (
-          <p>Loading properties...</p>
+          <p>ກຳລັງໂຫລດລາຍການຫ້ອງ...</p>
         ) : error ? (
           <p>{error}</p>
         ) : filteredProperties.length > 0 ? (
@@ -107,13 +108,13 @@ const PropertyList = () => {
             return <PropertyCard key={property.Room_ID} data={mappedData} />;
           })
         ) : (
-          <p className="no-results">No properties found.</p>
+          <p className="no-results">ບໍ່ມີລາຍການຫ້ອງ.</p>
         )}
       </div>
 
       <div className="add-btn-wrapper">
         <button className="add-property small-button" onClick={handleAddClick}>
-          <i className="bi bi-plus"></i> Add Property
+          <i className="bi bi-plus"></i> ເພີ່ມຫ້ອງເຊົ່າ
         </button>
       </div>
     </div>
