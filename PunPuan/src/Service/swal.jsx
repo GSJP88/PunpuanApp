@@ -7,10 +7,6 @@ const showSuccess = (title, text) => {
         icon: 'success',
         title: title || 'Success',
         text: text || '',
-        didOpen: () => {
-            const popup = document.querySelector('.swal2-popup');
-            if (popup) popup.style.fontFamily = "'Noto Sans', sans-serif";
-        }
     });
 };
 

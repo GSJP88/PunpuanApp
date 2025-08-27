@@ -3,12 +3,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import "../../Styles/header.css";
 import { showSuccess } from "../../Service/swal";
+import Swal from "sweetalert2"; // 👈 เพิ่มเข้ามา
+import { useTranslation } from "react-i18next"; // 👈 ใช้ i18n
 
 const Header = () => {
   const [toggle, setToggle] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const { userRole, logout } = useAuth();
   const navigate = useNavigate();
+  const { i18n } = useTranslation();
 
   const getDashboardLink = () => {
     if (userRole === "tenant") return "/tenantDashboard";
@@ -21,6 +24,34 @@ const Header = () => {
     setDropdownOpen(false);
     showSuccess("ອອກລະບົບສຳເລັດ");
     navigate("/");
+  };
+
+  // 👇 ฟังก์ชันเปลี่ยนภาษา
+  const handleChangeLanguage = () => {
+    Swal.fire({
+      showCancelButton: true,
+      confirmButtonText: "English",
+      cancelButtonText: "ພາສາລາວ",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        i18n.changeLanguage("en");
+        Swal.fire({
+          icon: "success",
+          title: "Changed to English",
+          showConfirmButton: false,
+          timer: 1200
+        });
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        i18n.changeLanguage("la");
+        Swal.fire({
+          icon: "success",
+          title: "ປ່ຽນເປັນພາສາລາວ",
+          showConfirmButton: false,
+          timer: 1200
+        });
+      }
+
+    });
   };
 
   return (
@@ -49,12 +80,6 @@ const Header = () => {
                 ກ່ຽວກັບ
               </Link>
             </li>
-            {/* <li className="nav__item">
-              <Link to="/landlordNotification" className="nav__link active-link">
-                <i className="bi bi-search nav__icon"></i>
-                Explore
-              </Link>
-            </li> */}
             <li className="nav__item">
               <Link to="/contactPage" className="nav__link active-link">
                 <i className="bi bi-envelope nav__icon"></i>
@@ -70,7 +95,7 @@ const Header = () => {
                 {dropdownOpen && (
                   <div className="dropdown-menu">
                     <Link to={getDashboardLink()} className="dropdown-item" onClick={() => setDropdownOpen(false)}>
-                      <i class="bi bi-kanban"></i> ເມນູການຈັດການ
+                      <i className="bi bi-kanban"></i> ເມນູການຈັດການ
                     </Link>
                     <button className="dropdown-item logout-btn" onClick={handleLogout}>
                       <i className="bi bi-box-arrow-right"></i> ອອກລະບົບ
@@ -85,6 +110,17 @@ const Header = () => {
                 </Link>
               </li>
             )}
+            {/* pien pha sa */}
+            <li className="nav__item">
+              <button className="nav__link active-link" onClick={handleChangeLanguage} style={{ padding: 0, border: "none", background: "none" }}>
+                <img
+                  src="/public/languages.png"
+                  alt="Change Language"
+                  width={30}
+                  height={30}
+                />
+              </button>
+            </li>
           </ul>
         </div>
 
@@ -97,69 +133,3 @@ const Header = () => {
 };
 
 export default Header;
-
-
-
-
-// import React, { useState } from 'react';
-// import { Link } from 'react-router-dom';
-// import "../../Styles/header.css";
-
-// const Header = () => {
-//   const [toggle, setToggle] = useState(false);
-
-//   return (
-//     <header className="header">
-//       <nav className="nav">
-//         <Link to="/" className="nav__logo">
-//           PunPuan
-//         </Link>
-
-//         <div className={toggle ? "nav__menu show-menu" : "nav__menu"}>
-//           <div className="nav__close">
-//             <i className="bi bi-x-circle-fill" onClick={() => setToggle(!toggle)}></i>
-//           </div>
-
-//           <ul className="nav__list">
-//             <li className="nav__item">
-//               <Link to="/" className="nav__link active-link">
-//                 <i className="bi bi-house-door nav__icon"></i>
-//                 Home
-//               </Link>
-//             </li>
-//             <li className="nav__item">
-//               <Link to="/aboutPage" className="nav__link active-link">
-//                 <i class="bi bi-info-circle nav__icon"></i>
-//                 About us
-//               </Link>
-//             </li>
-//             <li className="nav__item">
-//               <Link to="/landlordNotification" className="nav__link active-link">
-//                 <i className="bi bi-search nav__icon"></i>
-//                 Explore
-//               </Link>
-//             </li>
-//             <li className="nav__item">
-//               <Link to="/contactPage" className="nav__link active-link">
-//                 <i className="bi bi-envelope nav__icon"></i>
-//                 Contact
-//               </Link>
-//             </li>
-//             <li className="nav__item sign_in">
-//               <Link to="/loginPage" className="nav__link active-link">
-//                 <i className="bi bi-people"></i>
-//                 Sign In
-//               </Link>
-//             </li>
-//           </ul>
-//         </div>
-
-//         <div className="nav__toggle" onClick={() => setToggle(!toggle)}>
-//           <i className="bi bi-list"></i>
-//         </div>
-//       </nav>
-//     </header>
-//   );
-// };
-
-// export default Header;

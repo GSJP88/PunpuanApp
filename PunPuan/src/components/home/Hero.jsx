@@ -1,21 +1,24 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import { useTranslation } from 'react-i18next';
+import '../../Service/i18n/i18n'; // i18n config
 
 const Hero = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
+
   return (
     <section className="hero">
-      <h1 className='hero-title'>PunPuan Agency</h1>
-      <p className='hero-subtitle'>Connecting tenants with trusted landlords across the city, making it easier than ever to find safe and affordable.</p>
-      <p className='hero-description'>Please choose your role to join us</p>
+      <h1 className='hero-title'>{t('hero_title')}</h1>
+      <p className='hero-subtitle'>{t('hero_subtitle')}</p>
+      <p className='hero-description'>{t('hero_description')}</p>
       <div className="hero-buttons">
         <button className="btn-st" onClick={() => navigate('/registerPage/tenant')}>
-          Tenant
+          {t('tenant')}
           <i className="bi bi-person-raised-hand"></i>
         </button>
         <button className="btn-nth" onClick={() => navigate('/registerPage/landlord')}>
-          Landlord
+          {t('landlord')}
           <i className="bi bi-houses-fill"></i>
         </button>
       </div>

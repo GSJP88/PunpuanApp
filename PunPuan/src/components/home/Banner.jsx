@@ -7,13 +7,17 @@ import condoImg from '../../assets/cd.jpg';
 import townhousesImg from '../../assets/townhouses.jpg';
 import houseImg from '../../assets/house.jpg';
 
+import { useTranslation } from 'react-i18next';
+
 const Banner = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="banner">
       <div className="banner-text">
-        <p className="event-tag">• Rental Assistant</p>
-        <h2 className='banner-title'>More than just a place to stay, it's your space to live.</h2>
-        <p className="banner-subtitle">Search. Compare. Move in. All in one place.</p>
+        <p className="event-tag">{t('banner_event_tag')}</p>
+        <h2 className='banner-title'>{t('banner_title')}</h2>
+        <p className="banner-subtitle">{t('banner_subtitle')}</p>
       </div>
       <div className="banner-image">
         {/* <img src={Image} alt="Professional Woman" /> */}
@@ -26,7 +30,7 @@ const Banner = () => {
                   backgroundPosition: 'center',
                 }}/> */}
               <i class="bi bi-building-fill"></i>
-              <p>Apartment</p>
+              <p>{t('apartment')}</p>
           </div>
           <div className="banner-type">
             {/* <div className="type-image"
@@ -36,7 +40,7 @@ const Banner = () => {
                   backgroundPosition: 'center',
             }}/> */}
               <i class="bi bi-buildings-fill"></i>
-              <p>Condominium</p>
+              <p>{t('condominium')}</p>
           </div>
           <div className="banner-type">
             {/* <div className="type-image"
@@ -46,17 +50,11 @@ const Banner = () => {
                   backgroundPosition: 'center',
                 }}/> */}
               <i class="bi bi-houses-fill"></i>
-              <p>Townhouses</p>
+              <p>{t('townhouses')}</p>
           </div>
           <div className="banner-type">
-                {/* <div className="type-image"
-                  style={{
-                  backgroundImage: `url(${houseImg})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                }}/> */}
               <i class="bi bi-house-fill"></i>
-              <p>House</p>
+              <p>{t('house')}</p>
           </div>
         </div>
       </div>

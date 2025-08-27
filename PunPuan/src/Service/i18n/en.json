@@ -1,0 +1,28 @@
+
+{
+  "welcome": "Welcome",
+  "language": "Language",
+  "hello": "Hello, how are you?",
+  "hero_title": "PunPuan Agency",
+  "hero_subtitle": "Connecting tenants with trusted landlords across the city, making it easier than ever to find safe and affordable.",
+  "hero_description": "Please choose your role to join us",
+  "tenant": "Tenant",
+  "landlord": "Landlord",
+  "see_more": "See More",
+  "banner_event_tag": "• Rental Assistant",
+  "banner_title": "More than just a place to stay, it's your space to live.",
+  "banner_subtitle": "Search. Compare. Move in. All in one place.",
+  "apartment": "Apartment",
+  "condominium": "Condominium",
+  "townhouses": "Townhouses",
+  "house": "House",
+  "search": "Search",
+  "no_result": "No Result",
+  "province_label": "Province",
+  "province_placeholder": "Select Province",
+  "district_label": "District",
+  "district_placeholder": "Select District",
+  "village_label": "Village",
+  "village_placeholder": "Select Village",
+  "location_title": "Locations to select"
+}

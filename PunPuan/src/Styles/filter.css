@@ -19,7 +19,7 @@ label {
     display: flex;
     justify-content: space-around;
     background-color: var(--bg-color);
-    padding: 50px 40px 60px;
+    padding: 50px 40px 90px;
     width: 100%;
     display: flex;
     flex-wrap: wrap;

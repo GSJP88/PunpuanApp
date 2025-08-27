@@ -1,102 +1,13 @@
 import React, { useEffect, useState } from 'react';
-
-const laosData = {
-  "Attapeu": {
-    "Samakkixay": ["Ban Xaysettha", "Ban Somsanouk", "Ban Donsavanh"],
-    "Sanamxay": ["Ban Phouampha", "Ban Vangphai"],
-    "Sanxay": ["Ban Nonghin", "Ban Phouhouay"]
-  },
-  "Bokeo": {
-    "Houayxay": ["Ban Meungneua", "Ban Done"],
-    "Meung": ["Ban Meung", "Ban Sopmeung"],
-    "Paktha": ["Ban Paknga", "Ban Namkeung"]
-  },
-  "Bolikhamxay": {
-    "Paksan": ["Ban Keun", "Ban Namsanam"],
-    "Borikhane": ["Ban Nakhang", "Ban Phon"],
-    "Khamkeut": ["Ban Lak Sao", "Ban Viengthong"]
-  },
-  "Champasak": {
-    "Pakse": ["Ban Lak 20", "Ban Thongphong"],
-    "Pathoumphone": ["Ban Nongphaya", "Ban Na"],
-    "Khong": ["Ban Don Det", "Ban Don Khon"]
-  },
-  "Houaphanh": {
-    "Sam Neua": ["Ban Viengxay", "Ban Namnoeung"],
-    "Xiengkhor": ["Ban Sop Lao", "Ban Namthon"],
-    "Sopbao": ["Ban Huaythu", "Ban Vieng"]
-  },
-  "Khammouane": {
-    "Thakhek": ["Ban Thakhek", "Ban Napheng"],
-    "Mahaxay": ["Ban Dong", "Ban Thong"],
-    "Nakai": ["Ban Nakai Tai", "Ban Sop Hia"]
-  },
-  "Luang Namtha": {
-    "Namtha": ["Ban Namtha", "Ban Khoua"],
-    "Sing": ["Ban Meuang", "Ban Thongpheng"],
-    "Long": ["Ban Long", "Ban Soplong"]
-  },
-  "Luang Prabang": {
-    "Luang Prabang": ["Ban Vat Nong", "Ban Xieng Mouane"],
-    "Pak Ou": ["Ban Pak Ou", "Ban Paktha"],
-    "Phonxay": ["Ban Xay", "Ban Nong"]
-  },
-  "Oudomxay": {
-    "Xay": ["Ban Xay", "Ban Nalao"],
-    "La": ["Ban La", "Ban Namhoum"],
-    "Namor": ["Ban Namor", "Ban Na"]
-  },
-  "Phongsaly": {
-    "Phongsaly": ["Ban Phongsaly", "Ban Boun Neua"],
-    "Samphanh": ["Ban Samphanh", "Ban Khoun"],
-    "May": ["Ban May", "Ban Vieng"]
-  },
-  "Salavan": {
-    "Salavan": ["Ban Salavan", "Ban Talong"],
-    "Lakhonepheng": ["Ban Lakhon", "Ban Pheng"],
-    "Samoui": ["Ban Samoui", "Ban Ta Oy"]
-  },
-  "Savannakhet": {
-    "Kaysone Phomvihane": ["Ban Xayaphoum", "Ban Non"],
-    "Outhoumphone": ["Ban Xeno", "Ban Thapha"],
-    "Phin": ["Ban Phin", "Ban Kengkok"]
-  },
-  "Sekong": {
-    "Lamarm": ["Ban Lamarm", "Ban Nong"],
-    "Thateng": ["Ban Thateng", "Ban Song"],
-    "Dakcheung": ["Ban Dakcheung", "Ban Phou"]
-  },
-  "Vientiane Province": {
-    "Thoulakhom": ["Ban Thoulakhom", "Ban Vieng"],
-    "Vangvieng": ["Ban Vangvieng", "Ban Viengkeo"],
-    "Keo-Oudom": ["Ban Keo", "Ban Oudom"]
-  },
-  "Vientiane Prefecture": {
-    "Chanthabuly": ["Ban Phonthan", "Ban Nongbone", "Ban Watnak"],
-    "Sikhottabong": ["Ban Dongdok", "Ban Phonpapao"],
-    "Sisattanak": ["Ban Simeuang", "Ban Haisok"]
-  },
-  "Xaisomboun": {
-    "Anouvong": ["Ban Anouvong", "Ban Muang"],
-    "Thathom": ["Ban Thathom", "Ban Namkong"],
-    "Hom": ["Ban Hom", "Ban Lak"]
-  },
-  "Xayabouly": {
-    "Xayabouly": ["Ban Xayabouly", "Ban Don"],
-    "Hongsa": ["Ban Hongsa", "Ban Namkeung"],
-    "Phiang": ["Ban Phiang", "Ban Muang"]
-  },
-  "Xiengkhouang": {
-    "Phonsavan": ["Ban Phonsavan", "Ban Khoum"],
-    "Khoune": ["Ban Khoune", "Ban Hieng"],
-    "Nonghet": ["Ban Nonghet", "Ban Muang"]
-  }
-};
+import { useTranslation } from 'react-i18next';
+import laosData from './laosData.jsx';
 
 const Location = ({ province, setProvince, district, setDistrict, village, setVillage }) => {
+  const { t, i18n } = useTranslation();
   const [districts, setDistricts] = useState([]);
   const [villages, setVillages] = useState([]);
 
+  // update districts when province changes
   useEffect(() => {
     if (province) {
       setDistricts(Object.keys(laosData[province]));
@@ -111,6 +22,7 @@ const Location = ({ province, setProvince, district, setDistrict, village, setVi
     }
   }, [province, setDistrict, setVillage]);
 
+  // update villages when district changes
   useEffect(() => {
     if (province && district) {
       setVillages(laosData[province][district]);
@@ -123,43 +35,52 @@ const Location = ({ province, setProvince, district, setDistrict, village, setVi
 
   return (
     <div className="location_wrapper mt-4">
-      <h2 className='title'>ທີ່ຢູ່</h2>
+      <h2 className='title'>{t('location_title')}</h2>
       <div className="location_option">
-        <label>ແຂວງ:</label>
+        {/* Province */}
+        <label>{t('province_label')}:</label>
         <select
           value={province}
           onChange={(e) => setProvince(e.target.value)}
           className="form-select mb-3"
         >
-          <option value="">ເລືອກແຂວງທີ່ຢູ່</option>
+          <option value="">{t('province_placeholder')}</option>
           {Object.keys(laosData).map((prov) => (
-            <option key={prov} value={prov}>{prov}</option>
+            <option key={prov} value={prov}>
+              {i18n.language === 'en' ? prov : t(`${prov}`)}
+            </option>
           ))}
         </select>
 
-        <label>ເມືອງ:</label>
+        {/* District */}
+        <label>{t('district_label')}:</label>
         <select
           value={district}
           onChange={(e) => setDistrict(e.target.value)}
           className="form-select mb-3"
           disabled={!districts.length}
         >
-          <option value="">ເລືອກເມືອງທີ່ຢູ່</option>
+          <option value="">{t('district_placeholder')}</option>
           {districts.map((dist) => (
-            <option key={dist} value={dist}>{dist}</option>
+            <option key={dist} value={dist}>
+              {i18n.language === 'en' ? dist : t(`${dist}`)}
+            </option>
           ))}
         </select>
 
-        <label>ບ້ານ:</label>
+        {/* Village */}
+        <label>{t('village_label')}:</label>
         <select
           value={village}
           onChange={(e) => setVillage(e.target.value)}
           className="form-select mb-3"
           disabled={!villages.length}
         >
-          <option value="">ເລືອກບ້ານທີ່ຢູ່</option>
+          <option value="">{t('village_placeholder')}</option>
           {villages.map((vill) => (
-            <option key={vill} value={vill}>{vill}</option>
+            <option key={vill.en} value={vill.en}>
+              {i18n.language === 'en' ? vill.en : vill.la}
+            </option>
           ))}
         </select>
       </div>
@@ -167,4 +88,4 @@ const Location = ({ province, setProvince, district, setDistrict, village, setVi
   );
 };
 
-export default Location;
+export default Location;

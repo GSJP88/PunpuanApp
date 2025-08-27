@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import PriceRange from './PriceRange';
 import Location from './Location';
 import Type from './Type';
@@ -7,11 +8,11 @@ import propertyData from '../../data/properties';
 import CardList from '../card/CardList';
 
 const Filter = () => {
+  const { t } = useTranslation();
   const scrollRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 1440);
 
-  // LIFTED STATES
   const [province, setProvince] = useState('');
   const [district, setDistrict] = useState('');
   const [village, setVillage] = useState('');
@@ -19,11 +20,9 @@ const Filter = () => {
   const [maxPrice, setMaxPrice] = useState(10000000);
   const [activeType, setActiveType] = useState('');
 
-  // Filtered results
   const [filteredData, setFilteredData] = useState([]);
-  const [searchDone, setSearchDone] = useState(false); // track if search has been clicked
+  const [searchDone, setSearchDone] = useState(false);
 
-  // Handle screen resize
   useEffect(() => {
     const handleResize = () => setIsSmallScreen(window.innerWidth < 1440);
     window.addEventListener('resize', handleResize);
@@ -33,10 +32,7 @@ const Filter = () => {
   const scrollToIndex = (index) => {
     const container = scrollRef.current;
     const itemWidth = container.scrollWidth / 3;
-    container.scrollTo({
-      left: index * itemWidth,
-      behavior: 'smooth',
-    });
+    container.scrollTo({ left: index * itemWidth, behavior: 'smooth' });
     setActiveIndex(index);
   };
 
@@ -55,7 +51,6 @@ const Filter = () => {
     return () => container.removeEventListener('scroll', handleScroll);
   }, [isSmallScreen]);
 
-  // FILTER FUNCTION
   const handleFilterSearch = () => {
     const results = propertyData.filter((item) => {
       const locationMatch =
@@ -73,7 +68,7 @@ const Filter = () => {
     });
 
     setFilteredData(results);
-    setSearchDone(true); // mark that a search has been performed
+    setSearchDone(true);
   };
 
   return (
@@ -112,8 +107,11 @@ const Filter = () => {
             ))}
           </div>
         )}
+
         <div className="filter-search-btn">
-          <button className="small-button" onClick={handleFilterSearch}>ຄົ້ນຫາ</button>
+          <button className="small-button" onClick={handleFilterSearch}>
+            {t('search')} 
+          </button>
         </div>
       </div>
 
@@ -124,7 +122,7 @@ const Filter = () => {
 
         {searchDone && filteredData.length === 0 && (
           <p style={{ textAlign: 'center', marginTop: '40px', fontWeight: '500', color: 'var(--text-color)' }}>
-            No Result
+            {t('no_result')} 
           </p>
         )}
       </div>

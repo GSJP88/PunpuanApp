@@ -15,7 +15,7 @@ select {
 .swal2-title,
 .swal2-content,
 .swal2-actions button {
-  font-family: 'Noto Sans', sans-serif !important;
+  font-family: 'Noto Sans Lao', sans-serif !important;
 }
 
 html, body, button, input, textarea, a, label, h1, h2, h3 {

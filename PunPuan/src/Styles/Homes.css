@@ -226,6 +226,10 @@
     font-size: 14px;
     font-weight: 400;
     color: var(--container-color);
+    white-space: nowrap;
+    overflow: visible;
+    text-overflow: clip;
+    margin-top: 4px;
 }
 
 .bgImage{
