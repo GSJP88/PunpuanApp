@@ -24,5 +24,24 @@
   "district_placeholder": "Select District",
   "village_label": "Village",
   "village_placeholder": "Select Village",
-  "location_title": "Locations to select"
+  "location_title": "Locations to select",
+
+  "price_select": "Select Price Range",
+  "min": "Min Price",
+  "max": "Max Price",
+  "home": "Home",
+  "about": "About",
+  "contact": "Contact",
+  "profile": "Profile",
+  "management": "management",
+  "logout": "Logout",
+  "login": "Login",
+  "Room": "Room",
+  "Townhouse": "Townhouse",
+  "Condominium": "Condominium",
+  "Apartment": "Apartment",
+  "Available" : "Available",
+  "Unavailable" : "Unavailable",
+  "properties" : "Properties",
+  "notification" : "Notification"
 }

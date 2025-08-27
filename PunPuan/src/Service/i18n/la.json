@@ -35,5 +35,25 @@
   "Hardxaiyfong": "ຫາດຊາຍຟອງ",
   "Sisattanak": "ສີສັດຕະນາກ",
   "Sikhottabong": "ສີໂຄດຕະບອງ",
-  "Xaysettha" : "ໄຊເສດຖາ"
+  "Xaysettha" : "ໄຊເສດຖາ",
+
+  "price_select": "ລາຄາທີ່ຕ້ອງການ",
+  "min": "ເລີ່ມຕົ້ນ",
+  "max": "ສູງສຸດ",
+  "room_type": "ປະເພດທີ່ເຊົ່າ",
+  "home": "ໜ້າຫຼັກ",
+  "about": "ກ່ຽວກັບ",
+  "contact": "ຕິດຕໍ່",
+  "profile": "ໂປຣຟາຍ",
+  "management": "ເມນູຈັດການ",
+  "logout": "ອອກລະບົບ",
+  "login": "ເຂົ້າສູ່ລະບົບ",
+  "Room": "ບ້ານເຊົ່າ",
+  "Townhouse": "ຫ້ອງແຖວ",
+  "Condominium": "ຄອນໂດ",
+  "Apartment": "ອາພາດເມັ້ນ",
+  "Available" : "ເຕັມແລ້ວ",
+  "Unavailable" : "ຍັງວ່າງ",
+  "properties" : "ຈັດການທີ່ເຊົ່າ",
+  "notification" : "ຂໍ້ຄວາມ"
 }

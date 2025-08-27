@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const PriceRange = ({ minPrice, setMinPrice, maxPrice, setMaxPrice }) => {
+  const { t } = useTranslation();
   const priceGap = 1000000;
   const maxLimit = 10000000;
   const progressRef = useRef();
@@ -34,10 +36,10 @@ const PriceRange = ({ minPrice, setMinPrice, maxPrice, setMaxPrice }) => {
 
   return (
     <div className="price-wrapper mt-4">
-      <h2 className='title'>ລາຄາທີ່ຕ້ອງການ</h2>
+      <h2 className='title'>{t('price_select')}</h2>
       <div className="price-input">
         <div className="field">
-          <span>ຕ່ຳສຸດ</span>
+          <span>{t('min')}</span>
           <span className="currency-label">LAK</span>
           <input
             type="text"
@@ -45,9 +47,9 @@ const PriceRange = ({ minPrice, setMinPrice, maxPrice, setMaxPrice }) => {
             onChange={handleMinInputChange}
           />
         </div>
-        <div className="separator">ຫາ</div>
+        <div className="separator">-</div>
         <div className="field">
-          <span>ສູງສຸດ</span>
+          <span>{t('max')}</span>
           <span className="currency-label">LAK</span>
           <input
             type="text"

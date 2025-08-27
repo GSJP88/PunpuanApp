@@ -4,11 +4,14 @@ import HouseImage from "../../assets/Th2.jpg";
 import Detail from './Detail';
 import "../../Styles/card.css";
 import axios from 'axios';
+import { useTranslation } from 'react-i18next'
 
 const CardRow = ({ title, cards }) => {
+  const { t } = useTranslation();
+
   return (
     <div className="card-row container">
-      <h2 className="row-title">{title}</h2>
+      <h2 className="row-title">{t(`${title}`)}</h2>
       <div className="card-wrapper">
         {cards.map((room) => (
           <Link to={`/viewPageBefore/${room.Room_ID}`} key={room.Room_ID}>
@@ -21,7 +24,7 @@ const CardRow = ({ title, cards }) => {
                 />
                 <div className="status">
                   <i className="bi bi-circle-fill"></i>
-                  <p>{room.Availability_Status || 'Available'}</p>
+                  <p>{t(`${room.Availability_Status || 'Available'}`)}</p>
                 </div>
               </div>
 

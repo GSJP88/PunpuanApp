@@ -12,6 +12,7 @@ const Header = () => {
   const { userRole, logout } = useAuth();
   const navigate = useNavigate();
   const { i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const getDashboardLink = () => {
     if (userRole === "tenant") return "/tenantDashboard";
@@ -71,34 +72,34 @@ const Header = () => {
             <li className="nav__item">
               <Link to="/" className="nav__link active-link">
                 <i className="bi bi-house-door nav__icon"></i>
-                ໜ້າຫຼັກ
+                {t('home')}
               </Link>
             </li>
             <li className="nav__item">
               <Link to="/aboutPage" className="nav__link active-link">
                 <i className="bi bi-info-circle nav__icon"></i>
-                ກ່ຽວກັບ
+                {t('about')}
               </Link>
             </li>
             <li className="nav__item">
               <Link to="/contactPage" className="nav__link active-link">
                 <i className="bi bi-envelope nav__icon"></i>
-                ຕິດຕໍ່
+                {t('contact')}
               </Link>
             </li>
 
             {userRole ? (
               <li className="nav__item profile-dropdown">
                 <div className="nav__link profile-toggle" onClick={() => setDropdownOpen(!dropdownOpen)}>
-                  <i className="bi bi-person-circle"></i> ໂປຣຟາຍ
+                  <i className="bi bi-person-circle"></i> {t('profile')}
                 </div>
                 {dropdownOpen && (
                   <div className="dropdown-menu">
                     <Link to={getDashboardLink()} className="dropdown-item" onClick={() => setDropdownOpen(false)}>
-                      <i className="bi bi-kanban"></i> ເມນູການຈັດການ
+                      <i className="bi bi-kanban"></i> {t('management')}
                     </Link>
                     <button className="dropdown-item logout-btn" onClick={handleLogout}>
-                      <i className="bi bi-box-arrow-right"></i> ອອກລະບົບ
+                      <i className="bi bi-box-arrow-right"></i> {t('logout')}
                     </button>
                   </div>
                 )}
@@ -106,7 +107,7 @@ const Header = () => {
             ) : (
               <li className="nav__item sign_in">
                 <Link to="/loginPage" className="nav__link active-link">
-                  <i className="bi bi-people"></i> ເຂົ້າສູ່ລະບົບ
+                  <i className="bi bi-people"></i> {t('login')}
                 </Link>
               </li>
             )}

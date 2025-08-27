@@ -1,11 +1,14 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next'
 
 const Type = ({ activeType, setActiveType }) => {
-  const types = ["ອາພາດເມັ້ນ", "ຄອນໂດ", "ຫ້ອງແຖວ", "ບ້ານພັກ"];
+  const { t } = useTranslation();
+  // ใช้ key ของ i18n
+  const types = ["apartment", "condominium", "townhouses", "house"];
 
   return (
     <div className="property-types-wrapper">
-      <h2 className='title'>ປະເພດຫ້ອງ</h2>
+      <h2 className='title'>{t('room_type')}</h2>
       <div className="property-buttons">
         {types.map((type) => (
           <button
@@ -13,7 +16,7 @@ const Type = ({ activeType, setActiveType }) => {
             className={`property-button ${activeType === type ? "active" : ""}`}
             onClick={() => setActiveType(type)}
           >
-            {type}
+            {t(`${type}`)}
           </button>
         ))}
       </div>

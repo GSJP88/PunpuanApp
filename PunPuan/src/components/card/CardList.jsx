@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import "../../Styles/card.css";
+import { useTranslation } from 'react-i18next'
 
 const CardList = ({ data }) => {
+  const { t } = useTranslation();
+
   return (
     <div className="card-row container">
       <h2 className="row-title">Search Results</h2>
@@ -35,7 +38,7 @@ const CardList = ({ data }) => {
                   </div>
                   <div className="info">
                     <div className="f-info">
-                      <div className='card-type'><i className="bi bi-house-door-fill"></i> {item.type}</div>
+                      <div className='card-type'><i className="bi bi-house-door-fill"></i>{t(`${item.type}`)}</div>
                       <div className='card-id'><i className="bi bi-credit-card-2-front-fill"></i> ID: {item.id}</div>
                     </div>
                   </div>
