@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useAuth } from "../../context/AuthContext";
-import { registerUser } from '../../api/apiService';  // ฟังก์ชันเรียก API
-import Swal from 'sweetalert2';  // import SweetAlert2
+import { registerUser } from '../../api/apiService';
+import Swal from 'sweetalert2';
 import '../../Styles/register.css';
 import SwitchBtn from '../../components/switchBtn/SwitchBtn';
+import { useTranslation } from 'react-i18next';
 
 const Register = () => {
+  const { t } = useTranslation();
   const { role } = useParams();
   const isTenant = role === 'tenant';
   const navigate = useNavigate();
@@ -26,27 +28,18 @@ const Register = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (formData.password !== formData.confirmPassword) {
+      Swal.fire(t('error'), t('passwordMismatch'), 'error');
+      return;
+    }
+
     try {
-      Swal.fire({
-        title: "ລົງທະບຽນສຳເລັດ",
-        text: "ຕົກລົງ",
-        icon: "success"
-      });
-
-      if (formData.password !== formData.confirmPassword) {
-        Swal.fire('Error', 'Password and Confirm Password do not match', 'error');
-        return;
-      }
-
       const dataToSend = {
         User_Name: formData.firstName + ' ' + formData.lastName,
         Email: formData.email,
@@ -61,11 +54,13 @@ const Register = () => {
       console.log(dataToSend);
       await registerUser(dataToSend);
 
+      Swal.fire(t('registerSuccess'), t('registerComplete'), 'success');
+
       login(isTenant ? 'tenant' : 'landlord');
       navigate(isTenant ? '/tenantHomePage' : '/landlordDashboard');
     } catch (error) {
       console.error(error);
-      Swal.fire('Error', error.response?.data?.error || error.message || 'Unknown error', 'error');
+      Swal.fire(t('error'), error.response?.data?.error || error.message || t('unknownError'), 'error');
     }
   };
 
@@ -73,40 +68,40 @@ const Register = () => {
     <div className="register-container box_container container">
       <div className="register-left">
         <div className="overlay">
-          <h1>{isTenant ? 'Sign up for Tenant' : 'Sign up for Landlord'}</h1>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+          <h1>{isTenant ? t('signUpTenant') : t('signUpLandlord')}</h1>
+          <p>{t('registerDescription')}</p>
           <SwitchBtn />
         </div>
       </div>
 
       <div className="register-form">
         <div className="switch_role_group">
-          <h2>Sign up</h2>
+          <h2>{t('signUp')}</h2>
           <div className="switch_role_wrapper">
             <button
               className={`switch_role ${isTenant ? 'active' : ''}`}
               onClick={() => { if (!isTenant) navigate('/registerPage/tenant'); }}
             >
-              Tenant
+              {t('tenant')}
             </button>
             <button
               className={`switch_role ${!isTenant ? 'active' : ''}`}
               onClick={() => { if (isTenant) navigate('/registerPage/landlord'); }}
             >
-              Landlord
+              {t('landlord')}
             </button>
           </div>
         </div>
 
         <form onSubmit={handleSubmit}>
           <div className="form-row">
-            <label>First Name</label>
-            <label>Last Name</label>
+            <label>{t('firstName')}</label>
+            <label>{t('lastName')}</label>
             <input
               name="firstName"
               className="input_app"
               type="text"
-              placeholder="First Name"
+              placeholder={t('firstName')}
               value={formData.firstName}
               onChange={handleChange}
               required
@@ -115,43 +110,43 @@ const Register = () => {
               name="lastName"
               className="input_app"
               type="text"
-              placeholder="Last Name"
+              placeholder={t('lastName')}
               value={formData.lastName}
               onChange={handleChange}
               required
             />
           </div>
 
-          <label>Email</label>
+          <label>{t('email')}</label>
           <input
             name="email"
             className="input_app"
             type="email"
-            placeholder="Email"
+            placeholder={t('email')}
             value={formData.email}
             onChange={handleChange}
             required
           />
 
-          <label>Phone</label>
+          <label>{t('phone')}</label>
           <input
             name="phone"
             className="input_app"
             type="tel"
-            placeholder="Phone Number"
+            placeholder={t('phone')}
             value={formData.phone}
             onChange={handleChange}
             required
           />
 
           <div className="password-group">
-            <label>Password</label>
-            <label>Confirm Password</label>
+            <label>{t('password')}</label>
+            <label>{t('confirmPassword')}</label>
             <input
               name="password"
               className="input_app"
               type="password"
-              placeholder="Password"
+              placeholder={t('password')}
               value={formData.password}
               onChange={handleChange}
               required
@@ -160,7 +155,7 @@ const Register = () => {
               name="confirmPassword"
               className="input_app"
               type="password"
-              placeholder="Confirm Password"
+              placeholder={t('confirmPassword')}
               value={formData.confirmPassword}
               onChange={handleChange}
               required
@@ -170,13 +165,13 @@ const Register = () => {
           {isTenant ? (
             <>
               <div className="income-group">
-                <label>Occupation</label>
-                <label>Income per month</label>
+                <label>{t('occupation')}</label>
+                <label>{t('incomePerMonth')}</label>
                 <input
                   name="occupation"
                   className="input_app"
                   type="text"
-                  placeholder="Occupation"
+                  placeholder={t('occupation')}
                   value={formData.occupation}
                   onChange={handleChange}
                   required
@@ -188,20 +183,20 @@ const Register = () => {
                   onChange={handleChange}
                   required
                 >
-                  <option value="">Income per month</option>
+                  <option value="">{t('incomePerMonth')}</option>
                   <option value="3,000,000 - 5,000,000">3,000,000 - 5,000,000</option>
                   <option value="5,000,000 - 10,000,000">5,000,000 - 10,000,000</option>
                 </select>
               </div>
 
               <div className="upload-group">
-                <label>Upload ID card image</label>
+                <label>{t('uploadID')}</label>
                 <input className="input_app" type="file" />
               </div>
             </>
           ) : (
             <>
-              <label>Bank account number</label>
+              <label>{t('bankAccount')}</label>
               <input
                 name="bankAccount"
                 className="input_app"
@@ -214,22 +209,22 @@ const Register = () => {
 
               <div className="upload-image-group">
                 <div className="upload-group">
-                  <label>Upload ID card image</label>
+                  <label>{t('uploadID')}</label>
                   <input className="input_app" type="file" />
                 </div>
                 <div className="upload-group">
-                  <label>Upload business license</label>
+                  <label>{t('uploadBusinessLicense')}</label>
                   <input className="input_app" type="file" />
                 </div>
               </div>
             </>
           )}
 
-          <button type="submit" className="submit_button medium-button">Sign up</button>
+          <button type="submit" className="submit_button medium-button">{t('signUp')}</button>
         </form>
 
         <p className="signIn-text">
-          Already have an account? <Link to="/loginPage" className="link_to">Sign in</Link>
+          {t('alreadyHaveAccount')} <Link to="/loginPage" className="link_to">{t('signIn')}</Link>
         </p>
       </div>
     </div>

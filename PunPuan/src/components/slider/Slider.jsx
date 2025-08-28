@@ -1,49 +1,51 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import Condo from '../../assets/condo.jpg';
 import Town from '../../assets/town.jpg';
 import Room from '../../assets/room.jpg';
 import '../../Styles/slider.css';
 
-const slides = [
+const slidesData = [
   {
     image: Condo,
-    title: 'Find Your Perfect Home — Fast & Easy',
-    subtitle: 'Explore Rental Rooms, Apartments, and Houses Across Laos',
+    titleKey: 'slider.slide1.title',
+    subtitleKey: 'slider.slide1.subtitle',
   },
   {
     image: Room,
-    title: 'Live in Comfort and Style',
-    subtitle: 'Discover Affordable Homes in Prime Locations',
+    titleKey: 'slider.slide2.title',
+    subtitleKey: 'slider.slide2.subtitle',
   },
   {
     image: Town,
-    title: 'Secure Your Next Home Today',
-    subtitle: 'Browse Listings with Just a Few Clicks',
+    titleKey: 'slider.slide3.title',
+    subtitleKey: 'slider.slide3.subtitle',
   }
 ];
 
 const Slider = () => {
+  const { t } = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % slides.length);
-    }, 2000); // 2 seconds delay
+      setCurrentIndex((prev) => (prev + 1) % slidesData.length);
+    }, 2000);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
     <div className="slider-wrapper container">
-      {slides.map((slide, index) => (
+      {slidesData.map((slide, index) => (
         <div
           key={index}
           className={`slide ${index === currentIndex ? 'active' : ''}`}
           style={{ backgroundImage: `url(${slide.image})` }}
         >
           <div className="text-content">
-            <h2>{slide.title}</h2>
-            <p>{slide.subtitle}</p>
+            <h2>{t(slide.titleKey)}</h2>
+            <p>{t(slide.subtitleKey)}</p>
           </div>
         </div>
       ))}

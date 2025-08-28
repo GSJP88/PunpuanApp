@@ -3,56 +3,40 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../../Styles/addProperty.css';
 import { showSuccess, showError } from "../../Service/swal";
-
-const laosData = {
-  "Vientiane Prefecture": {
-    "Chanthabuly": ["Ban Phonthan", "Ban Nongbone", "Ban Watnak"],
-    "Sikhottabong": ["Ban Dongdok", "Ban Phonpapao"],
-    "Sisattanak": ["Ban Simeuang", "Ban Haisok", "Ban Phonsinuan"],
-    "Xaysetha": ["Ban Nongbeuk", "Ban Saphanthong Neua"],
-    "Hadxayfong": ["Ban Naxay", "Ban Mai", "Ban Dongnaxok"]
-  },
-  "Luang Prabang": {
-    "Mueang Luang Prabang": ["Ban Xiengthong", "Ban Watphabook", "Ban Vangvieng"],
-    "Phonxay": ["Ban Phonxay", "Ban Hadsadone"]
-  },
-  "Champasak": {
-    "Pakse": ["Ban Phonxai", "Ban Thongkhankham"],
-    "Mueang Champasak": ["Ban Wat Luang", "Ban Nong Sa"]
-  }
-};
+import { useTranslation } from 'react-i18next';
+import laosData from '../filter/laosData'; // ต้องเป็นรูปแบบ { province: { district: [{ en, la }] } }
 
 const AddProperty = () => {
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
 
-  // Location state
+  /*** Location State ***/
   const [province, setProvince] = useState('');
   const [district, setDistrict] = useState('');
   const [village, setVillage] = useState('');
   const [districts, setDistricts] = useState([]);
   const [villages, setVillages] = useState([]);
 
-  // Input fields
+  /*** Property Info ***/
   const [locationLink, setLocationLink] = useState('');
   const [propertyName, setPropertyName] = useState('');
   const [price, setPrice] = useState('');
   const [roomType, setRoomType] = useState('Condominium');
   const [description, setDescription] = useState('');
   const [roomAmount, setRoomAmount] = useState('');
-  const [available, setAvailable] = useState('');
   const [maxOccupancy, setMaxOccupancy] = useState('');
   const [bedRooms, setBedRooms] = useState('');
   const [bathRooms, setBathRooms] = useState('');
   const [parking, setParking] = useState('');
 
-  // Images
+  /*** Images ***/
   const [propertyImages, setPropertyImages] = useState([]);
   const [profileImage, setProfileImage] = useState(null);
 
   const imageInputRef = useRef(null);
   const profileInputRef = useRef(null);
 
-  // Update districts and villages when province/district changes
+  /*** Update districts and villages based on selected province/district ***/
   useEffect(() => {
     if (province) {
       setDistricts(Object.keys(laosData[province]));
@@ -77,105 +61,94 @@ const AddProperty = () => {
     }
   }, [district, province]);
 
-  // Handle multiple property images
+  /*** Handle multiple property images ***/
   const handleMultipleImages = (e) => {
     const files = Array.from(e.target.files);
     setPropertyImages((prev) => [...prev, ...files]);
     if (imageInputRef.current) imageInputRef.current.value = '';
   };
 
-  // Handle profile image
+  /*** Handle profile image ***/
   const handleProfileImage = (e) => {
     const file = e.target.files[0];
     setProfileImage(file);
   };
 
-  // Clear all property images
+  /*** Clear all property images ***/
   const handleClearImages = () => {
     setPropertyImages([]);
     if (imageInputRef.current) imageInputRef.current.value = '';
   };
 
-  // Remove one image by index
+  /*** Remove single image by index ***/
   const handleRemoveImage = (indexToRemove) => {
     setPropertyImages(propertyImages.filter((_, i) => i !== indexToRemove));
   };
 
-  // Submit form with images and data
+  /*** Submit property form ***/
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  try {
-    const formData = new FormData();
+    try {
+      const formData = new FormData();
 
-    // แก้ไขตรงนี้: ดึง user object ที่เก็บทั้ง object ไว้ใน localStorage ชื่อ 'user'
-    const user = JSON.parse(localStorage.getItem('user'));
-    const userId = user?.id || user?.User_ID; // กรณีเก็บในฟิลด์ id หรือ User_ID
+      const user = JSON.parse(localStorage.getItem('user'));
+      const userId = user?.id || user?.User_ID;
 
-    if (!userId) {
-      alert('User ID not found. Please login again.');
-      return;
+      if (!userId) {
+        alert('User ID not found. Please login again.');
+        return;
+      }
+
+      formData.append('userId', userId);
+      formData.append('province', province);
+      formData.append('district', district);
+      formData.append('village', village);
+      formData.append('locationLink', locationLink);
+      formData.append('propertyName', propertyName);
+      formData.append('price', price);
+      formData.append('roomType', roomType);
+      formData.append('description', description);
+      formData.append('roomAmount', roomAmount);
+      formData.append('maxOccupancy', maxOccupancy);
+      formData.append('bedRooms', bedRooms);
+      formData.append('bathRooms', bathRooms);
+      formData.append('parking', parking);
+
+      if (profileImage) formData.append('profileImage', profileImage);
+      propertyImages.forEach((file) => formData.append('propertyImages', file));
+
+      await axios.post('http://localhost:5000/api/rooms', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
+
+      showSuccess(t('submit_success'), '');
+      navigate('/propertyListPage');
+    } catch (error) {
+      console.error('Error adding property:', error);
+      alert(t('submit_failed'));
     }
-
-    formData.append('userId', userId);
-
-    // ข้อมูลอื่น ๆ ตามเดิม
-    formData.append('province', province);
-    formData.append('district', district);
-    formData.append('village', village);
-    formData.append('locationLink', locationLink);
-    formData.append('propertyName', propertyName);
-    formData.append('price', price);
-    formData.append('roomType', roomType);
-    formData.append('description', description);
-    formData.append('roomAmount', roomAmount);
-    formData.append('maxOccupancy', maxOccupancy);
-    formData.append('bedRooms', bedRooms);
-    formData.append('bathRooms', bathRooms);
-    formData.append('parking', parking);
-
-    if (profileImage) {
-      formData.append('profileImage', profileImage);
-    }
-
-    propertyImages.forEach((file) => {
-      formData.append('propertyImages', file);
-    });
-
-    const response = await axios.post('http://localhost:5000/api/rooms', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    });
-    showSuccess("ເພີ່ມຫ້ອງສຳເລັດ", ` `);
-    // alert('Property added successfully!');
-    navigate('/propertyListPage');
-  } catch (error) {
-    console.error('Error adding property:', error);
-    alert('Failed to add property. Please try again.');
-  }
-};
+  };
 
   return (
     <div className="add_property box_container container">
       <form className="add_property-form" onSubmit={handleSubmit}>
-        <h2>Add Property</h2>
+        <h2>{t('add_property_title')}</h2>
 
         {/* Room Info */}
         <div className="row">
           <div className="form-group">
-            <label htmlFor="rooms">Number of rooms</label>
+            <label>{t('number_of_rooms')}</label>
             <div className="room-amount">
               <input
                 type="text"
-                id="rooms"
-                placeholder="Rooms"
+                placeholder={t('add_number_of_rooms')}
                 value={roomAmount}
                 onChange={(e) => setRoomAmount(e.target.value)}
               />
               <input
                 type="text"
-                placeholder="Available"
+                placeholder={t('add_available')}
                 value={maxOccupancy}
                 onChange={(e) => setMaxOccupancy(e.target.value)}
               />
@@ -183,23 +156,23 @@ const AddProperty = () => {
           </div>
 
           <div className="form-group">
-            <label>Room specs</label>
+            <label>{t('room_specs')}</label>
             <div className="room-specs">
               <input
                 type="text"
-                placeholder="Bed rooms"
+                placeholder={t('bed_rooms')}
                 value={bedRooms}
                 onChange={(e) => setBedRooms(e.target.value)}
               />
               <input
                 type="text"
-                placeholder="Bath rooms"
+                placeholder={t('bath_rooms')}
                 value={bathRooms}
                 onChange={(e) => setBathRooms(e.target.value)}
               />
               <input
                 type="text"
-                placeholder="Parking"
+                placeholder={t('parking')}
                 value={parking}
                 onChange={(e) => setParking(e.target.value)}
               />
@@ -210,76 +183,78 @@ const AddProperty = () => {
         {/* Location & Description */}
         <div className="row">
           <div className="form-group">
-            <label>Location</label>
+            <label>{t('location_label')}</label>
+
             <select
-              className="select-location"
               value={province}
               onChange={(e) => setProvince(e.target.value)}
+              className="select-location"
             >
-              <option value="">Select Province</option>
+              <option value="">{t('select_province')}</option>
               {Object.keys(laosData).map((prov) => (
                 <option key={prov} value={prov}>
-                  {prov}
+                  {i18n.language === 'en' ? prov : t(prov)}
                 </option>
               ))}
             </select>
 
             <select
-              className="select-location"
               value={district}
               onChange={(e) => setDistrict(e.target.value)}
               disabled={!districts.length}
+              className="select-location"
             >
-              <option value="">Select District</option>
+              <option value="">{t('select_district')}</option>
               {districts.map((dist) => (
                 <option key={dist} value={dist}>
-                  {dist}
+                  {i18n.language === 'en' ? dist : t(dist)}
                 </option>
               ))}
             </select>
 
             <select
-              className="select-location"
               value={village}
               onChange={(e) => setVillage(e.target.value)}
               disabled={!villages.length}
+              className="select-location"
             >
-              <option value="">Select Village</option>
+              <option value="">{t('select_village')}</option>
               {villages.map((vill) => (
-                <option key={vill} value={vill}>
-                  {vill}
+                <option key={vill.en} value={vill.en}>
+                  {i18n.language === 'en' ? vill.en : vill.la}
                 </option>
               ))}
             </select>
 
             <input
               type="text"
-              placeholder="Location Link"
+              placeholder={t('location_link')}
               value={locationLink}
               onChange={(e) => setLocationLink(e.target.value)}
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="roomType">Room type</label>
+            <label>{t('room_type')}</label>
             <select
               id="roomType"
               className="selectType"
               value={roomType}
+              placeholder={t('room_type')}
               onChange={(e) => setRoomType(e.target.value)}
             >
-              <option>Condominium</option>
-              <option>Townhouse</option>
-              <option>Apartment</option>
-              <option>Room</option>
+              <option value="">{t('add_room_type')}</option>
+              <option>{t('Condominium')}</option>
+              <option>{t('Townhouse')}</option>
+              <option>{t('Apartment')}</option>
+              <option>{t('Room')}</option>
             </select>
 
-            <label htmlFor="description">Description</label>
+            <label>{t('description')}</label>
             <textarea
               className="add-description"
-              id="description"
               rows="4"
-              placeholder="Description"
+              placeholder={t('description')}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
@@ -289,22 +264,20 @@ const AddProperty = () => {
         {/* Name & Price */}
         <div className="row">
           <div className="form-group">
-            <label htmlFor="propertyName">Property name</label>
+            <label>{t('property_name')}</label>
             <input
               type="text"
-              id="propertyName"
-              placeholder="Name"
+              placeholder={t('property_name')}
               value={propertyName}
               onChange={(e) => setPropertyName(e.target.value)}
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="price">Rental price</label>
+            <label>{t('rental_price')}</label>
             <input
               type="text"
-              id="price"
-              placeholder="Price"
+              placeholder={t('rental_price')}
               value={price}
               onChange={(e) => setPrice(e.target.value)}
             />
@@ -313,52 +286,45 @@ const AddProperty = () => {
 
         {/* Images Upload */}
         <div className="row image-upload-section">
-          {/* Profile Image */}
           <div className="form-group">
-            <label htmlFor="profileImage">Property Profile</label>
+            <label>{t('select_profile_image')}</label>
             <div className="image-box">
               <input
                 type="file"
-                id="profileImage"
                 accept="image/*"
                 ref={profileInputRef}
                 onChange={handleProfileImage}
                 style={{ display: 'none' }}
               />
-              <label htmlFor="profileImage" className="custom-file-label">
-                + Select profile image
+              <label className="custom-file-label" htmlFor="profileImage">
+                {t('select_profile_image')}
               </label>
               <div className="preview-thumbnails">
-                <div className="thumbnail-wrapper profile">
-                  {profileImage && (
-                    <img
-                      src={URL.createObjectURL(profileImage)}
-                      alt="profile-preview"
-                      className="preview-image profile-image"
-                    />
-                  )}
-                </div>
+                {profileImage && (
+                  <img
+                    src={URL.createObjectURL(profileImage)}
+                    alt="profile-preview"
+                    className="preview-image profile-image"
+                  />
+                )}
               </div>
             </div>
           </div>
 
-          {/* Property Images */}
           <div className="form-group">
-            <label htmlFor="propertyImages">Property Images</label>
+            <label>{t('select_images')}</label>
             <div className="image-box">
               <input
                 type="file"
-                id="propertyImages"
                 accept="image/*"
                 multiple
                 ref={imageInputRef}
                 onChange={handleMultipleImages}
                 style={{ display: 'none' }}
               />
-              <label htmlFor="propertyImages" className="custom-file-label">
-                + Select images ({propertyImages.length} selected)
+              <label className="custom-file-label" htmlFor="propertyImages">
+                {t('select_images')} ({propertyImages.length} selected)
               </label>
-
               <div className="preview-thumbnails">
                 {propertyImages.map((img, index) => (
                   <div key={index} className="thumbnail-wrapper">
@@ -378,14 +344,9 @@ const AddProperty = () => {
                 ))}
               </div>
             </div>
-
             <div className="btn-group">
-              <button
-                type="button"
-                className="clear-btn small-button"
-                onClick={handleClearImages}
-              >
-                Clear All
+              <button type="button" className="clear-btn small-button" onClick={handleClearImages}>
+                {t('clear_all')}
               </button>
             </div>
           </div>
@@ -393,7 +354,7 @@ const AddProperty = () => {
 
         {/* Submit Button */}
         <button type="submit" className="submit_btn medium-button">
-          + Add
+          {t('submit_add')}
         </button>
       </form>
     </div>

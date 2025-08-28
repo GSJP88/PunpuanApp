@@ -1,6 +1,7 @@
 // src/components/TenantList.jsx
 import React, { useState } from 'react';
 import tenantsInfo from "../../data/tenants"
+import { useTranslation } from 'react-i18next';
 
 const tenants = [
   {
@@ -70,37 +71,50 @@ const tenants = [
 ];
 
 const TenantList = () => {
+  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
   const [filterStatus, setFilterStatus] = useState('all');
 
   const filteredTenants = tenants.filter((tenant) => {
     const matchName = tenant.name.toLowerCase().includes(searchTerm.toLowerCase());
-
     const matchStatus =
       filterStatus === 'all' ||
       (filterStatus === 'paid' && tenant.hasPaid) ||
       (filterStatus === 'unpaid' && !tenant.hasPaid);
-
     return matchName && matchStatus;
   });
 
   return (
     <div className="tenant-list-wrapper box_container">
       <div className="tenant-list-headline">
-      <h2 className="tenant-list-title">Tenant List</h2>
+        <h2 className="tenant-list-title">{t('tenantList')}</h2>
         <div className="tenant-filters">
-          <div className="tenant-btn-wrapper" 
-              value={filterStatus}
-              onClick={(e) => setFilterStatus(e.target.value)}>
-              <button className={filterStatus === 'all' ? 'active' : ''} value="all">All</button>
-              <button className={filterStatus === 'paid' ? 'active' : ''} value="paid">Paid</button>
-              <button className={filterStatus === 'unpaid' ? 'active' : ''} value="unpaid">Unpaid</button>
+          <div className="tenant-btn-wrapper">
+            <button 
+              className={filterStatus === 'all' ? 'active' : ''} 
+              onClick={() => setFilterStatus('all')}
+            >
+              {t('all')}
+            </button>
+            <button 
+              className={filterStatus === 'paid' ? 'active' : ''} 
+              onClick={() => setFilterStatus('paid')}
+            >
+              {t('paid')}
+            </button>
+            <button 
+              className={filterStatus === 'unpaid' ? 'active' : ''} 
+              onClick={() => setFilterStatus('unpaid')}
+            >
+              {t('unpaid')}
+            </button>
           </div>
+
           <div className="search-box-wrapper input_app">
             <i className="bi bi-search search-icon"></i>
             <input
               type="text"
-              placeholder="Search by name..."
+              placeholder={t('searchByName')}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="search-box"
@@ -108,14 +122,15 @@ const TenantList = () => {
           </div>
         </div>
       </div>
+
       <div className="table-container">
         <table className="tenant-table">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Property</th>
-              <th>Rented Since</th>
+              <th>{t('name')}</th>
+              <th>{t('email')}</th>
+              <th>{t('property')}</th>
+              <th>{t('rentedSince')}</th>
             </tr>
           </thead>
           <tbody>
@@ -137,7 +152,7 @@ const TenantList = () => {
             {filteredTenants.length === 0 && (
               <tr>
                 <td colSpan="4" style={{ textAlign: 'center', padding: '20px', color: '#777' }}>
-                  No tenants found.
+                  {t('noTenantsFound')}
                 </td>
               </tr>
             )}

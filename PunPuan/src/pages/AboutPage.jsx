@@ -3,32 +3,16 @@ import "../Styles/aboutPage.css";
 import p1 from "../assets/ton.jpg";
 import p2 from "../assets/god.jpeg";
 import p3 from "../assets/sky.jpg";
+import { useTranslation } from 'react-i18next';
 
 const people = [
-  {
-    id: 1,
-    name: 'Kedsada Vannaphom',
-    role: 'Full Stack Developer',
-    image: p1,
-    bio: 'ຊື່ ເເລະ ນາມສະກຸນ: ທ້າວ ເກດສະດາ ວັນນະພົມ ວັນ, ເດືອນ, ປີເກີດ: 18 ກຸມພາ 2002 ບ້ານເກີດ: ບ້ານ ນາສ້າງໄພ, ເມືອງ ໄຊເສດຖາ, ນະຄອນຫຼວງວຽງຈັນ ບ້ານຢູ່ປັດຈຸບັນ: ບ້ານ ນາສ້າງໄພ, ເມືອງ ໄຊເສດຖາ, ນະຄອນຫຼວງວຽງຈັນ'
-  },
-  {
-    id: 2,
-    name: 'Sathaphone Savayvanh',
-    role: 'UI/UX Designer & Frontend Developer',
-    image: p2,
-    bio: 'ຊື່ ເເລະ ນາມສະກຸນ: ທ້າວ ສະຖາພອນ ສະໄຫວວັນ ວັນ, ເດືອນ, ປີເກີດ: 24 ພະຈິກ 2004 ບ້ານເກີດ: ບ້ານ ບຶງຂະຫຍອງ, ເມືອງ ສີສັດຕະນາກ, ເເຂວງນະຄອນຫຼວງວຽງຈັນ ບ້ານຢູ່ປັດຈຸບັນ: ບ້ານ ບຶງຂະຫຍອງ, ເມືອງ ສີສັດຕະນາກ, ເເຂວງນະຄອນຫຼວງວຽງຈັນ'
-  },
-  {
-    id: 3,
-    name: 'Palinya Phenmanivong',
-    role: 'Project Manager',
-    image: p3,
-    bio: " ຊື່ ເເລະ ນາມສະກຸນ: ທ້າວ ປະລິນຍາ ເເພງມະນີວົງ ວັນ, ເດືອນ, ປີເກີດ: 18 ມິຖຸນາ 2003 ບ້ານເກີດ: ບ້ານນາທົ່ວ, ເມືອງເຟືອງ, ເເຂວງວຽງຈັນ ບ້ານຢູ່ປັດຈຸບັນ: ບ້ານເມືອງນ້ອຍ, ເມືອງໄຊເສດຖາ, ນະຄອນຫຼວງວຽງຈັນ"
-  }
+  { id: 1, key: 'person1', image: p1 },
+  { id: 2, key: 'person2', image: p2 },
+  { id: 3, key: 'person3', image: p3 }
 ];
 
 const AboutPage = () => {
+  const { t } = useTranslation();
   const [selectedPerson, setSelectedPerson] = useState(people[0]);
 
   return (
@@ -40,10 +24,10 @@ const AboutPage = () => {
             className={`tap-box ${selectedPerson.id === person.id ? 'active' : ''}`}
             onClick={() => setSelectedPerson(person)}
           >
-            <img src={person.image} alt={person.name} className="circle-image" />
+            <img src={person.image} alt={t(`${person.key}.name`)} className="circle-image" />
             <div className="tap-text">
-              <h4>{person.name}</h4>
-              <p>{person.role}</p>
+              <h4>{t(`${person.key}.name`)}</h4>
+              <p>{t(`${person.key}.role`)}</p>
             </div>
           </div>
         ))}
@@ -51,9 +35,9 @@ const AboutPage = () => {
 
       <div key={selectedPerson.id} className="info-box animate-fade-left">
         <div className="person_info">
-          <h2>{selectedPerson.name}</h2>
-          <h4>{selectedPerson.role}</h4>
-          <p>{selectedPerson.bio}</p>
+          <h2>{t(`${selectedPerson.key}.name`)}</h2>
+          <h4>{t(`${selectedPerson.key}.role`)}</h4>
+          <p>{t(`${selectedPerson.key}.bio`)}</p>
         </div>
         <div
           className="person_img"

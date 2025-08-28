@@ -1,34 +1,4 @@
 const laosData = {
-    //   "Attapeu": {
-    //     "Samakkixay": {
-    //       en: ["Ban Xaysettha", "Ban Somsanouk", "Ban Donsavanh"],
-    //       la: ["ບ້ານໄຊເສດທາ", "ບ້ານສົມສານຸກ", "ບ້ານດອນສະຫວັນ"]
-    //     },
-    //     "Sanamxay": {
-    //       en: ["Ban Phouampha", "Ban Vangphai"],
-    //       la: ["ບ້ານພູອຳພາ", "ບ້ານວັງໄພ"]
-    //     },
-    //     "Sanxay": {
-    //       en: ["Ban Nonghin", "Ban Phouhouay"],
-    //       la: ["ບ້ານໜອງຫິນ", "ບ້ານພູຫ່ວາຍ"]
-    //     }
-    //   },
-    //   "Bokeo": {
-    //     "Houayxay": { en: ["Ban Meungneua", "Ban Done"], la: ["ບ້ານເມືອງເໜືອ", "ບ້ານດອນ"] },
-    //     "Meung": { en: ["Ban Meung", "Ban Sopmeung"], la: ["ບ້ານເມືອງ", "ບ້ານຊອບເມືອງ"] },
-    //     "Paktha": { en: ["Ban Paknga", "Ban Namkeung"], la: ["ບ້ານປາກທາ", "ບ້ານນ້ຳແກງ"] }
-    //   },
-    //   "Bolikhamxay": {
-    //     "Paksan": { en: ["Ban Keun", "Ban Namsanam"], la: ["ບ້ານເກືອນ", "ບ້ານນ້ຳສະນະນາມ"] },
-    //     "Borikhane": { en: ["Ban Nakhang", "Ban Phon"], la: ["ບ້ານນາຄັງ", "ບ້ານພອນ"] },
-    //     "Khamkeut": { en: ["Ban Lak Sao", "Ban Viengthong"], la: ["ບ້ານລັກເຊາ", "ບ້ານວຽງທອງ"] }
-    //   },
-    //   "Champasak": {
-    //     "Pakse": { en: ["Ban Lak 20", "Ban Thongphong"], la: ["ບ້ານລັກ 20", "ບ້ານທ້ອງພອງ"] },
-    //     "Pathoumphone": { en: ["Ban Nongphaya", "Ban Na"], la: ["ບ້ານໜອງພະຍາ", "ບ້ານນາ"] },
-    //     "Khong": { en: ["Ban Don Det", "Ban Don Khon"], la: ["ບ້ານດອນເດັດ", "ບ້ານດອນຄອນ"] }
-    //   },
-
     "Vientiane Prefecture": {
 
         "Chanthabuly": [

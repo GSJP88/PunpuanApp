@@ -2,8 +2,10 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import '../../Styles/switchBtn.css';
+import { useTranslation } from 'react-i18next';
 
 const SwitchBtn = () => {
+  const { t } = useTranslation();
   const { role } = useParams();
   const navigate = useNavigate();
 
@@ -25,13 +27,13 @@ const SwitchBtn = () => {
         className={`switch-btn ${role === 'tenant' ? 'active' : ''}`}
         onClick={handleTenantClick}
       >
-        Tenant
+        {t('tenant')}
       </button>
       <button
         className={`switch-btn ${role === 'landlord' ? 'active' : ''}`}
         onClick={handleLandlordClick}
       >
-        Landlord
+        {t('landlord')}
       </button>
     </div>
   );

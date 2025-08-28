@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropertyCard from './PropertyCard';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 
 const PropertyList = () => {
+  const { t } = useTranslation();
+
   const [searchTerm, setSearchTerm] = useState('');
   const [filter, setFilter] = useState('all'); // all | available | unavailable
   const [allProperties, setAllProperties] = useState([]);
@@ -17,12 +20,12 @@ const PropertyList = () => {
       try {
         setLoading(true);
         const res = await axios.get('http://localhost:5000/api/rooms', {
-          withCredentials: true // สำคัญ!
+          withCredentials: true 
         });
         setAllProperties(res.data);
         setLoading(false);
       } catch (err) {
-        setError('Failed to load properties');
+        setError('failed_load_properties'); // ใช้ key i18n
         setLoading(false);
       }
     };
@@ -48,37 +51,36 @@ const PropertyList = () => {
   });
 
   const handleAddClick = () => {
-    navigate('/addPropertyPage'); // ปรับเส้นทางถ้าจำเป็น
+    navigate('/addPropertyPage');
   };
 
   return (
     <div className="property-list-wrapper box_container">
       <div className="property-list-headline"> 
-        {/* -------------------------------------------------------------------Lan */}
-        <h2 className="property-list-title">ລາຍການຫ້ອງ</h2> 
+        <h2 className="property-list-title">{t('property_list_title')}</h2> 
         <div className="property-controls">
           <div className="filter-buttons">
             <button onClick={() => setFilter('all')} className={filter === 'all' ? 'active' : ''}>
-              ທັງໝົດ
+              {t('all')}
             </button>
             <button
               onClick={() => setFilter('available')}
               className={filter === 'available' ? 'active' : ''}
             >
-              ຫ້ອງເຕັມ
+              {t('available')}
             </button>
             <button
               onClick={() => setFilter('unavailable')}
               className={filter === 'unavailable' ? 'active' : ''}
             >
-              ຍັງວ່າງ
+              {t('unavailable')}
             </button>
           </div>
           <div className="search-input-wrapper input_app">
             <i className="bi bi-search search-input-icon"></i>
             <input
               type="text"
-              placeholder="ປ້ອນຊື່ ຫຼື ໄອດີ"
+              placeholder={t('search_placeholder')}
               className="search-input"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
@@ -89,9 +91,9 @@ const PropertyList = () => {
 
       <div className="property-list">
         {loading ? (
-          <p>ກຳລັງໂຫລດລາຍການຫ້ອງ...</p>
+          <p>{t('loading_properties')}</p>
         ) : error ? (
-          <p>{error}</p>
+          <p>{t(error)}</p>
         ) : filteredProperties.length > 0 ? (
           filteredProperties.map((property) => {
             const mappedData = {
@@ -108,13 +110,13 @@ const PropertyList = () => {
             return <PropertyCard key={property.Room_ID} data={mappedData} />;
           })
         ) : (
-          <p className="no-results">ບໍ່ມີລາຍການຫ້ອງ.</p>
+          <p className="no-results">{t('no_properties')}</p>
         )}
       </div>
 
       <div className="add-btn-wrapper">
         <button className="add-property small-button" onClick={handleAddClick}>
-          <i className="bi bi-plus"></i> ເພີ່ມຫ້ອງເຊົ່າ
+          <i className="bi bi-plus"></i> {t('add_property')}
         </button>
       </div>
     </div>

@@ -1,14 +1,16 @@
 import React from 'react';
 import '../../Styles/propertyList.css';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const PropertyCard = ({ data }) => {
+  const { t } = useTranslation();
+
   // คำนวณ percent ให้ป้องกัน division by zero
-  const total_room = ((data.Room_Amount) - (data.Max_Occupancy));
+  const total_room = (data.Room_Amount) - (data.Max_Occupancy);
   const percent = Math.floor((total_room * 100) / (data.Room_Amount));
-  // const maxOccupancy = data.Max_Occupancy > 0 ? data.Max_Occupancy : 1;
-  // const percent = Math.floor((data.Room_Amount * 100) / maxOccupancy);
-  const statusText = percent >= 100 ? 'ຫ້ອງເຕັມ' : 'ມີຫ້ອງວ່າງ';
+  
+  const statusText = percent >= 100 ? t('full_room') : t('available_room');
   const isUnavailable = percent >= 100;
 
   const navigate = useNavigate();
@@ -20,7 +22,7 @@ const PropertyCard = ({ data }) => {
     <div className="property-card" onClick={handleClick}>
       <img src={data.image} alt={data.name} className="property-image" />
 
-      <div className={`property-status ${isUnavailable ? 'ວ່າງ' : 'ເຕັມ'}`}>
+      <div className={`property-status ${isUnavailable ? 'unavailable' : 'available'}`}>
         <i className="bi bi-circle-fill"></i>
         {statusText}
       </div>
@@ -28,13 +30,15 @@ const PropertyCard = ({ data }) => {
       <div className="property-info">
         <div className="top-row">
           <span className="type">{data.type}</span>
-          <span className="occupancy">ມີຫ້ອງຍັງວ່າງ: {percent}%</span>
+          <span className="occupancy">
+            {t('remaining_rooms')}: {percent}%
+          </span>
         </div>
         <h3 className="property-name">{data.name}</h3>
         <p className="property-address">{data.address}</p>
         <div className="property-actions">
-          <button className="action-btn small-button">ຂໍ້ມູນຫ້ອງ</button>
-          <button className="action-btn small-button">ແກ້ໄຂ</button>
+          <button className="action-btn small-button">{t('room_info')}</button>
+          <button className="action-btn small-button">{t('edit')}</button>
         </div>
       </div>
     </div>

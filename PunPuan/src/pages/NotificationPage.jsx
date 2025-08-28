@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../Styles/notificationPage.css';
 import NotificationCard from './NotificationCard';
+import { useTranslation } from 'react-i18next';
 
 const dummyNotifications = [
   {
@@ -30,6 +31,7 @@ const dummyNotifications = [
 ];
 
 const NotificationPage = () => {
+  const { t } = useTranslation();
   const [notifications, setNotifications] = useState(dummyNotifications);
   const [filter, setFilter] = useState('all');
 
@@ -52,19 +54,19 @@ const NotificationPage = () => {
 
   return (
     <div className="notification_page box_container container">
-      <h2 className="page-title">Notifications</h2>
+      <h2 className="page-title">{t('notifications')}</h2>
       <div className="notification-header">
         <div className="notification-nav">
-          <button onClick={() => setFilter('all')} className={filter === 'all' ? 'active' : ''}>All</button>
-          <button onClick={() => setFilter('unread')} className={filter === 'unread' ? 'active' : ''}>Unread</button>
-          <button onClick={() => setFilter('read')} className={filter === 'read' ? 'active' : ''}>Read</button>
+          <button onClick={() => setFilter('all')} className={filter === 'all' ? 'active' : ''}>{t('all')}</button>
+          <button onClick={() => setFilter('unread')} className={filter === 'unread' ? 'active' : ''}>{t('unread')}</button>
+          <button onClick={() => setFilter('read')} className={filter === 'read' ? 'active' : ''}>{t('read')}</button>
         </div>
-        <button className="mark-read-btn small-button" onClick={markAllAsRead}>Mark All as Read</button>
+        <button className="mark-read-btn small-button" onClick={markAllAsRead}>{t('markAllAsRead')}</button>
       </div>
 
       <div className="notification-list">
         {filtered.length === 0 ? (
-          <p className="no-notification">No notifications to show.</p>
+          <p className="no-notification">{t('noNotifications')}</p>
         ) : (
           filtered.map(notification => (
             <NotificationCard

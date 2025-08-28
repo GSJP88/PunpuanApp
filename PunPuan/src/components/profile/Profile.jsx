@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import '../../Styles/profile.css';
 
 const ProfilePage = () => {
+  const { t } = useTranslation();
   const [searchParams] = useSearchParams();
-  const userID = searchParams.get('userId')
+  const userID = searchParams.get('userId');
   const { role } = useParams();
   const isTenant = role === 'tenant';
   const navigate = useNavigate();
 
-  // const userID = localStorage.getItem('userId');
-  console.log('userID:', userID);
-  
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
@@ -24,42 +23,38 @@ const ProfilePage = () => {
   });
 
   useEffect(() => {
-    console.log("userID:::", userID )
-  if (userID === '15') {
-    // landlord
-    setFormData({
-      firstName: 'punpuan',
-      lastName: 'Landlord',
-      email: 'punpuan@gmail.com',
-      phone: '020-2222-3333',
-      bankAccount: '1234-5678-9012-3456',
-      occupation: 'Developer',
-      income: '1',
-    });
-  } else if (userID === '1') {
-    // tenant
-    setFormData({
-      firstName: 'Kedsada',
-      lastName: 'Vannaphom',
-      email: 'tonvnp2002@gmail.com',
-      phone: '020-54720903',
-      occupation: 'Student',
-      income: '2',
-      bankAccount: '1234-1234-1234-1234',
-    });
-  } else {
-    // ค่าอื่นๆ เคลียร์ form
-    setFormData({
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      occupation: '',
-      income: '1',
-      bankAccount: '',
-    });
-  }
-}, [userID]);
+    if (userID === '15') {
+      setFormData({
+        firstName: 'punpuan',
+        lastName: 'Landlord',
+        email: 'punpuan@gmail.com',
+        phone: '020-2222-3333',
+        bankAccount: '1234-5678-9012-3456',
+        occupation: 'Developer',
+        income: '1',
+      });
+    } else if (userID === '1') {
+      setFormData({
+        firstName: 'Kedsada',
+        lastName: 'Vannaphom',
+        email: 'tonvnp2002@gmail.com',
+        phone: '020-54720903',
+        occupation: 'Student',
+        income: '2',
+        bankAccount: '1234-1234-1234-1234',
+      });
+    } else {
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        occupation: '',
+        income: '1',
+        bankAccount: '',
+      });
+    }
+  }, [userID]);
 
   const handleChange = (e) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -73,36 +68,37 @@ const ProfilePage = () => {
   return (
     <div className="profile_container box_container">
       <div className="profile-headline">
-        <h2>{isTenant ? 'Tenant Profile' : 'Landlord Profile'}</h2>
+        <h2>{isTenant ? t('tenant_profile') : t('landlord_profile')}</h2>
         <button className="edit-btn small-button" onClick={() => setIsEditing(!isEditing)}>
-          {isEditing ? 'Cancel' : 'Edit'}
+          {isEditing ? t('cancel') : t('edit')}
         </button>
       </div>
 
       <div className="profile-form">
         <div className="form-row">
-          <label>Last Name</label>
-          <label>First Name</label>
+          <label>{t('first_name')}</label>
+          <label>{t('last_name')}</label>
           <input
             name="firstName"
             value={formData.firstName}
             onChange={handleChange}
             disabled={!isEditing}
             className="input_app"
+            placeholder={t('first_name')}
           />
-
           <input
             name="lastName"
             value={formData.lastName}
             onChange={handleChange}
             disabled={!isEditing}
             className="input_app"
+            placeholder={t('last_name')}
           />
         </div>
 
         <div className="form-row">
-          <label>Email</label>
-          <label>Phone</label>
+          <label>{t('email')}</label>
+          <label>{t('phone')}</label>
           <input
             name="email"
             type="email"
@@ -110,8 +106,8 @@ const ProfilePage = () => {
             onChange={handleChange}
             disabled={!isEditing}
             className="input_app"
+            placeholder={t('email')}
           />
-
           <input
             name="phone"
             type="tel"
@@ -119,21 +115,23 @@ const ProfilePage = () => {
             onChange={handleChange}
             disabled={!isEditing}
             className="input_app"
+            placeholder={t('phone')}
           />
         </div>
 
         {isTenant ? (
           <div className="form-row">
-            <label>Occupation</label>
+            <label>{t('occupation')}</label>
             <input
               name="occupation"
               value={formData.occupation}
               onChange={handleChange}
               disabled={!isEditing}
               className="input_app"
+              placeholder={t('occupation')}
             />
 
-            <label>Income</label>
+            <label>{t('income')}</label>
             <select
               name="income"
               value={formData.income}
@@ -141,26 +139,27 @@ const ProfilePage = () => {
               disabled={!isEditing}
               className="select_app"
             >
-              <option value="1">3,000,000 - 5,000,000</option>
-              <option value="2">5,000,000 - 10,000,000</option>
+              <option value="1">{t('income_1')}</option>
+              <option value="2">{t('income_2')}</option>
             </select>
           </div>
         ) : (
           <div>
-            <label>Bank Account</label>
+            <label>{t('bank_account')}</label>
             <input
               name="bankAccount"
               value={formData.bankAccount}
               onChange={handleChange}
               disabled={!isEditing}
               className="input_app"
+              placeholder={t('bank_account')}
             />
           </div>
         )}
 
         {isEditing && (
           <button className="profile-submit_button medium-button" onClick={handleSubmit}>
-            Submit
+            {t('submit')}
           </button>
         )}
       </div>
